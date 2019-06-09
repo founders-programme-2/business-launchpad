@@ -6,7 +6,10 @@
     "start": "node server/index.js",
     "server": "nodemon server/index.js",
     "client": "cd client && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "eslint": "eslint ./server",
+    "eslint:fix": "eslint --fix ./server",
+    "test": "jest ./tests"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,11 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
