@@ -4,7 +4,7 @@ class Landing extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Landing</h1>
+        <h1>Test to see if Travis is working</h1>
       </Fragment>
     );
   }
