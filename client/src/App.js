@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './styles/reset.css';
+import GlobalStyle from './styles/globalStyle';
 import Landing from './components/Landing';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
@@ -27,6 +28,7 @@ import {
 const App = () => {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <Switch>
         <Route exact path={LANDING_URL} component={Landing} />
         <Route exact path={LOGIN_URL} component={Login} />
@@ -37,7 +39,7 @@ const App = () => {
         <Route exact path={PRIVACY_URL} component={Privacy} />
         <Route exact path={RESOURCES_URL} component={Resources} />
         <Route exact path={JOURNAL_URL} component={Journal} />
-        <Redirect to path={ERROR404_URL} component={Error404} />
+        <Redirect to={ERROR404_URL} component={Error404} />
       </Switch>
     </BrowserRouter>
   );
