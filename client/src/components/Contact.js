@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-class Contact extends Component{
-
-  render(){
-
-    return(
-      <React.Fragment>
-      <h1>Contact</h1>
-        </React.Fragment>
-    )
+class Contact extends Component {
+  render() {
+    return (
+      <Fragment>
+        <h1>Contact</h1>
+      </Fragment>
+    );
   }
 }
 

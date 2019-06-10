@@ -1,4 +1,4 @@
-export const LANDING_URL = '/landing';
+export const LANDING_URL = '/';
 export const LOGIN_URL = '/login';
 export const SIGNUP_URL = '/sign-up';
 export const INFO_URL = '/info';
@@ -7,3 +7,4 @@ export const CONTACT_URL = '/contact';
 export const PRIVACY_URL = '/privacy';
 export const RESOURCES_URL = '/resources';
 export const JOURNAL_URL = '/journal';
+export const ERROR404_URL = '/error404';

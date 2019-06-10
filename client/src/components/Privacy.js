@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-class Privacy extends Component{
-
-  render(){
-
-    return(
-      <React.Fragment>
-      <h1>Privacy</h1>
-        </React.Fragment>
-    )
+class Privacy extends Component {
+  render() {
+    return (
+      <Fragment>
+        <h1>Privacy</h1>
+      </Fragment>
+    );
   }
 }
 

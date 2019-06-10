@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-class SignUp extends Component{
-
-  render(){
-
-    return(
-      <React.Fragment>
-      <h1>SignUp</h1>
-        </React.Fragment>
-    )
+class SignUp extends Component {
+  render() {
+    return (
+      <Fragment>
+        <h1>SignUp</h1>
+      </Fragment>
+    );
   }
 }
 

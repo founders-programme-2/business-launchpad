@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-class Info extends Component{
-
-  render(){
-
-    return(
-      <React.Fragment>
-      <h1>Info</h1>
-        </React.Fragment>
-    )
+class Info extends Component {
+  render() {
+    return (
+      <Fragment>
+        <h1>Info</h1>
+      </Fragment>
+    );
   }
 }
 
