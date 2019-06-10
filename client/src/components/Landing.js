@@ -4,7 +4,7 @@ class Landing extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Landing</h1>
+        <h1>This is a h1</h1>
       </Fragment>
     );
   }
