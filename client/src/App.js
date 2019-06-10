@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import './styles/reset.css';
 import Landing from './components/Landing';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
