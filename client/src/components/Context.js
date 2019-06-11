@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-export const MyContext = React.createContext();
+const MyContext = React.createContext();
 export class MyProvider extends Component {
   state = {
 
