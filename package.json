@@ -10,7 +10,8 @@
     "eslint": "eslint ./server",
     "eslint:fix": "eslint --fix ./server",
     "test": "jest ./tests",
-    "inst": "npm i && cd client && npm i"
+    "inst": "npm i && cd client && npm i",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "codecov": "^3.5.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.3.0",
