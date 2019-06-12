@@ -9,7 +9,7 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "eslint": "eslint ./server",
     "eslint:fix": "eslint --fix ./server",
-    "test": "jest ./tests",
+    "test": "jest .server/tests",
     "inst": "npm i && cd client && npm i",
     "coverage": "jest --coverage"
   },

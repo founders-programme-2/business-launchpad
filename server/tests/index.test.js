@@ -1,5 +1,3 @@
-const supertest = require('supertest');
-
-supertest('Check jest', () => {
+test('Jest is working', () => {
   expect(1).toBe(1);
 });
