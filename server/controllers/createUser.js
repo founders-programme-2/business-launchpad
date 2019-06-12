@@ -1,14 +1,21 @@
 const User = require('../database/models/User');
 
 module.exports = app => {
-  // Sign Up
+  // Sign up AKA create a user
 
-  app.post('/db/account/signup', (req, res, next) => {
+  app.post('/createUser', (req, res, next) => {
     const { body } = req;
     const { password } = body;
     let { email } = body;
 
     if (!email) {
+      return res.send({
+        success: false,
+        message: 'Error: Email cannot be blank.',
+      });
+    }
+
+    if (!password) {
       return res.send({
         success: false,
         message: 'Error: Password cannot be blank.',
@@ -44,11 +51,11 @@ module.exports = app => {
         const newUser = new User();
         newUser.email = email;
         newUser.password = newUser.generateHash(password);
-        newUser.save((err, user) => {
-          if (err) {
+        newUser.save((error, user) => {
+          if (error) {
             return res.send({
               success: false,
-              message: 'Signed up',
+              message: 'Error: Server error',
             });
           }
           return res.send({
