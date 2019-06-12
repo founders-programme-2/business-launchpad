@@ -22,6 +22,14 @@ const UserSchema = new mongoose.SchemaType({
     type: Date,
     default: Date.now(),
   },
+  completedRegistration: {
+    type: Boolean,
+    default: false,
+  },
+  completedInitialAssessment: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 UserSchema.methods.generateHash = password => {
