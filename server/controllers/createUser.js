@@ -1,4 +1,4 @@
-const User = require('../../database/models/User');
+const User = require('../database/models/User');
 
 module.exports = app => {
   // Sign Up
