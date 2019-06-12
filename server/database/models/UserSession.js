@@ -18,7 +18,7 @@ const UserSessionSchema = new mongoose.Schema({
 });
 
 UserSessionSchema.methods.generateHash = password => {
-  return bcrypt.hashSync(password, bcrypt.getSaltSync(8), null);
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 UserSessionSchema.methods.validPassword = password => {
