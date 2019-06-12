@@ -4,6 +4,8 @@ const dbConnection = require('./database/dbConnection');
 const router = require('./router');
 
 const app = express();
+// load environment variables from and .env into a process.env
+require('dotenv').config();
 
 // connect to database
 dbConnection();

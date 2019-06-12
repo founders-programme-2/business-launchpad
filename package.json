@@ -1,10 +1,11 @@
 {
   "name": "business-launchpad",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app to support young entrepreneurs mentored by the organisation Business Launchpad",
+  "main": "server.js",
   "scripts": {
-    "start": "node server/index.js",
-    "server": "nodemon server/index.js",
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
     "client": "cd client && npm start",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "eslint": "eslint ./server",
