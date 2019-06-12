@@ -13,12 +13,8 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 const dbConnection = () => {
-  mongoose.connect(mongoUri, err => {
-    if (err) throw err;
-    else {
-      // eslint-disable-next-line no-console
-      console.log(`You are successfully connected to ${mongoUri}!`);
-    }
+  mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
   });
 };
 
