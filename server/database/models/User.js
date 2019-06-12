@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const UserSchema = new mongoose.SchemaType({
+const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     default: '',
@@ -33,7 +33,7 @@ const UserSchema = new mongoose.SchemaType({
 });
 
 UserSchema.methods.generateHash = password => {
-  return bcrypt.hashSync(password, bcrypt.getSaltSync(8), null);
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 UserSchema.methods.validPassword = password => {
