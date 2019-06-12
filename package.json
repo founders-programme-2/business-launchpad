@@ -6,7 +6,7 @@
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "client": "cd client && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "eslint": "eslint ./server",
     "eslint:fix": "eslint --fix ./server",
     "test": "jest ./tests",
@@ -24,8 +24,11 @@
   },
   "homepage": "https://github.com/founders-programme-2/business-launchpad#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "concurrently": "^4.1.0",
-    "express": "^4.17.1"
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.14"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
