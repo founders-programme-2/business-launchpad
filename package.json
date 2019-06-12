@@ -1,7 +1,8 @@
 {
   "name": "business-launchpad",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app to support young entrepreneurs mentored by the organisation Business Launchpad",
+  "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
@@ -11,6 +12,9 @@
     "eslint:fix": "eslint --fix ./server",
     "test": "jest .server/tests",
     "inst": "npm i && cd client && npm i",
+    "build": "cd client && npm run build",
+    "client": "cd client && npm run start",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "coverage": "jest --coverage"
   },
   "repository": {
