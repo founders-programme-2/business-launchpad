@@ -30,8 +30,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <MyProvider>
-      <GlobalStyle />
-      <Switch>
+        <GlobalStyle />
+        <Switch>
           <Route exact path={LANDING_URL} component={Landing} />
           <Route exact path={LOGIN_URL} component={Login} />
           <Route exact path={SIGNUP_URL} component={SignUp} />
@@ -43,7 +43,7 @@ const App = () => {
           <Route exact path={JOURNAL_URL} component={Journal} />
           <Redirect to={ERROR404_URL} component={Error404} />
         </Switch>
-    </MyProvider>
+      </MyProvider>
     </BrowserRouter>
   );
 };
