@@ -9,6 +9,7 @@ export default createGlobalStyle`
         --black: #231F20;
         --white: #fff;
         --gray: #BDBDBD;
+
     };
 
     html {
@@ -16,19 +17,34 @@ export default createGlobalStyle`
     };
 
     body {
-        background-color: var(--white);
+        background-color: #000;
         color: var(--black);
         display: flex;
         flex-direction: column;
-        margin: 1em;
+        margin: 0.5em;
+        overflow: hidden;
+
+
+
     };
 
     header {
         /* header styling here */
+        background-color:var(--highlight);
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        align-content: space-around;
+        justify-content: space-around;
+        align-items: center;
     };
 
     main {
         /* main styling here */
+        background-color: pink;
+        max-width: 500px;
+        margin: 0 auto;
+        min-height: 700px;
     };
 
     footer {
@@ -64,7 +80,7 @@ export default createGlobalStyle`
         font-weight: 500;
         letter-spacing: 0.1em;
         line-height: 1.1em;
-    }; 
+    };
 
     p {
         font-family: 'Roboto', sans-serif;
