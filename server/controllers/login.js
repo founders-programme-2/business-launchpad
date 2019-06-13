@@ -1,7 +1,7 @@
 const User = require('../database/models/User');
 const UserSession = require('../database/models/UserSession');
 
-const login = (req, res, next) => {
+const login = (req, res) => {
   // will use next later
 
   // get the body content from frontend request

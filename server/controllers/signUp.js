@@ -1,8 +1,6 @@
 const User = require('../database/models/User');
 
-const signUp = (req, res, next) => {
-  // will use next later
-
+const signUp = (req, res) => {
   // get the body content from frontend request
   const { body } = req;
   const { password } = body;
