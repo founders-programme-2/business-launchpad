@@ -1,62 +1,137 @@
 const User = require('../database/models/User');
 
-module.exports = app => {
-  // Sign Up
+const createUser = (req, res, next) => {
+  // will use next later
+  const { body } = req;
+  const { password } = body;
+  let { email } = body;
 
-  app.post('/db/account/signup', (req, res, next) => {
-    const { body } = req;
-    const { password } = body;
-    let { email } = body;
+  if (!email) {
+    return res.send({
+      success: false,
+      message: 'Error: Email cannot be blank.',
+    });
+  }
 
-    if (!email) {
-      return res.send({
-        success: false,
-        message: 'Error: Password cannot be blank.',
-      });
-    }
+  if (!password) {
+    return res.send({
+      success: false,
+      message: 'Error: Password cannot be blank.',
+    });
+  }
 
-    email = email.toLowerCase();
-    email = email.trim();
+  email = email.toLowerCase();
+  email = email.trim();
 
-    // Steps:
-    // 1. Verify email doesn't exist
-    // 2. Save
+  // Steps:
+  // 1. Verify email doesn't exist
+  // 2. Save
 
-    User.find(
-      {
-        email,
-      },
-      (err, previousUsers) => {
-        if (err) {
-          return res.send({
-            success: false,
-            message: 'Error: Server error.',
-          });
-        }
-        if (previousUsers.length > 0) {
-          return res.send({
-            success: false,
-            message: 'Error: Account already exists.',
-          });
-        }
-
-        // Save the user
-        const newUser = new User();
-        newUser.email = email;
-        newUser.password = newUser.generateHash(password);
-        newUser.save((err, user) => {
-          if (err) {
-            return res.send({
-              success: false,
-              message: 'Signed up',
-            });
-          }
-          return res.send({
-            success: true,
-            message: 'Signed up',
-          });
+  return User.find(
+    {
+      email,
+    },
+    (err, previousUsers) => {
+      if (err) {
+        return res.send({
+          success: false,
+          message: 'Error: Server error.',
         });
       }
-    );
-  });
+      if (previousUsers.length > 0) {
+        return res.send({
+          success: false,
+          message: 'Error: Account already exists.',
+        });
+      }
+
+      // Save the user
+      const newUser = new User();
+      newUser.email = email;
+      newUser.password = newUser.generateHash(password);
+      return newUser.save((error, user) => {
+        // will use user later
+        if (error) {
+          return res.send({
+            success: false,
+            message: 'Error: Server error',
+          });
+        }
+        return res.send({
+          success: true,
+          message: 'Signed up',
+        });
+      });
+    }
+  );
 };
+
+module.exports = { createUser };
+
+// module.exports = app => {
+//   // Sign up AKA create a user
+
+//   app.post('/createUser', (req, res, next) => {
+//     const { body } = req;
+//     const { password } = body;
+//     let { email } = body;
+
+//     if (!email) {
+//       return res.send({
+//         success: false,
+//         message: 'Error: Email cannot be blank.',
+//       });
+//     }
+
+//     if (!password) {
+//       return res.send({
+//         success: false,
+//         message: 'Error: Password cannot be blank.',
+//       });
+//     }
+
+//     email = email.toLowerCase();
+//     email = email.trim();
+
+//     // Steps:
+//     // 1. Verify email doesn't exist
+//     // 2. Save
+
+//     User.find(
+//       {
+//         email,
+//       },
+//       (err, previousUsers) => {
+//         if (err) {
+//           return res.send({
+//             success: false,
+//             message: 'Error: Server error.',
+//           });
+//         }
+//         if (previousUsers.length > 0) {
+//           return res.send({
+//             success: false,
+//             message: 'Error: Account already exists.',
+//           });
+//         }
+
+//         // Save the user
+//         const newUser = new User();
+//         newUser.email = email;
+//         newUser.password = newUser.generateHash(password);
+//         newUser.save((error, user) => {
+//           if (error) {
+//             return res.send({
+//               success: false,
+//               message: 'Error: Server error',
+//             });
+//           }
+//           return res.send({
+//             success: true,
+//             message: 'Signed up',
+//           });
+//         });
+//       }
+//     );
+//   });
+// };

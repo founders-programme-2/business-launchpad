@@ -17,7 +17,7 @@ export default createGlobalStyle`
     };
 
     body {
-        background-color: #000;
+        background-color: var(--white);
         color: var(--black);
         display: flex;
         flex-direction: column;
