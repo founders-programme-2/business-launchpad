@@ -1,6 +1,6 @@
 const User = require('../database/models/User');
 
-const createUser = (req, res, next) => {
+const signUp = (req, res, next) => {
   // will use next later
   const { body } = req;
   const { password } = body;
@@ -66,7 +66,7 @@ const createUser = (req, res, next) => {
   );
 };
 
-module.exports = { createUser };
+module.exports = { signUp };
 
 // module.exports = app => {
 //   // Sign up AKA create a user
