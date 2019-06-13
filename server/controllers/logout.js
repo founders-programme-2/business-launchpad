@@ -1,4 +1,4 @@
-import UserSession from '../database/models/UserSession';
+const UserSession = require('../database/models/UserSession');
 
 const logout = (req, res) => {
   // get the token

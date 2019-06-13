@@ -1,4 +1,4 @@
-import UserSession from '../database/models/UserSession';
+const UserSession = require('../database/models/UserSession');
 
 // this function verifies the user's session token every time they want to perform an action
 const verifySession = (req, res) => {
