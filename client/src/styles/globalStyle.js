@@ -32,11 +32,9 @@ export default createGlobalStyle`
         /* header styling here */
         background-color:var(--highlight);
         display: flex;
-        flex-direction: row;
-        height: 50px;
-        align-content: space-around;
-        justify-content: space-around;
-        align-items: center;
+        flex-direction:column;
+        height:5rem;
+
     };
 
     main {

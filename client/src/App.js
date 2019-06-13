@@ -31,6 +31,7 @@ const App = () => {
     <BrowserRouter>
       <MyProvider>
       <GlobalStyle />
+      <main>
       <Switch>
           <Route exact path={LANDING_URL} component={Landing} />
           <Route exact path={LOGIN_URL} component={Login} />
@@ -43,6 +44,7 @@ const App = () => {
           <Route exact path={JOURNAL_URL} component={Journal} />
           <Redirect to={ERROR404_URL} component={Error404} />
         </Switch>
+        </main>
     </MyProvider>
     </BrowserRouter>
   );
