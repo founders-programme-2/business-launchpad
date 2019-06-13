@@ -35,7 +35,7 @@ export default createGlobalStyle`
 
     main {
         /* main styling here */
-
+      };
 
     footer {
         /* footer styling here */
