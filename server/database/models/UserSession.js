@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const UserSessionSchema = new mongoose.Schema({
-  // userId is the Mongo document id that is created automatically
+  // userId is the Mongo document id that is created automatically for the user
   userId: {
     type: String,
     default: '',

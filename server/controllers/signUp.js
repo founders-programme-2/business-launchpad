@@ -2,10 +2,13 @@ const User = require('../database/models/User');
 
 const signUp = (req, res, next) => {
   // will use next later
+
+  // get the body content from frontend request
   const { body } = req;
   const { password } = body;
   let { email } = body;
 
+  // make sure the request includes an email and password
   if (!email) {
     return res.send({
       success: false,
