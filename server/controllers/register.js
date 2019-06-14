@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../database/models/User');
-const validateRegister = require('../validation/validateRegister');
+const { validateRegister } = require('../validation/validateRegister');
 
 const register = (req, res) => {
   // validate data sent in registration
