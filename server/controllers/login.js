@@ -4,10 +4,11 @@ const User = require('../database/models/User');
 const { validateLogin } = require('../middleware/validation/validateLogin');
 
 const login = (req, res) => {
-  // form validation
+  // validates incoming login data
   const { errors, isValid } = validateLogin(req.body);
   const secret = process.env.secretOrKey;
 
+  // sends an error if incoming data is invalid
   if (!isValid) {
     return res.status(400).send(errors);
   }
@@ -22,9 +23,10 @@ const login = (req, res) => {
       });
     }
 
+    // if user exists, use bcryptjs to compare submitted password with hashed password in our db
     return bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        // create JTW payload
+        // if passwords match, create JTW payload
         const payload = {
           id: user.id,
           name: user.name,
@@ -36,6 +38,7 @@ const login = (req, res) => {
           secret,
           { expiresIn: 31556926 },
           (err, token) => {
+            // append the token to a 'Bearer' string (in passport.js we set opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken())
             res.send({
               success: true,
               token: `Bearer${token}`,

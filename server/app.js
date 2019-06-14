@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
+// initialise passport middleware & require the passport file
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
 
