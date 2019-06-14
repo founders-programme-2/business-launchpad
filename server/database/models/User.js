@@ -32,12 +32,4 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.methods.generateHash = password => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
-
-UserSchema.methods.validPassword = password => {
-  return bcrypt.compareSync(password, this.password);
-};
-
 module.exports = mongoose.model('User', UserSchema);

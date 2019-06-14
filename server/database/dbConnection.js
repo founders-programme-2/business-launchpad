@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'test') {
 const dbConnection = () => {
   mongoose
     .connect(mongoUri, { useNewUrlParser: true })
-    .then(() => console.log('MongoDB successfully connected'))
+    .then(() => console.log('MongoDB successfully connected 🔥'))
     .catch(err => console.log('DB connection error', err));
 };
 
