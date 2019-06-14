@@ -12,6 +12,7 @@ opts.secretOrKey = secret;
 
 module.exports = passport => {
   passport.use(
+    // eslint-disable-next-line camelcase
     new JwtStrategy(opts, (jwt_payload, done) => {
       User.findById(jwt_payload.id)
         .then(user => {
