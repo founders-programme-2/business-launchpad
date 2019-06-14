@@ -4,7 +4,7 @@ const signUp = (req, res) => {
   // get the body content from frontend request
   const { body } = req;
   const { password } = body;
-  let { email } = body;
+  let { email, name } = body;
 
   // make sure the request includes an email and password
   if (!email) {
@@ -21,9 +21,18 @@ const signUp = (req, res) => {
     });
   }
 
+  if (!name) {
+    return res.send({
+      success: false,
+      message: 'Error: Name cannot be blank.',
+    });
+  }
   // ensure all emails are stored the same in database
   email = email.toLowerCase();
   email = email.trim();
+
+  // removes whitespace from name
+  name = name.trim();
 
   // finds searches for email in User table in database
   return User.find(
@@ -48,6 +57,7 @@ const signUp = (req, res) => {
       // If the user doesn't already exist, save the user
       const newUser = new User();
       newUser.email = email;
+      newUser.name = name;
       newUser.password = newUser.generateHash(password);
       return newUser.save((error, user) => {
         // will use user later
