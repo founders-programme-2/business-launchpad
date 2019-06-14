@@ -1,6 +1,8 @@
 const User = require('../database/models/User');
 const UserSession = require('../database/models/UserSession');
 
+const login = (req, res) => {};
+
 // const login = (req, res) => {
 //   // will use next later
 
@@ -47,7 +49,7 @@ const UserSession = require('../database/models/UserSession');
 //           message: 'Error: Invalid, no user',
 //         });
 //       }
-//       /* if user exists, encrypt the entered password using .validPassword 
+//       /* if user exists, encrypt the entered password using .validPassword
 //       function defined in the model and compare it with the stored password.
 //       if it's the same, create a new user session, save the session and return
 //       the document id from the new user sessionStorage */
