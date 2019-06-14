@@ -11,3 +11,4 @@ export const BtnsContainer = styled.h1``;
 export const Button = styled.h1``;
 export const GButton = styled.h1``;
 export const StyledP = styled.h1``;
+export const StyledSignup = styled.h1``;

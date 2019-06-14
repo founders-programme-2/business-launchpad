@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import {
-  Header,
-  StyledP,
   StyledForm,
+  StyledBottom,
   StyledLabel,
   StyledInput,
-  StyledBottom,
-  ErrorMessage,
-  GButton,
-  Button,
-  BtnsContainer,
+  StyledSignUp,
+  StyledP,
   StyledText,
+  ErrorMessage,
+  BtnsContainer,
+  Button,
+  GButton,
+  Header,
 } from './Login.style';
 
 class Login extends Component {
@@ -21,43 +22,85 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      usernameError: '',
+      passwordError: '',
+      isErrorEmail: false,
+      isErrorPassword: false,
     };
   }
 
   componentDidMount() {
-    const { history } = this.props;
-    axios.get('/checkauth').then(({ data }) => {
-      if (data.success) {
+    axios.get('/checkcookie').then(({ data: { cookie } }) => {
+      if (cookie) {
+        const { history } = this.props;
         history.push('/dashboard');
-      } else {
-        history.push('/login');
       }
     });
   }
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ user: { ...this.state.user, [name]: value } });
+  validate = () => {
+    let isError = false;
+    this.setState({ isErrorEmail: false, isErrorPassword: false });
+
+    const errors = {
+      EmailError: '',
+      passwordError: '',
+      isErrorEmail: false,
+      isErrorPassword: false,
+    };
+    if (this.state.email < 1) {
+      isError = true;
+      errors.isErrorEmail = true;
+      errors.EmailError = 'Please enter your email.';
+    }
+    if (this.state.password < 1) {
+      isError = true;
+      errors.isErrorPassword = true;
+      errors.passwordError = 'Please enter your password.';
+    }
+    this.setState({
+      ...this.state,
+      ...errors,
+    });
+    return isError;
   };
 
-  handleClick = () => {
-    const { username, password } = this.state.user;
-    const { history } = this.props;
-    axios
-      .post('/login', { username, password })
-      .then(({ data }) => {
+  login = () => {
+    const err = this.validate();
+    if (!err) {
+      const { history } = this.props;
+      const inputs = {
+        email: this.state.email,
+        password: this.state.password,
+      };
+      const detailsInputs = this.props.location.data;
+      axios.post('/login', inputs).then(({ data }) => {
         if (data.success) {
-          history.push('/dashboard');
+          if (detailsInputs) {
+            axios.post('/dashboard', detailsInputs).then(addData => {
+              if (addData.data.success) {
+                history.push('/dashboard');
+              } else {
+                history.push('/login');
+              }
+            });
+          } else {
+            history.push('/dashboard');
+          }
         } else {
-          this.setState({ error: data.error });
+          this.setState({
+            passwordError: 'email or password is incorrect.',
+            isErrorEmail: true,
+            isErrorPassword: true,
+          });
         }
-      })
-      .catch(error => {
-        this.setState({ error: error.response.data.error });
       });
+    }
   };
 
-  handleSubmitForm = event => {
-    event.preventDefault();
+  goSignUp = () => {
+    const { history } = this.props;
+    history.push({ pathname: '/signup-form', data: this.props.location.data });
   };
 
   render() {
@@ -67,12 +110,12 @@ class Login extends Component {
         <StyledForm>
           <StyledLabel> Email* </StyledLabel>
           <StyledInput
-            StyleError={this.state.isErrorUsername}
+            StyleError={this.state.isErrorEmail}
             {...this.props}
-            type="email"
+            type="text"
             name="email"
             placeholder="email"
-            errorText={this.state.emailError}
+            errorText={this.state.EmailError}
             value={this.state.email}
             onChange={e =>
               this.setState({
@@ -80,7 +123,7 @@ class Login extends Component {
               })
             }
           />
-          <ErrorMessage>{this.state.usernameError}</ErrorMessage>
+          <ErrorMessage>{this.state.EmailError}</ErrorMessage>
 
           <StyledLabel> Password* </StyledLabel>
           <StyledInput
@@ -98,6 +141,11 @@ class Login extends Component {
             }
           />
           <ErrorMessage>{this.state.passwordError}</ErrorMessage>
+
+          <StyledP>
+            <StyledText>First time around here? </StyledText>
+            <StyledSignUp onClick={this.goSignUp}> Sign up</StyledSignUp>
+          </StyledP>
         </StyledForm>
 
         <StyledBottom>
@@ -105,9 +153,6 @@ class Login extends Component {
             <Button />
             <GButton title="LOGIN" onClick={this.login} />
           </BtnsContainer>
-          <StyledP>
-            <StyledText>Forget your password? </StyledText>
-          </StyledP>
         </StyledBottom>
       </React.Fragment>
     );

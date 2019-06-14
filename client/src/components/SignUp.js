@@ -8,7 +8,8 @@ import {
   StyledLabel,
   StyledInput,
   StyledP,
-  StyledText,
+  GButton,
+  Button,
   ErrorMessage,
   BtnsContainer,
   StyledSignup,
@@ -109,7 +110,6 @@ class signUp extends Component {
           />
 
           <StyledP>
-            <StyledText>Been here before? </StyledText>
             <StyledSignup onClick={this.goLogin}> Login</StyledSignup>
           </StyledP>
         </StyledForm>
@@ -119,7 +119,6 @@ class signUp extends Component {
             <Button />
             <GButton title="SIGN UP" onClick={this.signup} />
           </BtnsContainer>
-          <Footer />
         </StyledBottom>
       </React.Fragment>
     );
