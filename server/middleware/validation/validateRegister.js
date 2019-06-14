@@ -36,7 +36,7 @@ const validateRegister = data => {
   }
 
   if (!Validator.equals(password, password2)) {
-    errors.password2 = 'Passwords much match.';
+    errors.password2 = 'Passwords must match.';
   }
 
   return {
