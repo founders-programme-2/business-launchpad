@@ -1,5 +1,4 @@
 const User = require('../database/models/User');
-const UserSession = require('../database/models/UserSession');
 
 const login = (req, res) => {};
 

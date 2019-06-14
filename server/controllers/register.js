@@ -1,50 +1,42 @@
-const Validator = require('validator');
-const isEmpty = require('is-empty');
+const bcrypt = require('bcryptjs');
 const User = require('../database/models/User');
+const validateRegister = require('../validation/validateRegister');
 
 const register = (req, res) => {
-  const errors = {};
-  const { body } = req;
-  let { name, email, password, password2 } = body;
+  // validate data sent in registration
+  const { errors, isValid } = validateRegister(req.body);
+  const { name, email, password } = req.body;
 
-  // this converts empty fields coming through into empty strings so that they can be validated
-  name = !isEmpty(name) ? name : '';
-  email = !isEmpty(email) ? email : '';
-  password = !isEmpty(password) ? password : '';
-  password2 = !isEmpty(password2) ? password2 : '';
-
-  // Checks for name
-  if (Validator.isEmpty(name)) {
-    errors.name = 'Name field is required.';
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
 
-  // Checks for valid email
-  if (Validator.isEmpty(email)) {
-    errors.email = 'Email field is required';
-  } else if (!Validator.isEmail(email)) {
-    errors.email = 'Email is invalid.';
-  }
+  User.findOne({ email }).then(user => {
+    if (user) {
+      return res.status(400).json({
+        email: 'Email already exists',
+      });
+    }
+    const newUser = new User({
+      name,
+      email,
+      password,
+    });
 
-  if (Validator.isEmpty(password)) {
-    errors.password = 'Password field is required';
-  }
-
-  if (Validator.isEmpty(password2)) {
-    errors.password = 'Confirm password field is required';
-  }
-
-  if (Validator.isLength(password, { min: 6, max: 30 })) {
-    errors.password = 'Password must be between 6 & 30 characters';
-  }
-
-  if (!Validator.equals(password, password2)) {
-    errors.password2 = 'Passwords much match.';
-  }
-
-  return {
-    errors,
-    isValid: isEmpty(errors),
-  };
+    // Hash password
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (error, hash) => {
+        if (error) throw error;
+        newUser.password = hash;
+        newUser
+          .save()
+          .then(registeredUser => res.json(registeredUser))
+          .catch(hashErr =>
+            console.log(`You have a hashing error: ${hashErr}`)
+          );
+      });
+    });
+  });
 };
 
 // const signUp = (req, res) => {

@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('is-empty');
 
-const validateRegisterData = data => {
+const validateRegister = data => {
   const errors = {};
   let { name, email, password, password2 } = data;
 
@@ -45,4 +45,4 @@ const validateRegisterData = data => {
   };
 };
 
-module.exports = { validateRegisterData };
+module.exports = { validateRegister };
