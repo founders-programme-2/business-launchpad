@@ -6,37 +6,28 @@ export const StyleAll = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
 `;
-export const Wapper = styled.div`
-  background-color: red;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-flow: row wrap;
-  fontfamily: Work Sans;
-  fontstyle: Black;
-  fontsize: 38px;
-  background: green;
-`;
+
 export const Title = styled.h1`
   fontfamily: Work Sans;
   fontstyle: Black;
   fontsize: 38px;
-  background: green;
+  background: white;
+  margin: 50px;
 `;
 export const StyledForm = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: row wrap;
-  width: 100%;
+  flex-flow: column wrap;
 `;
-export const StyledLabel = styled.h1`
+export const InputContainer = styled.div``;
+export const StyledLabel = styled.label`
   font-size: 18px;
   text-align: center;
   color: black;
+  font-weight: bold;
 `;
 export const StyledText = styled.h1`
   font-size: 18px;
@@ -44,18 +35,21 @@ export const StyledText = styled.h1`
   color: black;
 `;
 export const StyledInput = styled.input`
+  display: block;
   background: #ffffff;
   border-radius: 10px;
+  margin-bottom: 30px;
+  width: 200px;
+  padding: 10px 0px;
 `;
 export const StyledBottom = styled.div``;
-export const BtnsContainer = styled.div`
+
+export const LoginButton = styled.button`
   width: 168px;
   height: 32px;
-  background: red;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-`;
-export const GButton = styled.button`
+  background-color: #1d1a1ae0;
   font-family: Roboto;
   font-style: normal;
   font-weight: 900;
@@ -63,7 +57,6 @@ export const GButton = styled.button`
   line-height: 23px;
   letter-spacing: 0.08em;
   color: white;
-  background: pink;
 `;
 export const StyledP = styled.h1`
   font-family: Roboto;
@@ -71,4 +64,23 @@ export const StyledP = styled.h1`
   font-weight: 900;
   font-size: 11px;
   text-decoration-line: underline;
+  margin: 50px;
+`;
+export const Stylephoto = styled.img`
+  width: 55px;
+  height: 50px;
+  padding: 20px;
+`;
+export const Styleques = styled.img`
+  width: 95px;
+  height: 80px;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  display: flex;
+`;
+export const Stylecontainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
 `;

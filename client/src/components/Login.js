@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import question from '../assets/question.png';
+import blp from '../assets/blp.png';
+import { INFO_URL } from '../constants';
 
 import {
   StyledForm,
@@ -8,11 +12,13 @@ import {
   StyledInput,
   StyledP,
   StyledText,
-  BtnsContainer,
-  GButton,
+  InputContainer,
   Title,
   StyleAll,
-  Wapper,
+  LoginButton,
+  Stylecontainer,
+  Stylephoto,
+  Styleques,
 } from './Login.style';
 
 class Login extends Component {
@@ -29,7 +35,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    axios.get('/checkcookie').then(({ data: { cookie } }) => {
+    axios.get('/checkcookies').then(({ data: { cookie } }) => {
       if (cookie) {
         const { history } = this.props;
         history.push('/dashboard');
@@ -101,44 +107,50 @@ class Login extends Component {
     return (
       <React.Fragment>
         <StyleAll>
+          <Stylecontainer>
+            <Link to={INFO_URL}>
+              <Styleques src={question} alt="info" />
+            </Link>
+            <Stylephoto src={blp} alt="photo" />
+          </Stylecontainer>
           <Title>LOGIN</Title>
           <StyledForm>
-            <StyledLabel> Email* </StyledLabel>
-            <StyledInput
-              StyleError={this.state.isErrorEmail}
-              {...this.props}
-              type="text"
-              name="email"
-              placeholder="email"
-              errorText={this.state.EmailError}
-              value={this.state.email}
-              onChange={e =>
-                this.setState({
-                  email: e.target.value,
-                })
-              }
-            />
+            <InputContainer>
+              <StyledLabel> Email: </StyledLabel>
+              <StyledInput
+                StyleError={this.state.isErrorEmail}
+                {...this.props}
+                type="text"
+                name="email"
+                errorText={this.state.EmailError}
+                value={this.state.email}
+                onChange={e =>
+                  this.setState({
+                    email: e.target.value,
+                  })
+                }
+              />
+            </InputContainer>
 
-            <StyledLabel> Password* </StyledLabel>
-            <StyledInput
-              StyleError={this.state.isErrorPassword}
-              {...this.props}
-              type="password"
-              name="password"
-              placeholder="password"
-              errorText={this.state.passwordError}
-              value={this.state.password}
-              onChange={e =>
-                this.setState({
-                  password: e.target.value,
-                })
-              }
-            />
+            <InputContainer>
+              <StyledLabel> Password: </StyledLabel>
+              <StyledInput
+                StyleError={this.state.isErrorPassword}
+                {...this.props}
+                type="password"
+                name="password"
+                errorText={this.state.passwordError}
+                value={this.state.password}
+                onChange={e =>
+                  this.setState({
+                    password: e.target.value,
+                  })
+                }
+              />
+            </InputContainer>
           </StyledForm>
           <StyledBottom>
-            <BtnsContainer>
-              <GButton title="LOGIN" onClick={this.login} />
-            </BtnsContainer>
+            <LoginButton onClick={this.login}>LOGIN</LoginButton>
           </StyledBottom>
           <StyledP>
             <StyledText>Forget Your Password? </StyledText>

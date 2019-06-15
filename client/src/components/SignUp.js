@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import question from '../assets/question.png';
+import blp from '../assets/blp.png';
+import { INFO_URL } from '../constants';
 
 import {
-  Header,
   StyledForm,
   StyledBottom,
   StyledLabel,
   StyledInput,
-  StyledP,
-  GButton,
-  Button,
-  ErrorMessage,
-  BtnsContainer,
-  StyledSignup,
+  InputContainer,
+  Title,
+  StyleAll,
+  LoginButton,
+  Stylecontainer,
+  Stylephoto,
+  Styleques,
 } from './SignUp.style';
 
 class signUp extends Component {
@@ -38,10 +42,10 @@ class signUp extends Component {
   };
 
   handleClick = () => {
-    const { username, password } = this.state.user;
+    const { name, email, password } = this.state.user;
     const { history } = this.props;
     axios
-      .post('/signup', { username, password })
+      .post('/signup', { name, email, password })
       .then(({ data }) => {
         if (data.success) {
           history.push('/login');
@@ -61,65 +65,71 @@ class signUp extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header title="Sign Up" />
-        <StyledForm>
-          <StyledLabel> Name* </StyledLabel>
-          <StyledInput
-            StyleError={this.state.isErrorname}
-            {...this.props}
-            type="text"
-            name="name"
-            placeholder="name"
-            value={this.state.name}
-            onChange={e =>
-              this.setState({
-                username: e.target.value,
-              })
-            }
-          />
-          <ErrorMessage>{this.state.nameError}</ErrorMessage>
+        <StyleAll>
+          <Stylecontainer>
+            <Link to={INFO_URL}>
+              <Styleques src={question} alt="info" />
+            </Link>
+            <Stylephoto src={blp} alt="photo" />
+          </Stylecontainer>
+          <Title>SIGNUP</Title>
+          <StyledForm>
+            <InputContainer>
+              <StyledLabel> Name: </StyledLabel>
+              <StyledInput
+                StyleError={this.state.isErrorName}
+                {...this.props}
+                type="text"
+                name="name"
+                errorText={this.state.nameError}
+                value={this.state.name}
+                onChange={e =>
+                  this.setState({
+                    name: e.target.value,
+                  })
+                }
+              />
+            </InputContainer>
+            <InputContainer>
+              <StyledLabel> Email: </StyledLabel>
+              <StyledInput
+                StyleError={this.state.isErrorEmail}
+                {...this.props}
+                type="text"
+                name="email"
+                placeholder="email"
+                errorText={this.state.EmailError}
+                value={this.state.email}
+                onChange={e =>
+                  this.setState({
+                    email: e.target.value,
+                  })
+                }
+              />
+            </InputContainer>
 
-          <StyledLabel> Email* </StyledLabel>
-          <StyledInput
-            StyleError={this.state.isErrorUsername}
-            {...this.props}
-            type="text"
-            name="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={e =>
-              this.setState({
-                username: e.target.value,
-              })
-            }
-          />
-          <ErrorMessage>{this.state.emailError}</ErrorMessage>
-          <StyledLabel> Password* </StyledLabel>
-          <StyledInput
-            StyleError={this.state.isErrorPassword}
-            {...this.props}
-            type="password"
-            name="password"
-            placeholder="**************"
-            value={this.state.password}
-            onChange={e =>
-              this.setState({
-                password: e.target.value,
-              })
-            }
-          />
-
-          <StyledP>
-            <StyledSignup onClick={this.goLogin}> Login</StyledSignup>
-          </StyledP>
-        </StyledForm>
-
-        <StyledBottom>
-          <BtnsContainer>
-            <Button />
-            <GButton title="SIGN UP" onClick={this.signup} />
-          </BtnsContainer>
-        </StyledBottom>
+            <InputContainer>
+              <StyledLabel> Password: </StyledLabel>
+              <StyledInput
+                StyleError={this.state.isErrorPassword}
+                {...this.props}
+                type="password"
+                name="password"
+                placeholder="password"
+                errorText={this.state.passwordError}
+                value={this.state.password}
+                onChange={e =>
+                  this.setState({
+                    password: e.target.value,
+                  })
+                }
+              />
+            </InputContainer>
+          </StyledForm>
+          <StyledBottom>
+            <LoginButton onClick={this.signUp}>Sign up</LoginButton>
+          </StyledBottom>
+        </StyleAll>
       </React.Fragment>
     );
   }
