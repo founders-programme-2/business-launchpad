@@ -32,19 +32,14 @@ const login = (req, res) => {
           name: user.name,
         };
 
-        // sign token, expires in 1 year in seconds
-        return jwt.sign(
-          payload,
-          secret,
-          { expiresIn: 31556926 },
-          (err, token) => {
-            // append the token to a 'Bearer' string (in passport.js we set opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken())
-            res.send({
-              success: true,
-              token: `Bearer${token}`,
-            });
-          }
-        );
+        // sign token, expires in 1 day in seconds
+        return jwt.sign(payload, secret, { expiresIn: 86400 }, (err, token) => {
+          // append the token to a 'Bearer' string (in passport.js we set opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken())
+          res.send({
+            success: true,
+            token: `Bearer${token}`,
+          });
+        });
       }
       return res.status(400).send({
         success: false,
