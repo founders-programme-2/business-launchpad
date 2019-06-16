@@ -66,12 +66,12 @@ export const StyledP = styled.h1`
   text-decoration-line: underline;
   margin: 50px;
 `;
-export const Stylephoto = styled.img`
+export const Styleques = styled.img`
   width: 55px;
   height: 50px;
   padding: 20px;
 `;
-export const Styleques = styled.img`
+export const Stylephoto = styled.img`
   width: 95px;
   height: 80px;
   justify-content: space-between;
@@ -80,7 +80,6 @@ export const Styleques = styled.img`
 `;
 export const Stylecontainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 30%;
 `;

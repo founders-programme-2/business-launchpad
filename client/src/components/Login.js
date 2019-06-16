@@ -108,10 +108,10 @@ class Login extends Component {
       <React.Fragment>
         <StyleAll>
           <Stylecontainer>
-            <Link to={INFO_URL}>
+            <Stylephoto src={blp} alt="photo" />
+            <Link href={INFO_URL}>
               <Styleques src={question} alt="info" />
             </Link>
-            <Stylephoto src={blp} alt="photo" />
           </Stylecontainer>
           <Title>LOGIN</Title>
           <StyledForm>

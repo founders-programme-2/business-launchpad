@@ -24,42 +24,99 @@ class signUp extends Component {
     name: '',
     email: '',
     password: '',
+    nameError: '',
+    EmailError: '',
+    passwordError: '',
+    isErrorName: false,
+    isErrorEmail: '',
+    isErrorPassword: false,
   };
 
   componentDidMount() {
-    const { history } = this.props;
-    axios.get('/checkauth').then(({ data }) => {
-      if (data.success) {
+    axios.get('/checkcookie').then(({ data: { cookie } }) => {
+      if (cookie) {
+        const { history } = this.props;
         history.push('/login');
-      } else {
-        history.push('/signup');
       }
     });
   }
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ user: { ...this.state.user, [name]: value } });
+  validate = () => {
+    let isError = false;
+    this.setState({
+      isErrorName: false,
+      isErrorEmail: false,
+      isErrorPassword: false,
+    });
+
+    const characters = [
+      '+',
+      '/',
+      '*',
+      '$',
+      '#',
+      '@',
+      '!',
+      '^',
+      '&',
+      '(',
+      ')',
+      '?',
+      '>',
+      '<',
+      '.',
+    ];
+    const errors = {
+      nameError: '',
+      emailError: '',
+      passwordError: '',
+      isErrorName: false,
+      isErrorEmail: false,
+      isErrorPassword: false,
+    };
+    for (let i = 0; i < characters.length; i++) {
+      if (this.state.name.includes(characters[i])) {
+        isError = true;
+        errors.isErrorName = true;
+        errors.nameError =
+          'Name should only contain letters, numbers, underscores and dashes.';
+      } else if (this.state.name < 1) {
+        isError = true;
+        errors.isErrorName = true;
+        errors.nameError = 'Name is required.';
+      }
+    }
+
+    this.setState({
+      ...this.state,
+      ...errors,
+    });
+    return isError;
   };
 
-  handleClick = () => {
-    const { name, email, password } = this.state.user;
-    const { history } = this.props;
-    axios
-      .post('/signup', { name, email, password })
-      .then(({ data }) => {
+  signup = () => {
+    const err = this.validate();
+    if (!err) {
+      const { history } = this.props;
+      const inputs = {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+      };
+      axios.post('/signup', inputs).then(({ data }) => {
         if (data.success) {
-          history.push('/login');
+          history.push({
+            pathname: '/login',
+            data: this.props.location.data,
+          });
         } else {
-          this.setState({ error: data.error });
+          this.setState({
+            nameError: 'This name already exists.',
+            isErrorName: true,
+          });
         }
-      })
-      .catch(error => {
-        this.setState({ error: error.response.data.error });
       });
-  };
-
-  handleSubmitForm = event => {
-    event.preventDefault();
+    }
   };
 
   render() {
@@ -67,10 +124,10 @@ class signUp extends Component {
       <React.Fragment>
         <StyleAll>
           <Stylecontainer>
-            <Link to={INFO_URL}>
+            <Stylephoto src={blp} alt="photo" />
+            <Link href={INFO_URL}>
               <Styleques src={question} alt="info" />
             </Link>
-            <Stylephoto src={blp} alt="photo" />
           </Stylecontainer>
           <Title>SIGNUP</Title>
           <StyledForm>
@@ -98,7 +155,7 @@ class signUp extends Component {
                 type="text"
                 name="email"
                 placeholder="email"
-                errorText={this.state.EmailError}
+                errorText={this.state.emailError}
                 value={this.state.email}
                 onChange={e =>
                   this.setState({
