@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/founders-programme-2/business-launchpad#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
     "concurrently": "^4.1.0",
     "dotenv": "^8.0.0",
