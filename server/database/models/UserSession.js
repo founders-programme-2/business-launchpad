@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const UserSessionSchema = new mongoose.Schema({
-  // userId is the Mongo document id that is created automatically
+  // userId is the Mongo document id that is created automatically for the user
   userId: {
     type: String,
     default: '',
@@ -18,7 +18,7 @@ const UserSessionSchema = new mongoose.Schema({
 });
 
 UserSessionSchema.methods.generateHash = password => {
-  return bcrypt.hashSync(password, bcrypt.getSaltSync(8), null);
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 UserSessionSchema.methods.validPassword = password => {
