@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 const MyContext = React.createContext();
 export class MyProvider extends Component {
-  state = {};
+  state = {
+    isLoggedIn: false,
+    token: '',
+  };
+
 
   render() {
     const { children } = this.props;
