@@ -1,11 +1,9 @@
-const { signUp } = require('./signUp');
+const { register } = require('./register');
 const { login } = require('./login');
 const { logout } = require('./logout');
-const { verifySession } = require('./verifySession');
 
 module.exports = {
-  signUp,
+  register,
   login,
   logout,
-  verifySession,
 };
