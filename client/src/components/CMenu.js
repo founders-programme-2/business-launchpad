@@ -11,8 +11,6 @@ import {
   // MenuText,
   // CloseContainer,
 } from './CMenu.style';
-import { Line, Logo } from './CHeader.style';
-import logo from '../assets/logoWhite.svg';
 
 export const CMenu = props => (
   <MenuContainer
