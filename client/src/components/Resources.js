@@ -1,15 +1,28 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import * as S from './Resources.style';
 
 class Resources extends Component {
   state = {
-    funding: [],
-    events: [],
-    businessDevelopment: [],
-    books: [],
+    data: [],
+  };
+
+  componentDidMount() {
+    this.getResources();
+  }
+
+  getResources = () => {
+    axios
+      .get('/resources/get')
+      .then(response => {
+        const { data } = response.data;
+        this.setState({ data });
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
+    console.log("state: ", this.state)
     return (
       <Fragment>
         <S.H1>Resources</S.H1>
