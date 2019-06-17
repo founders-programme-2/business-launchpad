@@ -17,7 +17,7 @@ export const H2 = styled.h2`
 
 export const Section = styled.section`
   border: 3px solid var(--black);
-  margin: 0.3rem 0 0.3rem 0;
+  margin: 0.5rem 0 0.5rem 0;
 `;
 
 export const P = styled.p`
