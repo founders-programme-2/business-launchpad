@@ -20,7 +20,7 @@ export default createGlobalStyle`
         color: var(--black);
         display: flex;
         flex-direction: column;
-        margin: 1em;
+        margin: 1rem;
     };
 
     header {
@@ -38,47 +38,47 @@ export default createGlobalStyle`
     h1 {
         font-family: 'Work Sans', sans-serif;
         font-weight: 800;
-        font-size: 3em;
+        font-size: 3rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.1rem;
         display: inline;
     };
 
     h2 {
         font-family: 'Work Sans', sans-serif;
         font-weight: 700;
-        font-size: 3em;
-        letter-spacing: 0.1em;
+        font-size: 3rem;
+        letter-spacing: 0.1rem;
     };
 
     h3 {
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.1rem;
         text-transform: uppercase;
-        line-height: 1.1em;
+        line-height: 1.1rem;
     };
 
     h4 {
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
-        letter-spacing: 0.1em;
-        line-height: 1.1em;
+        letter-spacing: 0.1rem;
+        line-height: 1.1rem;
     }; 
 
     p {
         font-family: 'Roboto', sans-serif;
         font-weight: 300;
         font-style: italic;
-        letter-spacing: 0.1em;
-        line-height: 1.1em;
+        letter-spacing: 0.1rem;
+        line-height: 1.1rem;
     };
 
     a {
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
-        letter-spacing: 0.1em;
-        line-height: 1.1em;
+        letter-spacing: 0.1rem;
+        line-height: 1.1rem;
         text-decoration: underline;
     };
 `;
