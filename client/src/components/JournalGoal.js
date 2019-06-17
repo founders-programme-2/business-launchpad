@@ -1,22 +1,23 @@
 import React from 'react';
 import * as S from './JournalGoal.style';
 
-const Plan = () => {
+const Goal = data => {
   return (
     <S.Article>
       <input type="checkbox" />
       <button type="submit">X</button>
       <h3>Title</h3>
+      <p>{data.title}</p>
       <h4>Category:</h4>
-      <p>Category</p>
+      <p>{data.category}</p>
       <h4>Date created:</h4>
-      <p>Date created</p>
+      <p>{data.dateCreated}</p>
       <h4>Due date:</h4>
-      <p>Due date</p>
+      <p>{data.date}</p>
       <h4>Details:</h4>
-      <p>Details</p>
+      <p>{data.details}</p>
     </S.Article>
   );
 };
 
-export default Plan;
+export default Goal;

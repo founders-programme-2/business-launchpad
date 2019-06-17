@@ -1,7 +1,8 @@
+// fake data for testing the journal page
 export default [
   {
     id: 1,
-    'date-created': '2019-05-28',
+    dateCreated: '2019-05-28',
     checked: false,
     title: 'First goal',
     category: 'Goal',
@@ -11,7 +12,7 @@ export default [
   },
   {
     id: 2,
-    'date-created': '2019-05-28',
+    dateCreated: '2019-05-28',
     checked: false,
     title: 'Second goal',
     category: 'Goal',
@@ -21,7 +22,7 @@ export default [
   },
   {
     id: 3,
-    'date-created': '2019-05-28',
+    dateCreated: '2019-05-28',
     checked: false,
     title: 'Third goal',
     category: 'Goal',
@@ -31,7 +32,7 @@ export default [
   },
   {
     id: 4,
-    'date-created': '2019-05-28',
+    dateCreated: '2019-05-28',
     checked: false,
     title: 'Fourth goal',
     category: 'Goal',
@@ -41,8 +42,8 @@ export default [
   },
   {
     id: 5,
-    'date-created': '2019-05-28',
-    checked: false,
+    dateCreated: '2019-05-28',
+    checked: true,
     title: 'Fifth goal',
     category: 'Goal',
     date: '2019-06-20',
@@ -51,8 +52,8 @@ export default [
   },
   {
     id: 6,
-    'date-created': '2019-05-28',
-    checked: false,
+    dateCreated: '2019-05-28',
+    checked: true,
     title: 'Sixth goal',
     category: 'Goal',
     date: '2019-06-20',
