@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import * as S from './Journal.style';
+import AddEntry from './Journal-AddEntry';
 
 class Journal extends Component {
   state = {
@@ -28,6 +29,9 @@ class Journal extends Component {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.{' '}
         </S.P>
+
+        <AddEntry />
+
         <S.Section>
           <S.H2>Action Plan:</S.H2>
           <S.P>

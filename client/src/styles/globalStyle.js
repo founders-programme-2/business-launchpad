@@ -37,10 +37,10 @@ export default createGlobalStyle`
 
     h1 {
         font-family: 'Work Sans', sans-serif;
-        font-weight: 900;
+        font-weight: 800;
         font-size: 3rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.1rem;
         display: inline;
     };
 
@@ -48,7 +48,7 @@ export default createGlobalStyle`
         font-family: 'Work Sans', sans-serif;
         font-weight: 700;
         font-size: 3rem;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.1rem;
     };
 
     h3 {
@@ -81,4 +81,9 @@ export default createGlobalStyle`
         line-height: 1.1rem;
         text-decoration: underline;
     };
+
+    label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.85rem;
+    }
 `;
