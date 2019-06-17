@@ -16,8 +16,8 @@ class Journal extends Component {
   //   });
   // }
 
-  // function to render the goals in the action plan section
-  renderToDo = data => {
+  // function to render the goals in each section
+  renderGoals = (data, component) => {
     if (data.length === 0) {
       return <S.P>No goals found. Make some now!</S.P>;
     }
@@ -27,6 +27,16 @@ class Journal extends Component {
   };
 
   render() {
+    // separates all goal data into 'toDos' and 'completed' for easy rendering
+    const toDo = [];
+    const completed = [];
+    fakeData.map(goal => {
+      if (goal.checked) {
+        completed.push(goal);
+      } else {
+        toDo.push(goal);
+      }
+    });
     return (
       <Fragment>
         <S.H1>
@@ -54,11 +64,12 @@ class Journal extends Component {
             As you complete your goals, check them off and watch your business
             grow!
           </S.P>
-          {this.renderToDo(fakeData)}
+          {this.renderGoals(toDo)}
         </S.Section>
 
         <S.Section>
           <S.H2>My Business History:</S.H2>
+          {this.renderGoals(completed)}
         </S.Section>
       </Fragment>
     );
