@@ -1,16 +1,15 @@
-/*eslint no-unused-vars: "error"*/
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   MenuContainer,
   MenuLine,
   MenuBarText,
-  Close,
-  CloseText,
-  MenuWrapper,
-  MenuElement,
-  MenuText,
-  CloseContainer,
+  // Close,
+  // CloseText,
+  // MenuWrapper,
+  // MenuElement,
+  // MenuText,
+  // CloseContainer,
 } from './CMenu.style';
 import { Line, Logo } from './CHeader.style';
 import logo from '../assets/logoWhite.svg';
