@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  LANDING_URL,
-  INFO_URL,
   DASHBOARD_URL,
   CONTACT_URL,
-  PRIVACY_URL,
   RESOURCES_URL,
   JOURNAL_URL,
 } from '../constants';
