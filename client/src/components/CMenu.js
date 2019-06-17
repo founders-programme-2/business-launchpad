@@ -1,5 +1,14 @@
 import React, { Component, Fragment } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {
+  LANDING_URL,
+  INFO_URL,
+  DASHBOARD_URL,
+  CONTACT_URL,
+  PRIVACY_URL,
+  RESOURCES_URL,
+  JOURNAL_URL,
+} from '../constants';
 import {
   MenuContainer,
   MenuLine,
@@ -64,19 +73,29 @@ export class CMenu extends Component {
               </CloseContainer>
               <Line />
               <MenuElement>
-                <MenuText>DASHBOARD</MenuText>
+                <MenuText>
+                  <Link to={DASHBOARD_URL}>DASHBOARD</Link>
+                </MenuText>
               </MenuElement>
               <MenuElement>
-                <MenuText>GOALS</MenuText>
+                <MenuText>
+                  <Link to={JOURNAL_URL}>GOALS</Link>
+                </MenuText>
               </MenuElement>
               <MenuElement>
-                <MenuText>RESOURCES</MenuText>
+                <MenuText>
+                  <Link to={RESOURCES_URL}>RESOURCES</Link>
+                </MenuText>
               </MenuElement>
               <MenuElement>
-                <MenuText>CONTACT</MenuText>
+                <MenuText>
+                  <Link to={CONTACT_URL}>CONTACT</Link>
+                </MenuText>
               </MenuElement>
               <MenuElement>
-                <MenuText>LOG OUT</MenuText>
+                <MenuText>
+                  <Link to="logout">LOG OUT</Link>
+                </MenuText>
               </MenuElement>
               <Logo src={logo} alt="Launchpad logo" />
             </MenuWrapper>

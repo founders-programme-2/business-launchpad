@@ -92,6 +92,11 @@ export const MenuElement = styled.div`
 `;
 export const MenuText = styled.h2`
   font-size: 1.5rem;
+  a{
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 700;
+  }
 `;
 export const CloseContainer = styled.div`
   width: 95%;
@@ -101,7 +106,7 @@ export const CloseContainer = styled.div`
 // the overlay for the menu
 export const Overlay= styled.main`
   overflow: hidden;
-  background-color: #ccc;
+  // background-color: #ccc;
   position: absolute;
   width:100%;
   height: 100vh;
