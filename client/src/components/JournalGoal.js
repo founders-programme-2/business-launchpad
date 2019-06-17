@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import * as S from './JournalGoal.style.js';
+import React from 'react';
+import * as S from './JournalGoal.style';
 
 const Plan = () => {
   return (
