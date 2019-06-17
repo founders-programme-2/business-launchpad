@@ -1,10 +1,18 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import * as S from './Journal.style';
 
 class Journal extends Component {
   state = {
     someState: '',
   };
+
+  componentDidMount() {
+    axios.get('/account/goals').then(response => {
+      response.map();
+    });
+  }
+
 
   render() {
     return (
