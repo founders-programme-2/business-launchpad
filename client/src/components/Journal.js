@@ -30,10 +30,21 @@ class Journal extends Component {
           aliquip ex ea commodo consequat.{' '}
         </S.P>
 
-        <AddEntry />
+        <S.Section>
+          <S.H2>Add an entry:</S.H2>
+          <AddEntry />
+        </S.Section>
 
         <S.Section>
           <S.H2>Action Plan:</S.H2>
+          <S.P>
+            As you complete your goals, check them off and watch your business
+            grow!
+          </S.P>
+        </S.Section>
+
+        <S.Section>
+          <S.H2>My Business History:</S.H2>
           <S.P>
             As you complete your goals, check them off and watch your business
             grow!
