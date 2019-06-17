@@ -5,7 +5,7 @@ class Journal extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader />
+        <CHeader menu />
         <h1>Journal</h1>
       </Fragment>
     );
