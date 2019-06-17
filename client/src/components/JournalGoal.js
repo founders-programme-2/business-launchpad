@@ -4,28 +4,46 @@ import * as S from './JournalGoal.style';
 const Goal = data => {
   return (
     <S.Article>
-      {data.checked ? (
-        <input type="checkbox" checked />
-      ) : (
-        <input type="checkbox" />
-      )}
-      <button type="submit">X</button>
-      <h3>Title</h3>
-      <p>{data.title}</p>
-      <h4>Category:</h4>
-      <p>{data.category}</p>
-      <h4>Date created:</h4>
-      <p>{data.dateCreated}</p>
-      <h4>Due date:</h4>
-      <p>{data.date}</p>
-      {data.dateCompleted !== '' ? (
-        <Fragment>
-          <h4>Date completed:</h4>
-          <p>{data.dateCompleted}</p>
-        </Fragment>
-      ) : null}
-      <h4>Details:</h4>
-      <p>{data.details}</p>
+      <S.HeaderSection>
+        {data.checked ? (
+          <input type="checkbox" checked />
+        ) : (
+          <input type="checkbox" />
+        )}
+        <h3>{data.title}</h3>
+        <S.Delete type="submit">X</S.Delete>
+      </S.HeaderSection>
+
+      <S.Info>
+        <S.Inline>
+          <S.H4>Category:</S.H4>
+          <p>{data.category}</p>
+        </S.Inline>
+
+        <S.Inline>
+          <S.H4>Date created:</S.H4>
+          <p>{data.dateCreated}</p>
+        </S.Inline>
+
+        <S.Inline>
+          <S.H4>Due date:</S.H4>
+          <p>{data.date}</p>
+        </S.Inline>
+
+        {data.dateCompleted !== '' ? (
+          <Fragment>
+            <S.Inline>
+              <S.H4>Date completed:</S.H4>
+              <p>{data.dateCompleted}</p>
+            </S.Inline>
+          </Fragment>
+        ) : null}
+      </S.Info>
+
+      <S.Body>
+        <S.H4>Details:</S.H4>
+        <p>{data.details}</p>
+      </S.Body>
     </S.Article>
   );
 };
