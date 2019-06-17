@@ -81,4 +81,9 @@ export default createGlobalStyle`
         line-height: 1.1rem;
         text-decoration: underline;
     };
+
+    label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.85rem;
+    }
 `;
