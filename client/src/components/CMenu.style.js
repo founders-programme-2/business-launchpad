@@ -1,0 +1,95 @@
+import styled, { css } from 'styled-components';
+
+export const MenuContainer = styled.div`
+  // background-color: red;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    transform: scale(1.1);
+  }
+`;
+export const MenuLine= styled.div`
+  margin-bottom: 0.4rem;
+  background-color: var(--black);
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 5px;
+`;
+export const MenuBarText= styled.h4`
+  font-weight: 700;
+  font-size: 8px;
+  color: var(--black);
+  letter-spacing: 0.2rem;
+`;
+
+export const Close = styled.div`
+   {
+    position: absolute;
+    top: 5rem;
+    width: 32px;
+    height: 32px;
+    margin-left: 1rem;
+  }
+  :hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  :after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 0.4rem;
+    background-color: var(--black);
+    transform: rotate(45deg);
+    border-radius: 3rem;
+  }
+
+  :before {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 0.4rem;
+    background-color: var(--black);
+    transform: rotate(-45deg);
+    border-radius: 3rem;
+  }
+`;
+export const CloseText = styled.h4`
+  font-weight: 700;
+  font-size: 8px;
+  color: var(--black);
+  letter-spacing: 0.2rem;
+  position: absolute;
+  top: 7rem;
+  margin-left: 1rem;
+`;
+export const MenuWrapper = styled.div`
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 600px;
+  background-color: var(--highlight);
+`;
+export const MenuElement = styled.div`
+  background-color: var(--white);
+  border: none;
+  color: var(--black);
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  // display: inline-flex;
+  cursor: pointer;
+`;
+export const MenuText = styled.h2`
+  font-size: 1.5rem;
+`;
+export const CloseContainer = styled.div`
+  width: 100%;
+  height: 4rem;
+`;
