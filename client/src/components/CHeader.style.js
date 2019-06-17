@@ -15,6 +15,7 @@ export const HeaderWrapper = styled.div`
   padding-right: 2rem;
   margin-top: 0.9rem;
   box-sizing: border-box;
+  position: relative;
 `;
 export const Logo = styled.img`
   width: 4rem;

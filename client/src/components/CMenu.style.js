@@ -65,6 +65,10 @@ export const CloseText = styled.h4`
   position: absolute;
   top: 7rem;
   margin-left: 1rem;
+  :hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
 `;
 export const MenuWrapper = styled.div`
   background-color: pink;
@@ -90,6 +94,19 @@ export const MenuText = styled.h2`
   font-size: 1.5rem;
 `;
 export const CloseContainer = styled.div`
-  width: 100%;
+  width: 95%;
   height: 4rem;
+`;
+////////////////////////////
+// the overlay for the menu
+export const Overlay= styled.main`
+  overflow: hidden;
+  background-color: #ccc;
+  position: absolute;
+  width:100%;
+  height: 100vh;
+  top: -14px
+  left: 0;
+  z-index: 1000;
+  margin:0 auto;
 `;

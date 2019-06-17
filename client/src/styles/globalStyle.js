@@ -9,7 +9,7 @@ export default createGlobalStyle`
         --black: #231F20;
         --white: #fff;
         --gray: #BDBDBD;
-
+        --wide:700px;
     };
 
     html {
@@ -25,7 +25,7 @@ export default createGlobalStyle`
         overflow: hidden;
         padding:2rem;
         box-sizing: border-box;
-        max-width:700px;
+        max-width:var(--wide);
         margin:0 auto;
 
 

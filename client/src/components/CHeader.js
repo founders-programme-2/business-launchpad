@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Logo, HeaderWrapper, Line } from './CHeader.style';
 import logo from '../assets/logoWhite.svg';
