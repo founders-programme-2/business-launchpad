@@ -1,23 +1,22 @@
 import React, { Component, Fragment } from 'react';
-import { createDecipher } from 'crypto';
 import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
+
+// fake data used in place of a call to the database
 import fakeData from '../fakeData';
 
 class Journal extends Component {
-  state = {
-    someState: '',
-  };
+  state = {};
 
   // componentDidMount() {
   //   axios.get('/account/goals').then(response => {
-  //     response.map();
+  //    put the response in state and then use it in the variables below the render call
   //   });
   // }
 
   // function to render the goals in each section
-  renderGoals = (data, component) => {
+  renderGoals = data => {
     if (data.length === 0) {
       return <S.P>No goals found. Make some now!</S.P>;
     }
@@ -30,7 +29,7 @@ class Journal extends Component {
     // separates all goal data into 'toDos' and 'completed' for easy rendering
     const toDo = [];
     const completed = [];
-    fakeData.map(goal => {
+    fakeData.forEach(goal => {
       if (goal.checked) {
         completed.push(goal);
       } else {

@@ -16,7 +16,6 @@ class AddEntry extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('Running submit function');
     const dataToSend = this.state;
     // no actual backend yet, this is just a placeholder with console.logs for later testing
     axios
