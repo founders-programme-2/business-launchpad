@@ -1,23 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
-import {
-  Form,
-  Bottom,
-  Label,
-  Arialabel,
-  Styledp,
-  Container,
-  Title,
-  Main,
-  Loginbutton,
-} from './Login.style';
+import * as S from './Login.style';
 
 class Login extends Component {
   state = {
     email: '',
     password: '',
-    emaiError: '',
+    emailError: '',
     passwordError: '',
     isErrorEmail: false,
     isErrorPassword: false,
@@ -34,7 +24,7 @@ class Login extends Component {
 
   validate = () => {
     let isError = false;
-    this.setState({ isErrorEmail: false, isErrorPassword: false });
+    const { email, password } = this.state;
 
     const errors = {
       emailError: '',
@@ -42,12 +32,12 @@ class Login extends Component {
       isErrorEmail: false,
       isErrorPassword: false,
     };
-    if (this.state.email < 1) {
+    if (email < 1) {
       isError = true;
       errors.isErrorEmail = true;
       errors.emailError = 'Please enter your email.';
     }
-    if (this.state.password < 1) {
+    if (password < 1) {
       isError = true;
       errors.isErrorPassword = true;
       errors.passwordError = 'Please enter your password.';
@@ -61,11 +51,12 @@ class Login extends Component {
 
   login = () => {
     const err = this.validate();
+    const { email, password } = this.state;
     if (!err) {
       const { history } = this.props;
       const inputs = {
-        email: this.state.email,
-        password: this.state.password,
+        email,
+        password,
       };
 
       axios.post('/account/login', inputs).then(({ data }) => {
@@ -83,49 +74,53 @@ class Login extends Component {
   };
 
   render() {
+    const {
+      isErrorEmail,
+      emailError,
+      email,
+      password,
+      isErrorPassword,
+      passwordError,
+    } = this.state;
     return (
       <Fragment>
-        <Main>
-          <Title>login</Title>
-          <Form>
-            <Container>
-              <Label> Email: </Label>
-              <Arialabel
-                StyleError={this.state.isErrorEmail}
-                {...this.props}
-                type="text"
-                name="email"
-                errorText={this.state.emailError}
-                value={this.state.email}
-                onChange={e =>
-                  this.setState({
-                    email: e.target.value,
-                  })
-                }
-              />
-            </Container>
-            <Container>
-              <Label> Password: </Label>
-              <Arialabel
-                StyleError={this.state.isErrorPassword}
-                {...this.props}
-                type="password"
-                name="password"
-                errorText={this.state.passwordError}
-                value={this.state.password}
-                onChange={e =>
-                  this.setState({
-                    password: e.target.value,
-                  })
-                }
-              />
-            </Container>
-          </Form>
-          <Bottom>
-            <Loginbutton onClick={this.login}>login </Loginbutton>
-          </Bottom>
-          <Styledp>Forget Your Password?</Styledp>
-        </Main>
+        <S.Main>
+          <S.H1>Login</S.H1>
+          <S.Form>
+            <S.Label for="email"> Email: </S.Label>
+            <S.Input
+              StyleError={isErrorEmail}
+              {...this.props}
+              type="text"
+              name="email"
+              label="email"
+              errorText={emailError}
+              value={email}
+              onChange={e =>
+                this.setState({
+                  email: e.target.value,
+                })
+              }
+            />
+            <S.Label for="password"> Password: </S.Label>
+            <S.Input
+              StyleError={isErrorPassword}
+              {...this.props}
+              type="password"
+              name="password"
+              label="password"
+              errorText={passwordError}
+              value={password}
+              onChange={e =>
+                this.setState({
+                  password: e.target.value,
+                })
+              }
+            />
+          </S.Form>
+          <S.Button onClick={this.login}>login </S.Button>
+          <S.P>Forget Your Password?</S.P>
+        </S.Main>
       </Fragment>
     );
   }
