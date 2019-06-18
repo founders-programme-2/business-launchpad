@@ -6,6 +6,11 @@ const goal = {
 };
 
 const addGoal = (req, res) => {
+  const { errors, isValid } = validateGoal(req.body);
+  if (!isValid) {
+    return res.status(400).send(errors);
+  }
+
   const { _id } = req.body;
 
   User.findOne({ _id }).then(foundUser => {
