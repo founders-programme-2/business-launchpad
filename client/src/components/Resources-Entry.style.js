@@ -9,6 +9,8 @@ export const Article = styled.article`
   }
 `;
 
+// leaving these below for future styling
+
 export const H3 = styled.h3``;
 
 export const A = styled.a``;

@@ -19,6 +19,7 @@ class Resources extends Component {
         const { data } = response.data;
         this.setState({ data });
       })
+      // eslint-disable-next-line no-console
       .catch(err => console.log(err));
   };
 
@@ -38,11 +39,12 @@ class Resources extends Component {
       if (resource.category === section) {
         return <ResourceEntry {...resource} key={resource.id} />;
       }
+      return null;
     });
   };
 
   render() {
-    const resourceData = this.state.data;
+    const { data: resourceData } = this.state;
 
     return (
       <Fragment>
