@@ -55,7 +55,7 @@ export class CMenu extends Component {
                   close
                 </S.CloseText>
               </S.CloseContainer>
-              <S.Line />
+              <Line />
               <S.MenuElement>
                 <S.MenuText>
                   <Link to={DASHBOARD_URL}>DASHBOARD</Link>
