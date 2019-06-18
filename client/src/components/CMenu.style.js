@@ -79,7 +79,7 @@ export const MenuWrapper = styled.div`
   height: 600px;
   background-color: var(--highlight);
 `;
-export const MenuElement = styled.div`
+export const MenuElement = styled.button`
   background-color: var(--white);
   border: none;
   color: var(--black);
