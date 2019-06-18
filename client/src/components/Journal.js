@@ -21,7 +21,7 @@ class Journal extends Component {
       return <S.P>No goals found. Make some now!</S.P>;
     }
     return data.map(goalData => {
-      return <Goal {...goalData} />;
+      return <Goal {...goalData} key={goalData.id} />;
     });
   };
 

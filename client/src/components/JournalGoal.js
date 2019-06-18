@@ -6,7 +6,7 @@ const Goal = data => {
     <S.Article>
       <S.HeaderSection>
         {data.checked ? (
-          <input type="checkbox" checked />
+          <input type="checkbox" defaultChecked />
         ) : (
           <input type="checkbox" />
         )}
