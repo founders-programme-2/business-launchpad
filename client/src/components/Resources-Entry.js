@@ -7,23 +7,23 @@ const ResourceEntry = data => {
   // const { title } = data;
   return (
     <Fragment>
-      <section>
+      <S.Article>
         {data.titleLinkAddress ? (
-          <a href={data.titleLinkAddress} target="_blank">
+          <S.A href={data.titleLinkAddress} target="_blank">
             {data.title || data.titleLinkAddress}
-          </a>
+          </S.A>
         ) : (
-          <h3>{data.title}</h3>
+          <S.H3>{data.title}</S.H3>
         )}
-        {data.date ? <h3>{data.date}</h3> : null}
-        {data.author ? <h3>{data.author}</h3> : null}
-        {data.details ? <p>{data.details}</p> : null}
+        {data.date ? <S.H3>{data.date}</S.H3> : null}
+        {data.author ? <S.H3>{data.author}</S.H3> : null}
+        {data.details ? <S.P>{data.details}</S.P> : null}
         {data.footerLinkAddress ? (
-          <a href={data.footerLinkAddress} target="_blank">
+          <S.A href={data.footerLinkAddress} target="_blank">
             {data.footerLinkCaption || data.footerLinkAddress}
-          </a>
+          </S.A>
         ) : null}
-      </section>
+      </S.Article>
     </Fragment>
   );
 };
