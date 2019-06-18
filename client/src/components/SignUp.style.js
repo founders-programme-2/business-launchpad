@@ -31,7 +31,7 @@ export const Label = styled.label`
   font-family: Work Sans;
 `;
 
-export const Input = styled.input`
+export const Arialabel = styled.input`
   display: block;
   background-color: var(--input-color, #ffffff);
   border-radius: 10px;
@@ -47,7 +47,7 @@ export const LoginButton = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   background-color: var(--login-color, #1d1a1ae0);
-  font-family: Work Sans;
+  font-family: Roboto;
   font-style: normal;
   font-weight: 900;
   font-size: 20pt;

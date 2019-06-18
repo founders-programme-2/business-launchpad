@@ -5,7 +5,7 @@ import {
   Form,
   Bottom,
   Label,
-  Input,
+  Arialabel,
   Container,
   Title,
   Main,
@@ -120,7 +120,7 @@ class signUp extends Component {
           <Form>
             <Container>
               <Label> Name: </Label>
-              <Input
+              <Arialabel
                 StyleError={this.state.isErrorName}
                 {...this.props}
                 type="text"
@@ -136,12 +136,11 @@ class signUp extends Component {
             </Container>
             <Container>
               <Label> Email: </Label>
-              <Input
+              <Arialabel
                 StyleError={this.state.isErrorEmail}
                 {...this.props}
                 type="text"
                 name="email"
-                placeholder="email"
                 errorText={this.state.emailError}
                 value={this.state.email}
                 onChange={e =>
@@ -158,7 +157,6 @@ class signUp extends Component {
                 {...this.props}
                 type="password"
                 name="password"
-                placeholder="password"
                 errorText={this.state.passwordError}
                 value={this.state.password}
                 onChange={e =>
