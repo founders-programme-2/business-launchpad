@@ -36,7 +36,7 @@ class Resources extends Component {
     }
     return data.map(resource => {
       if (resource.category === section) {
-        return <ResourceEntry {...resource} />;
+        return <ResourceEntry {...resource} key={resource.id} />;
       }
     });
   };
