@@ -1,7 +1,8 @@
 const User = require('../database/models/User');
+const { validateGoal } = require('../middleware/validation/validateGoal');
 
 const goal = {
-  title: 'Test title',
+  title: 'Test title2',
 };
 
 const addGoal = (req, res) => {
