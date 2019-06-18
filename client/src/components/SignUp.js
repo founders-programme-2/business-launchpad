@@ -26,10 +26,10 @@ class signUp extends Component {
   };
 
   componentDidMount() {
-    axios.get('/checkcookie').then(({ data: { cookie } }) => {
+    axios.get('/checkCookie').then(({ data: { cookie } }) => {
       if (cookie) {
         const { history } = this.props;
-        history.push('/login');
+        history.push('/account/login');
       }
     });
   }
@@ -96,10 +96,10 @@ class signUp extends Component {
         email: this.state.email,
         password: this.state.password,
       };
-      axios.post('/signup', inputs).then(({ data }) => {
+      axios.post('/account/signUp', inputs).then(({ data }) => {
         if (data.success) {
           history.push({
-            pathname: '/login',
+            pathname: '/account/login',
             data: this.props.location.data,
           });
         } else {
@@ -152,7 +152,7 @@ class signUp extends Component {
             </Container>
             <Container>
               <Label> Password: </Label>
-              <Input
+              <Arialabel
                 StyleError={this.state.isErrorPassword}
                 {...this.props}
                 type="password"

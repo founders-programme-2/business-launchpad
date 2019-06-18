@@ -24,7 +24,7 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    axios.get('/checkcookies').then(({ data: { cookie } }) => {
+    axios.get('/checkCookie').then(({ data: { cookie } }) => {
       if (cookie) {
         const { history } = this.props;
         history.push('/dashboard');
@@ -67,20 +67,10 @@ class Login extends Component {
         email: this.state.email,
         password: this.state.password,
       };
-      const detailsInputs = this.props.location.data;
-      axios.post('/login', inputs).then(({ data }) => {
+
+      axios.post('/account/login', inputs).then(({ data }) => {
         if (data.success) {
-          if (detailsInputs) {
-            axios.post('/dashboard', detailsInputs).then(addData => {
-              if (addData.data.success) {
-                history.push('/dashboard');
-              } else {
-                history.push('/login');
-              }
-            });
-          } else {
-            history.push('/dashboard');
-          }
+          history.push('/dashboard');
         } else {
           this.setState({
             passwordError: 'email or password is incorrect.',
