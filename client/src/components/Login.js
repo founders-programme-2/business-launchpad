@@ -1,38 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import question from '../assets/question.png';
-import blp from '../assets/blp.png';
-import { INFO_URL } from '../constants';
 
 import {
-  StyledForm,
-  StyledBottom,
-  StyledLabel,
-  StyledInput,
-  StyledP,
-  StyledText,
-  InputContainer,
+  Form,
+  Bottom,
+  Label,
+  Input,
+  Styledp,
+  Container,
   Title,
-  StyleAll,
-  LoginButton,
-  Stylecontainer,
-  Stylephoto,
-  Styleques,
+  Main,
+  Loginbutton,
 } from './Login.style';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      usernameError: '',
-      passwordError: '',
-      isErrorEmail: false,
-      isErrorPassword: false,
-    };
-  }
+  state = {
+    email: '',
+    password: '',
+    emaiError: '',
+    passwordError: '',
+    isErrorEmail: false,
+    isErrorPassword: false,
+  };
 
   componentDidMount() {
     axios.get('/checkcookies').then(({ data: { cookie } }) => {
@@ -48,7 +37,7 @@ class Login extends Component {
     this.setState({ isErrorEmail: false, isErrorPassword: false });
 
     const errors = {
-      EmailError: '',
+      emailError: '',
       passwordError: '',
       isErrorEmail: false,
       isErrorPassword: false,
@@ -56,7 +45,7 @@ class Login extends Component {
     if (this.state.email < 1) {
       isError = true;
       errors.isErrorEmail = true;
-      errors.EmailError = 'Please enter your email.';
+      errors.emailError = 'Please enter your email.';
     }
     if (this.state.password < 1) {
       isError = true;
@@ -105,24 +94,18 @@ class Login extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <StyleAll>
-          <Stylecontainer>
-            <Stylephoto src={blp} alt="photo" />
-            <Link href={INFO_URL}>
-              <Styleques src={question} alt="info" />
-            </Link>
-          </Stylecontainer>
-          <Title>LOGIN</Title>
-          <StyledForm>
-            <InputContainer>
-              <StyledLabel> Email: </StyledLabel>
-              <StyledInput
+      <Fragment>
+        <Main>
+          <Title>login</Title>
+          <Form>
+            <Container>
+              <Label> Email: </Label>
+              <Input
                 StyleError={this.state.isErrorEmail}
                 {...this.props}
                 type="text"
                 name="email"
-                errorText={this.state.EmailError}
+                errorText={this.state.emailError}
                 value={this.state.email}
                 onChange={e =>
                   this.setState({
@@ -130,11 +113,10 @@ class Login extends Component {
                   })
                 }
               />
-            </InputContainer>
-
-            <InputContainer>
-              <StyledLabel> Password: </StyledLabel>
-              <StyledInput
+            </Container>
+            <Container>
+              <Label> Password: </Label>
+              <Input
                 StyleError={this.state.isErrorPassword}
                 {...this.props}
                 type="password"
@@ -147,16 +129,14 @@ class Login extends Component {
                   })
                 }
               />
-            </InputContainer>
-          </StyledForm>
-          <StyledBottom>
-            <LoginButton onClick={this.login}>LOGIN</LoginButton>
-          </StyledBottom>
-          <StyledP>
-            <StyledText>Forget Your Password? </StyledText>
-          </StyledP>
-        </StyleAll>
-      </React.Fragment>
+            </Container>
+          </Form>
+          <Bottom>
+            <Loginbutton onClick={this.login}>login </Loginbutton>
+          </Bottom>
+          <Styledp>Forget Your Password?</Styledp>
+        </Main>
+      </Fragment>
     );
   }
 }

@@ -1,22 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import question from '../assets/question.png';
-import blp from '../assets/blp.png';
-import { INFO_URL } from '../constants';
 
 import {
-  StyledForm,
-  StyledBottom,
-  StyledLabel,
-  StyledInput,
-  InputContainer,
+  Form,
+  Bottom,
+  Label,
+  Input,
+  Container,
   Title,
-  StyleAll,
+  Main,
   LoginButton,
-  Stylecontainer,
-  Stylephoto,
-  Styleques,
 } from './SignUp.style';
 
 class signUp extends Component {
@@ -25,7 +18,7 @@ class signUp extends Component {
     email: '',
     password: '',
     nameError: '',
-    EmailError: '',
+    emailError: '',
     passwordError: '',
     isErrorName: false,
     isErrorEmail: '',
@@ -121,19 +114,13 @@ class signUp extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <StyleAll>
-          <Stylecontainer>
-            <Stylephoto src={blp} alt="photo" />
-            <Link href={INFO_URL}>
-              <Styleques src={question} alt="info" />
-            </Link>
-          </Stylecontainer>
-          <Title>SIGNUP</Title>
-          <StyledForm>
-            <InputContainer>
-              <StyledLabel> Name: </StyledLabel>
-              <StyledInput
+      <Fragment>
+        <Main>
+          <Title>Sigup</Title>
+          <Form>
+            <Container>
+              <Label> Name: </Label>
+              <Input
                 StyleError={this.state.isErrorName}
                 {...this.props}
                 type="text"
@@ -146,10 +133,10 @@ class signUp extends Component {
                   })
                 }
               />
-            </InputContainer>
-            <InputContainer>
-              <StyledLabel> Email: </StyledLabel>
-              <StyledInput
+            </Container>
+            <Container>
+              <Label> Email: </Label>
+              <Input
                 StyleError={this.state.isErrorEmail}
                 {...this.props}
                 type="text"
@@ -163,11 +150,10 @@ class signUp extends Component {
                   })
                 }
               />
-            </InputContainer>
-
-            <InputContainer>
-              <StyledLabel> Password: </StyledLabel>
-              <StyledInput
+            </Container>
+            <Container>
+              <Label> Password: </Label>
+              <Input
                 StyleError={this.state.isErrorPassword}
                 {...this.props}
                 type="password"
@@ -181,13 +167,13 @@ class signUp extends Component {
                   })
                 }
               />
-            </InputContainer>
-          </StyledForm>
-          <StyledBottom>
-            <LoginButton onClick={this.signUp}>Sign up</LoginButton>
-          </StyledBottom>
-        </StyleAll>
-      </React.Fragment>
+            </Container>
+          </Form>
+          <Bottom>
+            <LoginButton onClick={this.signUp}>Signup</LoginButton>
+          </Bottom>
+        </Main>
+      </Fragment>
     );
   }
 }
