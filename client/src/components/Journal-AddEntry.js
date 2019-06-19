@@ -4,10 +4,10 @@ import * as S from './Journal-AddEntry.style';
 
 class AddEntry extends Component {
   state = {
-    title: '',
+    title: 'Test',
     category: 'Goal',
-    date: '',
-    details: '',
+    date: '2019-06-29',
+    details: 'Here are some test details for this test goal entry. Killing it!',
   };
 
   handleChange = event => {
@@ -19,7 +19,7 @@ class AddEntry extends Component {
     const dataToSend = this.state;
     // no actual backend yet, this is just a placeholder with console.logs for later testing
     axios
-      .post('/goal/save', dataToSend)
+      .post('/account/goal', dataToSend)
       // eslint-disable-next-line no-console
       .then(response => console.log(response))
       // eslint-disable-next-line no-console
