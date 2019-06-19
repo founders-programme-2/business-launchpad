@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const MenuContainer = styled.div`
-  // background-color: red;
+export const ButtonOpen = styled.button`
+  border: none;
+  background-color: var(--highlight);
   box-sizing: border-box;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -9,22 +10,23 @@ export const MenuContainer = styled.div`
     transform: scale(1.1);
   }
 `;
-export const MenuLine= styled.div`
+export const MenuLine = styled.div`
   margin-bottom: 0.4rem;
   background-color: var(--black);
   border-radius: 0.5rem;
   width: 2rem;
   height: 5px;
 `;
-export const MenuBarText= styled.h4`
-  font-weight: 700;
-  font-size: 8px;
+export const P = styled.p`
+  font-weight: 900;
+  font-size: 0.5rem;
+  font-style: normal;
+  letter-spacing: 10%;
   color: var(--black);
   letter-spacing: 0.2rem;
+  font-family: 'Work Sans', sans-serif;
 `;
-
 export const Close = styled.div`
-   {
     position: absolute;
     top: 5rem;
     width: 32px;
@@ -92,19 +94,19 @@ export const MenuElement = styled.button`
 `;
 export const MenuText = styled.h2`
   font-size: 1.5rem;
-  a{
-  text-decoration: none;
-  color: var(--black);
-  font-weight: 700;
+  a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 700;
   }
 `;
 export const CloseContainer = styled.div`
   width: 95%;
   height: 4rem;
 `;
-////////////////////////////
+// //////////////////////////
 // the overlay for the menu
-export const Overlay= styled.main`
+export const Overlay = styled.main`
   overflow: hidden;
   // background-color: #ccc;
   position: absolute;

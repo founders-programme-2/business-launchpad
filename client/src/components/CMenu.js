@@ -10,7 +10,7 @@ import * as S from './CMenu.style';
 import { Logo, Line } from './CHeader.style';
 import logo from '../assets/logoWhite.svg';
 
-export class CMenu extends Component {
+class CMenu extends Component {
   state = {
     visible: false,
   };
@@ -27,7 +27,7 @@ export class CMenu extends Component {
     const { visible } = this.state;
     return (
       <Fragment>
-        <S.MenuContainer
+        <S.ButtonOpen
           onClick={() => {
             this.show();
           }}
@@ -35,8 +35,8 @@ export class CMenu extends Component {
           <S.MenuLine />
           <S.MenuLine />
           <S.MenuLine />
-          <S.MenuBarText>menu</S.MenuBarText>
-        </S.MenuContainer>
+          <S.P>menu</S.P>
+        </S.ButtonOpen>
 
         {visible && (
           <S.Overlay>
@@ -89,3 +89,5 @@ export class CMenu extends Component {
     );
   }
 }
+
+export default CMenu;

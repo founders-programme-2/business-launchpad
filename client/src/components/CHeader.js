@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as S from './CHeader.style';
 import logo from '../assets/logoWhite.svg';
 import info from '../assets/info.svg';
-import { CMenu } from './CMenu';
+import CMenu from './CMenu';
 import { LANDING_URL, INFO_URL } from '../constants';
 
 const CHeader = props => {
