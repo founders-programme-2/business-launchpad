@@ -108,12 +108,11 @@ export const CloseContainer = styled.div`
 // the overlay for the menu
 export const Overlay = styled.main`
   overflow: hidden;
-  // background-color: #ccc;
   position: absolute;
-  width:100%;
+  width: 100%;
   height: 100vh;
-  top: -14px
+  top: -14px;
   left: 0;
   z-index: 1000;
-  margin:0 auto;
+  margin: 0 auto;
 `;
