@@ -20,8 +20,16 @@ const addGoal = (req, res) => {
     foundUser.save(err => {
       if (err) {
         console.log(`Sorry you've had an error saving a goal! Error:${err}`);
+        return res.status(400).send({
+          success: false,
+          message: 'Error saving goal',
+        });
       }
       console.log(`Goal saved to user!`);
+      return res.status(200).send({
+        success: true,
+        message: 'Goal saved!',
+      });
     });
   });
 };
