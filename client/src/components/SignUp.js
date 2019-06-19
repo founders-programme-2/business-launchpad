@@ -1,16 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
-import {
-  Form,
-  Bottom,
-  Label,
-  Arialabel,
-  Container,
-  Title,
-  Main,
-  LoginButton,
-} from './SignUp.style';
+import * as S from './Login.style';
 
 class signUp extends Component {
   state = {
@@ -41,7 +32,7 @@ class signUp extends Component {
       isErrorEmail: false,
       isErrorPassword: false,
     });
-
+    const name = this.state;
     const characters = [
       '+',
       '/',
@@ -68,12 +59,12 @@ class signUp extends Component {
       isErrorPassword: false,
     };
     for (let i = 0; i < characters.length; i++) {
-      if (this.state.name.includes(characters[i])) {
+      if (name.includes(characters[i])) {
         isError = true;
         errors.isErrorName = true;
         errors.nameError =
           'Name should only contain letters, numbers, underscores and dashes.';
-      } else if (this.state.name < 1) {
+      } else if (name < 1) {
         isError = true;
         errors.isErrorName = true;
         errors.nameError = 'Name is required.';
@@ -91,12 +82,13 @@ class signUp extends Component {
     const err = this.validate();
     if (!err) {
       const { history } = this.props;
+      const { name, email, password } = this.state;
       const inputs = {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
+        name,
+        email,
+        password,
       };
-      axios.post('/account/signUp', inputs).then(({ data }) => {
+      axios.post('/account/sign-up', inputs).then(({ data }) => {
         if (data.success) {
           history.push({
             pathname: '/account/login',
@@ -113,64 +105,70 @@ class signUp extends Component {
   };
 
   render() {
+    const {
+      isErrorEmail,
+      isErrorName,
+      isErrorPassword,
+      nameError,
+      name,
+      emailError,
+      email,
+      passwordError,
+      password,
+    } = this.state;
     return (
       <Fragment>
-        <Main>
-          <Title>Sigup</Title>
-          <Form>
-            <Container>
-              <Label> Name: </Label>
-              <Arialabel
-                StyleError={this.state.isErrorName}
-                {...this.props}
-                type="text"
-                name="name"
-                errorText={this.state.nameError}
-                value={this.state.name}
-                onChange={e =>
-                  this.setState({
-                    name: e.target.value,
-                  })
-                }
-              />
-            </Container>
-            <Container>
-              <Label> Email: </Label>
-              <Arialabel
-                StyleError={this.state.isErrorEmail}
-                {...this.props}
-                type="text"
-                name="email"
-                errorText={this.state.emailError}
-                value={this.state.email}
-                onChange={e =>
-                  this.setState({
-                    email: e.target.value,
-                  })
-                }
-              />
-            </Container>
-            <Container>
-              <Label> Password: </Label>
-              <Arialabel
-                StyleError={this.state.isErrorPassword}
-                {...this.props}
-                type="password"
-                name="password"
-                errorText={this.state.passwordError}
-                value={this.state.password}
-                onChange={e =>
-                  this.setState({
-                    password: e.target.value,
-                  })
-                }
-              />
-            </Container>
-          </Form>
-          <Bottom>
-            <LoginButton onClick={this.signUp}>Signup</LoginButton>
-          </Bottom>
-        </Main>
+        <S.Main>
+          <S.H1>Sign up</S.H1>
+          <S.Form>
+            <S.Label for="name"> Name: </S.Label>
+            <S.Input
+              StyleError={isErrorName}
+              {...this.props}
+              type="text"
+              name="name"
+              label="name"
+              errorText={nameError}
+              value={name}
+              onChange={e =>
+                this.setState({
+                  name: e.target.value,
+                })
+              }
+            />
+            <S.Label for="email"> Email: </S.Label>
+            <S.Input
+              StyleError={isErrorEmail}
+              {...this.props}
+              type="text"
+              name="email"
+              label="email"
+              errorText={emailError}
+              value={email}
+              onChange={e =>
+                this.setState({
+                  email: e.target.value,
+                })
+              }
+            />
+            <S.Label for="password"> Password: </S.Label>
+            <S.Input
+              StyleError={isErrorPassword}
+              {...this.props}
+              type="password"
+              name="password"
+              label="password"
+              errorText={passwordError}
+              value={password}
+              onChange={e =>
+                this.setState({
+                  password: e.target.value,
+                })
+              }
+            />
+          </S.Form>
+          <S.Button onClick={this.signup}>Sign up </S.Button>
+        </S.Main>
       </Fragment>
     );
   }
