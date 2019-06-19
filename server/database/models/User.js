@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const goalSchema = require('./Goal');
 
-
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,

@@ -21,7 +21,7 @@ const addGoal = (req, res) => {
       if (err) {
         console.log(`Sorry you've had an error saving a goal! Error:${err}`);
       }
-      console.log(`Yay!`);
+      console.log(`Goal saved to user!`);
     });
   });
 };
