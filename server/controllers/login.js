@@ -1,73 +1,52 @@
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../database/models/User');
-const UserSession = require('../database/models/UserSession');
+const { validateLogin } = require('../middleware/validation/validateLogin');
 
-const login = (req, res, next) => {
-  // will use next later
-  const { body } = req;
-  const { password } = body;
-  let { email } = body;
+const login = (req, res) => {
+  // validates incoming login data
+  const { errors, isValid } = validateLogin(req.body);
+  const secret = process.env.secretOrKey;
 
-  if (!email) {
-    return res.send({
-      success: false,
-      message: 'Error: Email cannot be blank.',
-    });
-  }
-  if (!password) {
-    return res.send({
-      success: false,
-      message: 'Error: password cannot be blank',
-    });
+  // sends an error if incoming data is invalid
+  if (!isValid) {
+    return res.status(400).send(errors);
   }
 
-  email = email.toLowerCase();
-  email = email.trim();
+  const { email, password } = req.body;
 
-  return User.find(
-    {
-      email,
-    },
-    (err, users) => {
-      if (err) {
-        // console.log('server err', err);
-        return res.send({
-          success: false,
-          message: 'Error: server error',
-        });
-      }
-      if (users.length !== 1) {
-        return res.send({
-          success: false,
-          message: 'Error: Invalid, no user',
-        });
-      }
-      const user = users[0];
-      if (!user.validPassword(password)) {
-        return res.send({
-          success: false,
-          message: 'Error: invalid password',
-        });
-      }
-      const userSession = new UserSession();
-      // eslint-disable-next-line no-underscore-dangle
-      userSession.userId = user._id;
-      return userSession.save((error, doc) => {
-        if (error) {
-          // console.log('login session', err);
-          return res.send({
-            success: false,
-            message: 'Error: server error',
-          });
-        }
-        return res.send({
-          success: true,
-          message: 'Valid sign in',
-          // eslint-disable-next-line no-underscore-dangle
-          token: doc._id,
-        });
+  return User.findOne({ email }).then(user => {
+    if (!user) {
+      return res.status(400).send({
+        success: false,
+        message: 'User not found. Please sign up.',
       });
     }
-  );
+
+    // if user exists, use bcryptjs to compare submitted password with hashed password in our db
+    return bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        // if passwords match, create JTW payload
+        const payload = {
+          id: user.id,
+          name: user.name,
+        };
+
+        // sign token, expires in 1 day in seconds
+        return jwt.sign(payload, secret, { expiresIn: 86400 }, (err, token) => {
+          // append the token to a 'Bearer' string (in passport.js we set opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken())
+          res.send({
+            success: true,
+            token: `Bearer${token}`,
+          });
+        });
+      }
+      return res.status(400).send({
+        success: false,
+        message: 'Sorry, password is incorrect.',
+      });
+    });
+  });
 };
 
 module.exports = { login };

@@ -1,7 +1,9 @@
-const { createUser } = require('./createUser');
+const { register } = require('./register');
 const { login } = require('./login');
+const { logout } = require('./logout');
 
 module.exports = {
-  createUser,
+  register,
   login,
+  logout,
 };
