@@ -9,19 +9,19 @@ export default createGlobalStyle`
         --black: #231F20;
         --white: #fff;
         --gray: #BDBDBD;
-        --wide:700px;
     };
 
     html {
         font-size: 16px;
+        color: var(--black);
+        display: flex;	     
+        flex-direction: column;	   
+        margin: 0 auto;
+
     };
 
     body {
         background-color: var(--white);
-        color: var(--black);
-        display: flex;
-        flex-direction: column;
-        margin: 1rem;
     };
 
 

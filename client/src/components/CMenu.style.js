@@ -71,6 +71,7 @@ export const CloseText = styled.h4`
   position: absolute;
   top: 7rem;
   margin-left: 1rem;
+  margin-bottom: 1rem;
   :hover {
     opacity: 0.5;
     cursor: pointer;
@@ -107,7 +108,6 @@ export const MenuText = styled.h2`
 // //////////////////////////
 // the overlay for the menu
 export const Overlay = styled.main`
-  overflow: hidden;
   position: absolute;
   width: 100%;
   height: 100vh;
