@@ -1,6 +1,6 @@
 export const LANDING_URL = '/';
-export const LOGIN_URL = '/login';
-export const SIGNUP_URL = '/sign-up';
+export const LOGIN_URL = '/account/login';
+export const SIGNUP_URL = '/account/sign-up';
 export const INFO_URL = '/info';
 export const DASHBOARD_URL = '/dashboard';
 export const CONTACT_URL = '/contact';
