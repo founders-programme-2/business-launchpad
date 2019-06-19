@@ -26,26 +26,28 @@ export const P = styled.p`
   letter-spacing: 0.2rem;
   font-family: 'Work Sans', sans-serif;
 `;
-export const CloseContainer = styled.div`
+
+export const ButtonClose = styled.button`
   width: 95%;
-  height: 4rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: column;
 `;
-export const Close = styled.div`
-    position: absolute;
-    top: 5rem;
-    width: 32px;
-    height: 32px;
-    margin-left: 1rem;
-  }
+
+export const CloseX = styled.div`
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 0.5rem;
   :hover {
     opacity: 0.5;
     cursor: pointer;
   }
   :after {
     position: absolute;
-    left: 15px;
+    left: 2rem;
+    top: 4rem;
     content: ' ';
-    height: 33px;
+    height: 1.5rem;
     width: 0.4rem;
     background-color: var(--black);
     transform: rotate(45deg);
@@ -54,29 +56,68 @@ export const Close = styled.div`
 
   :before {
     position: absolute;
-    left: 15px;
+    left: 2rem;
+    top: 4rem;
     content: ' ';
-    height: 33px;
+    height: 1.5rem;
     width: 0.4rem;
     background-color: var(--black);
     transform: rotate(-45deg);
     border-radius: 3rem;
   }
 `;
-export const CloseText = styled.h4`
-  font-weight: 700;
-  font-size: 8px;
-  color: var(--black);
-  letter-spacing: 0.2rem;
-  position: absolute;
-  top: 7rem;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  :hover {
-    opacity: 0.5;
-    cursor: pointer;
-  }
-`;
+
+// export const CloseContainer = styled.div`
+//   width: 95%;
+//   height: 4rem;
+// `;
+// export const Close = styled.div`
+//     position: absolute;
+//     top: 5rem;
+//     width: 32px;
+//     height: 32px;
+//     margin-left: 1rem;
+//   }
+//   :hover {
+//     opacity: 0.5;
+//     cursor: pointer;
+//   }
+//   :after {
+//     position: absolute;
+//     left: 15px;
+//     content: ' ';
+//     height: 33px;
+//     width: 0.4rem;
+//     background-color: var(--black);
+//     transform: rotate(45deg);
+//     border-radius: 3rem;
+//   }
+
+//   :before {
+//     position: absolute;
+//     left: 15px;
+//     content: ' ';
+//     height: 33px;
+//     width: 0.4rem;
+//     background-color: var(--black);
+//     transform: rotate(45deg);
+//     border-radius: 3rem;
+//   }
+// `;
+// export const CloseText = styled.h4`
+//   font-weight: 700;
+//   font-size: 8px;
+//   color: var(--black);
+//   letter-spacing: 0.2rem;
+//   position: absolute;
+//   top: 7rem;
+//   margin-left: 1rem;
+//   margin-bottom: 1rem;
+//   :hover {
+//     opacity: 0.5;
+//     cursor: pointer;
+//   }
+// `;
 export const MenuWrapper = styled.div`
   background-color: pink;
   display: flex;

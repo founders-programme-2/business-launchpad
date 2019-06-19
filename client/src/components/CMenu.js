@@ -41,20 +41,14 @@ class CMenu extends Component {
         {visible && (
           <S.Overlay>
             <S.MenuWrapper>
-              <S.CloseContainer>
-                <S.Close
-                  onClick={() => {
-                    this.hide();
-                  }}
-                />
-                <S.CloseText
-                  onClick={() => {
-                    this.hide();
-                  }}
-                >
-                  close
-                </S.CloseText>
-              </S.CloseContainer>
+              <S.ButtonClose
+                onClick={() => {
+                  this.hide();
+                }}
+              >
+                <S.CloseX />
+                <S.P>close</S.P>
+              </S.ButtonClose>
               <Line />
               <S.MenuElement>
                 <S.MenuText>
@@ -91,3 +85,20 @@ class CMenu extends Component {
 }
 
 export default CMenu;
+
+{
+  /* <S.CloseContainer>
+                <S.Close
+                  onClick={() => {
+                    this.hide();
+                  }}
+                />
+                <S.CloseText
+                  onClick={() => {
+                    this.hide();
+                  }}
+                >
+                  close
+                </S.CloseText>
+              </S.CloseContainer> */
+}
