@@ -26,6 +26,10 @@ export const P = styled.p`
   letter-spacing: 0.2rem;
   font-family: 'Work Sans', sans-serif;
 `;
+export const CloseContainer = styled.div`
+  width: 95%;
+  height: 4rem;
+`;
 export const Close = styled.div`
     position: absolute;
     top: 5rem;
@@ -99,10 +103,6 @@ export const MenuText = styled.h2`
     color: var(--black);
     font-weight: 700;
   }
-`;
-export const CloseContainer = styled.div`
-  width: 95%;
-  height: 4rem;
 `;
 // //////////////////////////
 // the overlay for the menu
