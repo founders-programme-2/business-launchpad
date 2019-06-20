@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Main = styled.main`
-  background-color: var(--main-color);
+  background-color: var(--highlight);
   height: 100vh;
   display: flex;
   justify-content: center;

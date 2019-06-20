@@ -88,7 +88,7 @@ class Login extends Component {
         <S.Main>
           <S.H1>Login</S.H1>
           <form>
-            <S.Label for="email"> Email: </S.Label>
+            <S.Label for="email">Email:</S.Label>
             <S.Input
               StyleError={isErrorEmail}
               {...this.props}
@@ -103,7 +103,7 @@ class Login extends Component {
                 })
               }
             />
-            <S.Label for="password"> Password: </S.Label>
+            <S.Label for="password">Password:</S.Label>
             <S.Input
               StyleError={isErrorPassword}
               {...this.props}
