@@ -22,6 +22,11 @@ export default createGlobalStyle`
 
     body {
         background-color: var(--white);
+        color: var(--black);
+        display: flex;
+        flex-direction: column;
+        margin: 1 rem;
+
     };
 
 
@@ -63,7 +68,7 @@ export default createGlobalStyle`
         font-weight: 500;
         letter-spacing: 0.1rem;
         line-height: 1.1rem;
-    }; 
+    };
 
     p {
         font-family: 'Roboto', sans-serif;
@@ -82,6 +87,9 @@ export default createGlobalStyle`
     };
 
     label {
+        color: var(--black);
+        font-weight: 900;
+        letter-spacing: 0.1rem;
         font-family: 'Roboto', sans-serif;
         font-size: 0.85rem;
     }
