@@ -8,7 +8,6 @@ export class MyProvider extends Component {
     token: '',
   };
 
-
   render() {
     const { children } = this.props;
     return (

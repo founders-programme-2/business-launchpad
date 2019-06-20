@@ -13,6 +13,11 @@ export default createGlobalStyle`
 
     html {
         font-size: 16px;
+        color: var(--black);
+        display: flex;	     
+        flex-direction: column;	   
+        margin: 0 auto;
+
     };
 
     body {
@@ -20,16 +25,15 @@ export default createGlobalStyle`
         color: var(--black);
         display: flex;
         flex-direction: column;
-        margin: 1rem;
+        margin: 1 rem;
+
     };
 
-    header {
-        /* header styling here */
-    };
+
 
     main {
         /* main styling here */
-    };
+      };
 
     footer {
         /* footer styling here */
@@ -64,7 +68,7 @@ export default createGlobalStyle`
         font-weight: 500;
         letter-spacing: 0.1rem;
         line-height: 1.1rem;
-    }; 
+    };
 
     p {
         font-family: 'Roboto', sans-serif;
@@ -83,6 +87,9 @@ export default createGlobalStyle`
     };
 
     label {
+        color: var(--black);
+        font-weight: 900;
+        letter-spacing: 0.1rem;
         font-family: 'Roboto', sans-serif;
         font-size: 0.85rem;
     }

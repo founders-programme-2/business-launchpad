@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import CHeader from './CHeader';
 import axios from 'axios';
 import * as S from './Resources.style';
 import ResourceEntry from './Resources-Entry';
@@ -48,6 +49,7 @@ class Resources extends Component {
 
     return (
       <Fragment>
+        <CHeader menu />
         <S.H1>Resources</S.H1>
         <S.Section>
           <S.H2>Funding</S.H2>
