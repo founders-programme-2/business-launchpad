@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import { LOGIN_URL, DASHBOARD_URL } from '../constants';
 
@@ -44,6 +44,7 @@ class Login extends Component {
       errors.passwordError = 'Please enter your password.';
     }
     this.setState({
+      // eslint-disable-next-line react/no-access-state-in-setstate
       ...this.state,
       ...errors,
     });
@@ -126,5 +127,9 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default Login;

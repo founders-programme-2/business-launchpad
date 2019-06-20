@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import { LOGIN_URL, SIGNUP_URL } from '../constants';
 
@@ -201,5 +201,9 @@ class signUp extends Component {
     );
   }
 }
+
+signUp.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default signUp;
