@@ -49,10 +49,7 @@ class Resources extends Component {
 
     return (
       <Fragment>
-<<<<<<< HEAD
         <CHeader menu />
-        <h1>Resources</h1>
-=======
         <S.H1>Resources</S.H1>
         <S.Section>
           <S.H2>Funding</S.H2>
@@ -70,7 +67,6 @@ class Resources extends Component {
           <S.H2>Books Worth Reading</S.H2>
           {this.renderResources(resourceData, 'books')}
         </S.Section>
->>>>>>> staging
       </Fragment>
     );
   }
