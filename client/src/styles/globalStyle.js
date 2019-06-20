@@ -20,7 +20,7 @@ export default createGlobalStyle`
         color: var(--black);
         display: flex;
         flex-direction: column;
-        margin: 1rem;
+        margin: 1 rem;
 
     };
 
