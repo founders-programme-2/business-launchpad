@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Main = styled.main`
-  background-color: var(--main-color, #f9d52f);
+  background-color: var(--main-color);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -13,12 +13,6 @@ export const H1 = styled.h1`
   font-style: var(--black);
   background-color: var(--white);
   margin: 50px;
-`;
-export const Form = styled.form`
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column wrap; */
 `;
 
 export const Label = styled.label`

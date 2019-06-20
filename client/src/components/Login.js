@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import * as S from './Login.style';
+import { LOGIN_URL, DASHBOARD_URL } from '../constants';
 
 class Login extends Component {
   state = {
@@ -17,7 +18,7 @@ class Login extends Component {
     axios.get('/checkCookie').then(({ data: { cookie } }) => {
       if (cookie) {
         const { history } = this.props;
-        history.push('/dashboard');
+        history.push(DASHBOARD_URL);
       }
     });
   }
@@ -59,9 +60,9 @@ class Login extends Component {
         password,
       };
 
-      axios.post('/account/login', inputs).then(({ data }) => {
+      axios.post(LOGIN_URL, inputs).then(({ data }) => {
         if (data.success) {
-          history.push('/dashboard');
+          history.push(DASHBOARD_URL);
         } else {
           this.setState({
             passwordError: 'email or password is incorrect.',

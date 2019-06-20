@@ -2,12 +2,14 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import * as S from './Login.style';
+import { LOGIN_URL, SIGNUP_URL } from '../constants';
 
 class signUp extends Component {
   state = {
     name: '',
     email: '',
     password: '',
+    confirmPassword: '',
     nameError: '',
     emailError: '',
     passwordError: '',
@@ -20,7 +22,7 @@ class signUp extends Component {
     axios.get('/checkCookie').then(({ data: { cookie } }) => {
       if (cookie) {
         const { history } = this.props;
-        history.push('/account/login');
+        history.push(LOGIN_URL);
       }
     });
   }
@@ -69,6 +71,15 @@ class signUp extends Component {
         errors.isErrorName = true;
         errors.nameError = 'Name is required.';
       }
+      if (this.state.password !== this.state.confirmPassword) {
+        isError = true;
+        errors.isErrorPassword = true;
+        errors.passwordError = 'Passwords do not match.';
+      } else if (this.state.password.length < 6) {
+        isError = true;
+        errors.isErrorPassword = true;
+        errors.passwordError = 'Password needs to be at least 6 characters.';
+      }
     }
 
     this.setState({
@@ -82,16 +93,17 @@ class signUp extends Component {
     const err = this.validate();
     if (!err) {
       const { history } = this.props;
-      const { name, email, password } = this.state;
+      const { name, email, password, confirmPassword } = this.state;
       const inputs = {
         name,
         email,
         password,
+        confirmPassword,
       };
-      axios.post('/account/sign-up', inputs).then(({ data }) => {
+      axios.post(SIGNUP_URL, inputs).then(({ data }) => {
         if (data.success) {
           history.push({
-            pathname: '/account/login',
+            pathname: 'LOGIN_URL',
             data: this.props.location.data,
           });
         } else {
@@ -115,6 +127,7 @@ class signUp extends Component {
       email,
       passwordError,
       password,
+      confirmPassword,
     } = this.state;
     return (
       <Fragment>
@@ -163,6 +176,21 @@ class signUp extends Component {
               onChange={e =>
                 this.setState({
                   password: e.target.value,
+                })
+              }
+            />
+            <S.Label for="confirmPassword"> confirmPassword </S.Label>
+            <S.Input
+              StyleError={isErrorPassword}
+              {...this.props}
+              type="password"
+              name="confirmPassword"
+              label="password"
+              errorText={passwordError}
+              value={confirmPassword}
+              onChange={e =>
+                this.setState({
+                  name: e.target.value,
                 })
               }
             />

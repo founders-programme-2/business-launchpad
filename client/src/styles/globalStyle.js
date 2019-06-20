@@ -47,14 +47,14 @@ export default createGlobalStyle`
     h2 {
         font-family: 'Work Sans', sans-serif;
         font-weight: 700;
-        font-size: 3em;
+        font-size: 3rem;
         letter-spacing: 0.1rem;
     };
 
     h3 {
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.1rem;
         text-transform: uppercase;
         line-height: 1.1rem;
     };
@@ -64,7 +64,7 @@ export default createGlobalStyle`
         font-weight: 500;
         letter-spacing: 0.1rem;
         line-height: 1.1rem;
-    }; 
+    };
 
     p {
         font-family: 'Roboto', sans-serif;
