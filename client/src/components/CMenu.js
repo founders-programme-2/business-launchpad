@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import {
   DASHBOARD_URL,
   CONTACT_URL,
@@ -51,29 +50,19 @@ class CMenu extends Component {
               </S.ButtonClose>
               <Line />
               <S.MenuElement>
-                <S.MenuText>
-                  <Link to={DASHBOARD_URL}>DASHBOARD</Link>
-                </S.MenuText>
+                <S.LinkText to={DASHBOARD_URL}>DASHBOARD</S.LinkText>
               </S.MenuElement>
               <S.MenuElement>
-                <S.MenuText>
-                  <Link to={JOURNAL_URL}>GOALS</Link>
-                </S.MenuText>
+                <S.LinkText to={JOURNAL_URL}>GOALS</S.LinkText>
               </S.MenuElement>
               <S.MenuElement>
-                <S.MenuText>
-                  <Link to={RESOURCES_URL}>RESOURCES</Link>
-                </S.MenuText>
+                <S.LinkText to={RESOURCES_URL}>RESOURCES</S.LinkText>
               </S.MenuElement>
               <S.MenuElement>
-                <S.MenuText>
-                  <Link to={CONTACT_URL}>CONTACT</Link>
-                </S.MenuText>
+                <S.LinkText to={CONTACT_URL}>CONTACT</S.LinkText>
               </S.MenuElement>
               <S.MenuElement>
-                <S.MenuText>
-                  <Link to="logout">LOG OUT</Link>
-                </S.MenuText>
+                <S.LinkText to="logout">LOG OUT</S.LinkText>
               </S.MenuElement>
               <Logo src={logo} alt="Launchpad logo" />
             </S.MenuWrapper>
@@ -85,4 +74,3 @@ class CMenu extends Component {
 }
 
 export default CMenu;
-

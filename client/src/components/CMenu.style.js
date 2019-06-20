@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ButtonOpen = styled.button`
   border: none;
@@ -46,7 +47,7 @@ export const CloseX = styled.div`
   }
   :after {
     position: absolute;
-    left: 4rem;
+    left: 6rem;
     top: 3rem;
     content: ' ';
     height: 1.5rem;
@@ -58,7 +59,7 @@ export const CloseX = styled.div`
 
   :before {
     position: absolute;
-    left: 4rem;
+    left: 6rem;
     top: 3rem;
     content: ' ';
     height: 1.5rem;
@@ -71,63 +72,11 @@ export const CloseX = styled.div`
 
 export const PClose = styled(P)`
   position: absolute;
-  left: 3.1rem;
+  left: 5.1rem;
   top: 4.1rem;
 `;
 
-// export const CloseContainer = styled.div`
-//   width: 95%;
-//   height: 4rem;
-// `;
-// export const Close = styled.div`
-//     position: absolute;
-//     top: 5rem;
-//     width: 32px;
-//     height: 32px;
-//     margin-left: 1rem;
-//   }
-//   :hover {
-//     opacity: 0.5;
-//     cursor: pointer;
-//   }
-//   :after {
-//     position: absolute;
-//     left: 15px;
-//     content: ' ';
-//     height: 33px;
-//     width: 0.4rem;
-//     background-color: var(--black);
-//     transform: rotate(45deg);
-//     border-radius: 3rem;
-//   }
-
-//   :before {
-//     position: absolute;
-//     left: 15px;
-//     content: ' ';
-//     height: 33px;
-//     width: 0.4rem;
-//     background-color: var(--black);
-//     transform: rotate(45deg);
-//     border-radius: 3rem;
-//   }
-// `;
-// export const CloseText = styled.h4`
-//   font-weight: 700;
-//   font-size: 8px;
-//   color: var(--black);
-//   letter-spacing: 0.2rem;
-//   position: absolute;
-//   top: 7rem;
-//   margin-left: 1rem;
-//   margin-bottom: 1rem;
-//   :hover {
-//     opacity: 0.5;
-//     cursor: pointer;
-//   }
-// `;
 export const MenuWrapper = styled.div`
-  background-color: pink;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,20 +87,26 @@ export const MenuWrapper = styled.div`
 export const MenuElement = styled.button`
   background-color: var(--white);
   border: none;
-  color: var(--black);
   padding: 0.5rem;
   text-align: center;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  // display: inline-flex;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
+
+  :hover {
+    background-color: var(--black);
+  }
 `;
-export const MenuText = styled.h2`
+export const LinkText = styled(Link)`
+  font-family: 'Work Sans', sans-serif;
+  color: var(--black);
   font-size: 1.5rem;
-  a {
-    text-decoration: none;
-    color: var(--black);
-    font-weight: 700;
+  letter-spacing: 10%;
+  text-decoration: none;
+  font-weight: 900;
+  :hover {
+    color: var(--white);
   }
 `;
 // //////////////////////////
