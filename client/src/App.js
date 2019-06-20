@@ -4,7 +4,7 @@ import './styles/reset.css';
 import GlobalStyle from './styles/globalStyle';
 import Landing from './components/Landing';
 import Login from './components/Login';
-import SignUp from './components/SignUp';
+import Register from './components/register';
 import Info from './components/Info';
 import Dashboard from './components/Dashboard';
 import Contact from './components/Contact';
@@ -16,7 +16,7 @@ import { MyProvider } from './components/Context';
 import {
   LANDING_URL,
   LOGIN_URL,
-  SIGNUP_URL,
+  REGISTER_URL,
   INFO_URL,
   DASHBOARD_URL,
   CONTACT_URL,
@@ -34,7 +34,7 @@ const App = () => {
         <Switch>
           <Route exact path={LANDING_URL} component={Landing} />
           <Route exact path={LOGIN_URL} component={Login} />
-          <Route exact path={SIGNUP_URL} component={SignUp} />
+          <Route exact path={REGISTER_URL} component={Register} />
           <Route exact path={INFO_URL} component={Info} />
           <Route exact path={DASHBOARD_URL} component={Dashboard} />
           <Route exact path={CONTACT_URL} component={Contact} />

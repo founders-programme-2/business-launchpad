@@ -3,9 +3,9 @@ import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import CHeader from './CHeader';
-import { LOGIN_URL, SIGNUP_URL } from '../constants';
+import { LOGIN_URL, REGISTER_URL } from '../constants';
 
-class signUp extends Component {
+class Register extends Component {
   state = {
     name: '',
     email: '',
@@ -91,7 +91,7 @@ class signUp extends Component {
     return isError;
   };
 
-  signup = () => {
+  register = () => {
     const err = this.validate();
     if (!err) {
       const { history } = this.props;
@@ -103,7 +103,7 @@ class signUp extends Component {
         confirmPassword,
       };
 
-      axios.post(SIGNUP_URL, inputs).then(({ data }) => {
+      axios.post(REGISTER_URL, inputs).then(({ data }) => {
         if (data.success) {
           history.push({
             pathname: 'LOGIN_URL',
@@ -198,15 +198,15 @@ class signUp extends Component {
               }
             />
           </form>
-          <S.Button onClick={this.signup}>Sign up </S.Button>
+          <S.Button onClick={this.register}>Sign up </S.Button>
         </S.Main>
       </Fragment>
     );
   }
 }
 
-signUp.propTypes = {
+Register.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
 };
 
-export default signUp;
+export default Register;
