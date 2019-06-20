@@ -6,14 +6,12 @@ import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
 import { MyContext } from './Context';
 
-// fake data used in place of a call to the database
-import fakeData from '../fakeData';
-
 class Journal extends Component {
   state = {
     goals: [],
   };
 
+  // queries database to retrieve all goals for current user on page load
   componentDidMount() {
     const { _id } = this.context.state;
     axios
@@ -29,8 +27,9 @@ class Journal extends Component {
     if (data.length === 0) {
       return <S.P>No goals found. Make some now!</S.P>;
     }
-    return data.map(goalData => {
-      return <Goal {...goalData} key={goalData.id} />;
+    return data.map((goalData, ind) => {
+      const key = goalData._id + ind;
+      return <Goal {...goalData} key={key} />;
     });
   };
 
@@ -38,13 +37,17 @@ class Journal extends Component {
     // separates all goal data into 'toDos' and 'completed' for easy rendering
     const toDo = [];
     const completed = [];
-    fakeData.forEach(goal => {
-      if (goal.checked) {
-        completed.push(goal);
-      } else {
-        toDo.push(goal);
-      }
-    });
+    const allGoals = this.state.goals;
+    if (allGoals.length > 0) {
+      allGoals.forEach(goal => {
+        if (goal.completed) {
+          completed.push(goal);
+        } else {
+          toDo.push(goal);
+        }
+      });
+    }
+
     return (
       <Fragment>
         <S.H1>
