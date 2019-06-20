@@ -1,5 +1,6 @@
 const User = require('../database/models/User');
 const { validateGoal } = require('../middleware/validation/validateGoal');
+const { getGoals } = require('./getGoals');
 
 const addGoal = (req, res) => {
   const { errors, isValid } = validateGoal(req.body);
@@ -26,10 +27,7 @@ const addGoal = (req, res) => {
         });
       }
       console.log(`Goal saved to user!`);
-      return res.status(200).send({
-        success: true,
-        message: 'Goal saved!',
-      });
+      return getGoals(req, res);
     });
   });
 };
