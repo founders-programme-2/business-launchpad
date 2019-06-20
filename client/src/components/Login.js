@@ -1,12 +1,9 @@
 import React, { Component, Fragment } from 'react';
-<<<<<<< HEAD
 import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import { LOGIN_URL, DASHBOARD_URL } from '../constants';
-=======
 import CHeader from './CHeader';
->>>>>>> staging
 
 class Login extends Component {
   state = {
@@ -90,6 +87,7 @@ class Login extends Component {
     } = this.state;
     return (
       <Fragment>
+        <CHeader />
         <S.Main>
           <S.H1>Login</S.H1>
           <form>

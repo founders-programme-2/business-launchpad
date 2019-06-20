@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
+import CHeader from './CHeader';
 import { LOGIN_URL, SIGNUP_URL } from '../constants';
 
 class signUp extends Component {
@@ -132,7 +133,7 @@ class signUp extends Component {
     } = this.state;
     return (
       <Fragment>
-<<<<<<< HEAD
+        <CHeader />
         <S.Main>
           <S.H1>Sign up</S.H1>
           <form>
@@ -199,10 +200,6 @@ class signUp extends Component {
           </form>
           <S.Button onClick={this.signup}>Sign up </S.Button>
         </S.Main>
-=======
-        <CHeader />
-        <h1>SignUp</h1>
->>>>>>> staging
       </Fragment>
     );
   }
