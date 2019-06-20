@@ -10,7 +10,7 @@ class Journal extends Component {
   state = {};
 
   // componentDidMount() {
-  //   axios.get('/account/goals').then(response => {
+  //   axios.get('/account/allgoals').then(response => {
   //    put the response in state and then use it in the variables below the render call
   //   });
   // }
