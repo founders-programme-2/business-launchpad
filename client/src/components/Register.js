@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import CHeader from './CHeader';
-import { LOGIN_URL, REGISTER_URL } from '../constants';
-
+import { LOGIN_URL } from '../constants';
 class Register extends Component {
   state = {
     name: '',
@@ -39,7 +37,7 @@ class Register extends Component {
           <S.H1>Sign up</S.H1>
           <p>
             Already have an account?
-            <Link to="/login">Log in</Link>
+            <Link to={LOGIN_URL}>Log in</Link>
           </p>
           <form onSubmit={this.onSubmit}>
             <S.Label for="name"> Name: </S.Label>
