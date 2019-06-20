@@ -20,6 +20,7 @@ export default createGlobalStyle`
         color: var(--black);
         display: flex;
         flex-direction: column;
+        margin: 1rem;
 
     };
 
@@ -78,14 +79,15 @@ export default createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
         letter-spacing: 0.1rem;
-        line-height: 1.1em;
+        line-height: 1.1rem;
         text-decoration: underline;
     };
 
     label {
         color: var(--black);
-        font-family: 'Work Sans', sans-serif;
         font-weight: 900;
         letter-spacing: 0.1rem;
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.85rem;
     }
 `;
