@@ -47,7 +47,7 @@ class CMenu extends Component {
                 }}
               >
                 <S.CloseX />
-                <S.P>close</S.P>
+                <S.PClose>close</S.PClose>
               </S.ButtonClose>
               <Line />
               <S.MenuElement>
@@ -86,19 +86,3 @@ class CMenu extends Component {
 
 export default CMenu;
 
-{
-  /* <S.CloseContainer>
-                <S.Close
-                  onClick={() => {
-                    this.hide();
-                  }}
-                />
-                <S.CloseText
-                  onClick={() => {
-                    this.hide();
-                  }}
-                >
-                  close
-                </S.CloseText>
-              </S.CloseContainer> */
-}

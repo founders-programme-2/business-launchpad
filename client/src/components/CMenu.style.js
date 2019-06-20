@@ -32,6 +32,8 @@ export const ButtonClose = styled.button`
   height: 2rem;
   display: flex;
   flex-direction: column;
+  border: none;
+  background-color: var(--highlight);
 `;
 
 export const CloseX = styled.div`
@@ -44,8 +46,8 @@ export const CloseX = styled.div`
   }
   :after {
     position: absolute;
-    left: 2rem;
-    top: 4rem;
+    left: 4rem;
+    top: 3rem;
     content: ' ';
     height: 1.5rem;
     width: 0.4rem;
@@ -56,8 +58,8 @@ export const CloseX = styled.div`
 
   :before {
     position: absolute;
-    left: 2rem;
-    top: 4rem;
+    left: 4rem;
+    top: 3rem;
     content: ' ';
     height: 1.5rem;
     width: 0.4rem;
@@ -65,6 +67,12 @@ export const CloseX = styled.div`
     transform: rotate(-45deg);
     border-radius: 3rem;
   }
+`;
+
+export const PClose = styled(P)`
+  position: absolute;
+  left: 3.1rem;
+  top: 4.1rem;
 `;
 
 // export const CloseContainer = styled.div`
@@ -124,7 +132,7 @@ export const MenuWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 600px;
+  height: 100vh;
   background-color: var(--highlight);
 `;
 export const MenuElement = styled.button`
