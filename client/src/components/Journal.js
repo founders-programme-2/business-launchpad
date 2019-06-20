@@ -13,13 +13,14 @@ class Journal extends Component {
 
   // queries database to retrieve all goals for current user on page load
   componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
     const { _id } = this.context.state;
     axios
       .post('/account/allgoals', { _id })
       .then(goalsData => {
         this.setState({ goals: goalsData.data.data.goals });
       })
-      .catch(err => console.log(err));
+      .catch(err => err);
   }
 
   // function to render the goals in each section
@@ -28,6 +29,7 @@ class Journal extends Component {
       return <S.P>No goals found. Make some now!</S.P>;
     }
     return data.map((goalData, ind) => {
+      // eslint-disable-next-line no-underscore-dangle
       const key = goalData._id + ind;
       return <Goal {...goalData} key={key} />;
     });
@@ -37,7 +39,7 @@ class Journal extends Component {
     // separates all goal data into 'toDos' and 'completed' for easy rendering
     const toDo = [];
     const completed = [];
-    const allGoals = this.state.goals;
+    const { goals: allGoals } = this.state;
     if (allGoals.length > 0) {
       allGoals.forEach(goal => {
         if (goal.completed) {
