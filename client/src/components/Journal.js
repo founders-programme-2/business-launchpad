@@ -18,7 +18,8 @@ class Journal extends Component {
     axios
       .post('/account/allgoals', { _id })
       .then(goalsData => {
-        this.setState({ goals: goalsData.data.data.goals });
+        // eslint-disable-next-line react/destructuring-assignment
+        this.context.updateGoals(goalsData.data.data.goals);
       })
       .catch(err => err);
   }

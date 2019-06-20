@@ -10,10 +10,16 @@ export class MyProvider extends Component {
     _id: '5d0912f508d0f83945e080dd',
   };
 
+  updateGoals = goalData => {
+    this.setState({ goalData });
+  };
+
   render() {
     const { children } = this.props;
     return (
-      <MyContext.Provider value={{ state: this.state }}>
+      <MyContext.Provider
+        value={{ state: this.state, updateGoals: this.updateGoals }}
+      >
         {children}
       </MyContext.Provider>
     );
