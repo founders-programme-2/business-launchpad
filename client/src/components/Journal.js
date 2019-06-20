@@ -1,19 +1,28 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+
 import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
+import { MyContext } from './Context';
 
 // fake data used in place of a call to the database
 import fakeData from '../fakeData';
 
 class Journal extends Component {
-  state = {};
+  state = {
+    goals: [],
+  };
 
-  // componentDidMount() {
-  //   axios.get('/account/allgoals').then(response => {
-  //    put the response in state and then use it in the variables below the render call
-  //   });
-  // }
+  componentDidMount() {
+    const { _id } = this.context.state;
+    axios
+      .post('/account/allgoals', { _id })
+      .then(goalsData => {
+        this.setState({ goals: goalsData.data.data.goals });
+      })
+      .catch(err => console.log(err));
+  }
 
   // function to render the goals in each section
   renderGoals = data => {
@@ -74,5 +83,7 @@ class Journal extends Component {
     );
   }
 }
+// allows us to access context within the component
+Journal.contextType = MyContext;
 
 export default Journal;

@@ -13,6 +13,6 @@ router.post('/account/register', register);
 router.post('/account/login', login);
 router.get('/account/logout', logout);
 router.get('/resources/get', getResources);
-router.get('/account/allgoals', getGoals);
+router.post('/account/allgoals', getGoals);
 
 module.exports = router;

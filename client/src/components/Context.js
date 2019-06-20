@@ -1,13 +1,14 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const MyContext = React.createContext();
+export const MyContext = React.createContext();
 export class MyProvider extends Component {
   state = {
     isLoggedIn: false,
     token: '',
+    _id: '5d0912f508d0f83945e080dd',
   };
-
 
   render() {
     const { children } = this.props;
