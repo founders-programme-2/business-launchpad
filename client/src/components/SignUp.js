@@ -60,7 +60,7 @@ class signUp extends Component {
       isErrorEmail: false,
       isErrorPassword: false,
     };
-    for (let i = 0; i < characters.length; i++) {
+    for (let i = 0; i < characters.length; i + 1) {
       if (name.includes(characters[i])) {
         isError = true;
         errors.isErrorName = true;
@@ -71,11 +71,12 @@ class signUp extends Component {
         errors.isErrorName = true;
         errors.nameError = 'Name is required.';
       }
-      if (this.state.password !== this.state.confirmPassword) {
+      const { password, confirmPassword } = this.state;
+      if (password !== confirmPassword) {
         isError = true;
         errors.isErrorPassword = true;
         errors.passwordError = 'Passwords do not match.';
-      } else if (this.state.password.length < 6) {
+      } else if (password.length < 6) {
         isError = true;
         errors.isErrorPassword = true;
         errors.passwordError = 'Password needs to be at least 6 characters.';
@@ -100,11 +101,11 @@ class signUp extends Component {
         password,
         confirmPassword,
       };
+
       axios.post(SIGNUP_URL, inputs).then(({ data }) => {
         if (data.success) {
           history.push({
             pathname: 'LOGIN_URL',
-            data: this.props.location.data,
           });
         } else {
           this.setState({
