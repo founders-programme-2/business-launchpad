@@ -5,7 +5,7 @@ class Info extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader/>
+        <CHeader />
         <h1>Info</h1>
       </Fragment>
     );

@@ -5,7 +5,7 @@ class SignUp extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader/>
+        <CHeader />
         <h1>SignUp</h1>
       </Fragment>
     );

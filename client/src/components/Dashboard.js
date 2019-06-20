@@ -5,7 +5,7 @@ class Dashboard extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader menu/>
+        <CHeader menu />
         <h1>Dashboard</h1>
       </Fragment>
     );

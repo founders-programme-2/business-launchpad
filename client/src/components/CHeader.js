@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as S from './CHeader.style';
 import logo from '../assets/logoWhite.svg';
@@ -27,3 +28,11 @@ const CHeader = props => {
   );
 };
 export default CHeader;
+
+CHeader.propTypes = {
+  menu: PropTypes.string.isRequired,
+};
+
+CHeader.defaultProp = {
+  menu: PropTypes.bool,
+};

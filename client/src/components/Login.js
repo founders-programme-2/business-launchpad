@@ -5,7 +5,7 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader/>
+        <CHeader />
         <h1>Login</h1>
       </Fragment>
     );

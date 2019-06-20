@@ -5,7 +5,7 @@ class Contact extends Component {
   render() {
     return (
       <Fragment>
-      <CHeader menu/>
+        <CHeader menu />
       </Fragment>
     );
   }

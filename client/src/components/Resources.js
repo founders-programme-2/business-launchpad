@@ -5,7 +5,7 @@ class Resources extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader menu/>
+        <CHeader menu />
         <h1>Resources</h1>
       </Fragment>
     );
