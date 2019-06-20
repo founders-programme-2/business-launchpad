@@ -27,13 +27,18 @@ class AddEntry extends Component {
     axios
       .post('/account/goal', dataToSend)
       // eslint-disable-next-line no-console
-      .then(response => console.log(response))
+      .then(response => {
+        // receives updated list of goals and puts into context
+        // eslint-disable-next-line react/destructuring-assignment
+        this.context.updateGoals(response.data.data.goals);
+      })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error));
   };
 
   render() {
     const { title, category, date, details } = this.state;
+
     return (
       <Fragment>
         <S.Form>
