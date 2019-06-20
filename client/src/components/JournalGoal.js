@@ -1,14 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Component,Fragment } from 'react';
 import * as S from './JournalGoal.style';
+import ReflectionForm from'./JournalReflectionForm'
+class Goal extends Component {
+state={
+isChecked: false
+};
+handleChecked = ()=> {
+this.setState({isChecked: !this.state.isChecked});
+console.log(this.state.isChecked);
+};
 
-const Goal = data => {
+render(){
+  const data  = this.props;
+  console.log(data);
   return (
-    <S.Article>
+    <Fragment>
+    {this.state.isChecked?(<ReflectionForm/>):(<S.Article>
       <S.HeaderSection>
         {data.checked ? (
           <input type="checkbox" defaultChecked />
         ) : (
-          <input type="checkbox" />
+          <input type="checkbox" onChange={ this.handleChecked } />
         )}
         <h3>{data.title}</h3>
         <S.Delete type="submit">X</S.Delete>
@@ -44,8 +56,11 @@ const Goal = data => {
         <S.H4>Details:</S.H4>
         <p>{data.details}</p>
       </S.Body>
-    </S.Article>
-  );
+    </S.Article>)
+  };
+    </Fragment>
+  );}
+
 };
 
 export default Goal;
