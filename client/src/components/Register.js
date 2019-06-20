@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Link from 'react-router-dom';
 import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
@@ -10,203 +11,271 @@ class Register extends Component {
     name: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    nameError: '',
-    emailError: '',
-    passwordError: '',
-    isErrorName: false,
-    isErrorEmail: '',
-    isErrorPassword: false,
+    password2: '',
+    errors: {},
   };
 
-  componentDidMount() {
-    axios.get('/checkCookie').then(({ data: { cookie } }) => {
-      if (cookie) {
-        const { history } = this.props;
-        history.push(LOGIN_URL);
-      }
-    });
-  }
-
-  validate = () => {
-    let isError = false;
-    this.setState({
-      isErrorName: false,
-      isErrorEmail: false,
-      isErrorPassword: false,
-    });
-    const name = this.state;
-    const characters = [
-      '+',
-      '/',
-      '*',
-      '$',
-      '#',
-      '@',
-      '!',
-      '^',
-      '&',
-      '(',
-      ')',
-      '?',
-      '>',
-      '<',
-      '.',
-    ];
-    const errors = {
-      nameError: '',
-      emailError: '',
-      passwordError: '',
-      isErrorName: false,
-      isErrorEmail: false,
-      isErrorPassword: false,
-    };
-    for (let i = 0; i < characters.length; i + 1) {
-      if (name.includes(characters[i])) {
-        isError = true;
-        errors.isErrorName = true;
-        errors.nameError =
-          'Name should only contain letters, numbers, underscores and dashes.';
-      } else if (name < 1) {
-        isError = true;
-        errors.isErrorName = true;
-        errors.nameError = 'Name is required.';
-      }
-      const { password, confirmPassword } = this.state;
-      if (password !== confirmPassword) {
-        isError = true;
-        errors.isErrorPassword = true;
-        errors.passwordError = 'Passwords do not match.';
-      } else if (password.length < 6) {
-        isError = true;
-        errors.isErrorPassword = true;
-        errors.passwordError = 'Password needs to be at least 6 characters.';
-      }
-    }
-
-    this.setState({
-      ...this.state,
-      ...errors,
-    });
-    return isError;
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
-  register = () => {
-    const err = this.validate();
-    if (!err) {
-      const { history } = this.props;
-      const { name, email, password, confirmPassword } = this.state;
-      const inputs = {
-        name,
-        email,
-        password,
-        confirmPassword,
-      };
-
-      axios.post(REGISTER_URL, inputs).then(({ data }) => {
-        if (data.success) {
-          history.push({
-            pathname: 'LOGIN_URL',
-          });
-        } else {
-          this.setState({
-            nameError: 'This name already exists.',
-            isErrorName: true,
-          });
-        }
-      });
-    }
+  onSubmit = e => {
+    e.preventDefault();
   };
 
   render() {
-    const {
-      isErrorEmail,
-      isErrorName,
-      isErrorPassword,
-      nameError,
+    const { name, email, password, password2, errors } = this.state;
+    const newUser = {
       name,
-      emailError,
       email,
-      passwordError,
       password,
-      confirmPassword,
-    } = this.state;
+      password2,
+    };
+    console.log(newUser);
     return (
       <Fragment>
         <CHeader />
         <S.Main>
           <S.H1>Sign up</S.H1>
-          <form>
+          <p>
+            Already have an account?
+            <Link to="/login">Log in</Link>
+          </p>
+          <form onSubmit={this.onSubmit}>
             <S.Label for="name"> Name: </S.Label>
             <S.Input
-              StyleError={isErrorName}
-              {...this.props}
-              type="text"
               name="name"
-              label="name"
-              errorText={nameError}
+              onChange={this.onChange}
               value={name}
-              onChange={e =>
-                this.setState({
-                  name: e.target.value,
-                })
-              }
-            />
-            <S.Label for="email"> Email: </S.Label>
-            <S.Input
-              StyleError={isErrorEmail}
-              {...this.props}
+              error={errors.name}
               type="text"
-              name="email"
-              label="email"
-              errorText={emailError}
-              value={email}
-              onChange={e =>
-                this.setState({
-                  email: e.target.value,
-                })
-              }
             />
-            <S.Label for="password"> Password: </S.Label>
+            <S.Label for="email">Email:</S.Label>
             <S.Input
-              StyleError={isErrorPassword}
-              {...this.props}
-              type="password"
-              name="password"
-              label="password"
-              errorText={passwordError}
+              onChange={this.onChange}
+              value={email}
+              error={errors.email}
+              name="email"
+              type="email"
+            />
+            <S.Label for="password">Password:</S.Label>
+            <S.Input
+              onChange={this.onChange}
               value={password}
-              onChange={e =>
-                this.setState({
-                  password: e.target.value,
-                })
-              }
+              error={errors.password}
+              name="password"
+              type="password"
             />
             <S.Label for="confirmPassword">Confirm Password</S.Label>
             <S.Input
-              StyleError={isErrorPassword}
-              {...this.props}
+              onChange={this.onChange}
+              value={password2}
+              error={errors.password}
+              name="password2"
               type="password"
-              name="confirmPassword"
-              label="password"
-              errorText={passwordError}
-              value={confirmPassword}
-              onChange={e =>
-                this.setState({
-                  name: e.target.value,
-                })
-              }
             />
+            <S.Button type="submit">Sign up</S.Button>
           </form>
-          <S.Button onClick={this.register}>Sign up </S.Button>
         </S.Main>
       </Fragment>
     );
   }
 }
 
-Register.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
-};
-
 export default Register;
+
+// class Register extends Component {
+//   state = {
+//     name: '',
+//     email: '',
+//     password: '',
+//     confirmPassword: '',
+//     nameError: '',
+//     emailError: '',
+//     passwordError: '',
+//   };
+
+//   // componentDidMount() {
+//   //   axios.get('/checkCookie').then(({ data: { cookie } }) => {
+//   //     if (cookie) {
+//   //       const { history } = this.props;
+//   //       history.push(LOGIN_URL);
+//   //     }
+//   //   });
+//   // }
+
+//   // validate = () => {
+//   //   const {
+//   //     name,
+//   //     password,
+//   //     confirmPassword,
+//   //     nameError,
+//   //     emailError,
+//   //     passwordError,
+//   //   } = this.state;
+//   //   let err = false;
+//   //   // List of characters to avoid in name
+//   //   const characters = [
+//   //     '+',
+//   //     '/',
+//   //     '*',
+//   //     '$',
+//   //     '#',
+//   //     '@',
+//   //     '!',
+//   //     '^',
+//   //     '&',
+//   //     '(',
+//   //     ')',
+//   //     '?',
+//   //     '>',
+//   //     '<',
+//   //     '.',
+//   //   ];
+//   //   for (let i = 0; i < characters.length; i + 1) {
+//   //     if (name.includes(characters[i])) {
+//   //       this.setState({
+//   //         nameError:
+//   //           'Name should only contain letters, numbers, underscores and dashes.',
+//   //       });
+//   //       err = true;
+//   //     } else if (name < 1) {
+//   //       this.setState({
+//   //         nameError: 'Please provide a name.',
+//   //       });
+//   //       err = true;
+//   //     }
+//   //     if (password !== confirmPassword) {
+//   //       this.setState({
+//   //         passwordError: 'Passwords do not match.',
+//   //       });
+//   //       err = true;
+//   //     } else if (password.length < 6 && password.length > 30) {
+//   //       this.setState({
+//   //         passwordError: 'Password needs to be between 6 to 30 characters.',
+//   //       });
+//   //       err = true;
+//   //     }
+//   //   }
+
+//   //   if (nameError || passwordError || emailError) {
+//   //     // eslint-disable-next-line no-alert
+//   //     alert(`Error: ${nameError || passwordError || emailError}`);
+//   //   }
+
+//   //   return err;
+//   // };
+
+//   register = () => {
+//     //const err = this.validate();
+//     // if (!err) {
+//       const { history } = this.props;
+//       const { name, email, password, confirmPassword } = this.state;
+//       const inputs = {
+//         name,
+//         email,
+//         password,
+//         confirmPassword,
+//       };
+
+//       axios.post(REGISTER_URL, inputs).then(({ data }) => {
+//         if (data.success) {
+//           history.push({
+//             pathname: 'LOGIN_URL',
+//           });
+//         } else {
+//           this.setState({
+//             nameError: 'This name already exists.',
+//             isErrorName: true,
+//           });
+//         }
+//       });
+//     }
+//   // };
+
+//   render() {
+//     const {
+//       isErrorEmail,
+//       isErrorName,
+//       isErrorPassword,
+//       nameError,
+//       name,
+//       emailError,
+//       email,
+//       passwordError,
+//       password,
+//       confirmPassword,
+//     } = this.state;
+//     return (
+//       <Fragment>
+//         <CHeader />
+//         <S.Main>
+//           <S.H1>Sign up</S.H1>
+//           <form>
+//             <S.Label for="name"> Name: </S.Label>
+//             <S.Input
+//               StyleError={isErrorName}
+//               type="text"
+//               name="name"
+//               label="name"
+//               errorText={nameError}
+//               value={name}
+//               onChange={e =>
+//                 this.setState({
+//                   name: e.target.value,
+//                 })
+//               }
+//             />
+//             <S.Label for="email"> Email: </S.Label>
+//             <S.Input
+//               StyleError={isErrorEmail}
+//               type="text"
+//               name="email"
+//               label="email"
+//               errorText={emailError}
+//               value={email}
+//               onChange={e =>
+//                 this.setState({
+//                   email: e.target.value,
+//                 })
+//               }
+//             />
+//             <S.Label for="password"> Password: </S.Label>
+//             <S.Input
+//               StyleError={isErrorPassword}
+//               type="password"
+//               name="password"
+//               label="password"
+//               errorText={passwordError}
+//               value={password}
+//               onChange={e =>
+//                 this.setState({
+//                   password: e.target.value,
+//                 })
+//               }
+//             />
+//             <S.Label for="confirmPassword">Confirm Password</S.Label>
+//             <S.Input
+//               StyleError={isErrorPassword}
+//               type="password"
+//               name="confirmPassword"
+//               label="confirmPassword"
+//               errorText={passwordError}
+//               value={confirmPassword}
+//               onChange={e =>
+//                 this.setState({
+//                   confirmPassword: e.target.value,
+//                 })
+//               }
+//             />
+//           </form>
+//           <S.Button onClick={this.register}>Sign up</S.Button>
+//         </S.Main>
+//       </Fragment>
+//     );
+//   }
+// }
+
+// Register.propTypes = {
+//   history: ReactRouterPropTypes.history.isRequired,
+// };
