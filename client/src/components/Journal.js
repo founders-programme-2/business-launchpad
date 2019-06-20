@@ -4,6 +4,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
+import CHeader from './CHeader';
 import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
@@ -52,6 +53,7 @@ class Journal extends Component {
 
     return (
       <Fragment>
+        <CHeader menu />
         <S.H1>
           Business <br /> Journal
         </S.H1>
