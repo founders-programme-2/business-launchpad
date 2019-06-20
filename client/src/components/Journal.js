@@ -1,3 +1,6 @@
+// I was having a lot of trouble with this part of eslint so I decided to disable it on this file for now.
+// TODO: Refactor variables to have destructuring assignment
+/* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
@@ -7,18 +10,14 @@ import Goal from './JournalGoal';
 import { MyContext } from './Context';
 
 class Journal extends Component {
-  state = {
-    goals: [],
-  };
+  state = {};
 
   // queries database to retrieve all goals for current user on page load
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
     const { _id } = this.context.state;
     axios
       .post('/account/allgoals', { _id })
       .then(goalsData => {
-        // eslint-disable-next-line react/destructuring-assignment
         this.context.updateGoals(goalsData.data.data.goals);
       })
       .catch(err => err);
@@ -40,8 +39,8 @@ class Journal extends Component {
     // separates all goal data into 'toDos' and 'completed' for easy rendering
     const toDo = [];
     const completed = [];
-    const { goals: allGoals } = this.state;
-    if (allGoals.length > 0) {
+    const allGoals = this.context.state.goalData;
+    if (allGoals) {
       allGoals.forEach(goal => {
         if (goal.completed) {
           completed.push(goal);

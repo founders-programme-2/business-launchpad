@@ -8,6 +8,7 @@ export class MyProvider extends Component {
     isLoggedIn: false,
     token: '',
     _id: '5d0912f508d0f83945e080dd',
+    goalData: [],
   };
 
   updateGoals = goalData => {
