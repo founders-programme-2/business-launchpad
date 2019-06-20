@@ -4,7 +4,7 @@ import './styles/reset.css';
 import GlobalStyle from './styles/globalStyle';
 import Landing from './components/Landing';
 import Login from './components/Login';
-import Register from './components/register';
+import Register from './components/Register';
 import Info from './components/Info';
 import Dashboard from './components/Dashboard';
 import Contact from './components/Contact';
