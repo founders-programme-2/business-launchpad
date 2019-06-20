@@ -132,6 +132,7 @@ class signUp extends Component {
     } = this.state;
     return (
       <Fragment>
+<<<<<<< HEAD
         <S.Main>
           <S.H1>Sign up</S.H1>
           <form>
@@ -198,6 +199,10 @@ class signUp extends Component {
           </form>
           <S.Button onClick={this.signup}>Sign up </S.Button>
         </S.Main>
+=======
+        <CHeader />
+        <h1>SignUp</h1>
+>>>>>>> staging
       </Fragment>
     );
   }

@@ -13,6 +13,11 @@ export default createGlobalStyle`
 
     html {
         font-size: 16px;
+        color: var(--black);
+        display: flex;	     
+        flex-direction: column;	   
+        margin: 0 auto;
+
     };
 
     body {
@@ -24,13 +29,11 @@ export default createGlobalStyle`
 
     };
 
-    header {
-        /* header styling here */
-    };
+
 
     main {
         /* main styling here */
-    };
+      };
 
     footer {
         /* footer styling here */
