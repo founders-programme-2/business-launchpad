@@ -13,23 +13,22 @@ export default createGlobalStyle`
 
     html {
         font-size: 16px;
+        color: var(--black);
+        display: flex;	     
+        flex-direction: column;	   
+        margin: 0 auto;
+
     };
 
     body {
         background-color: var(--white);
-        color: var(--black);
-        display: flex;
-        flex-direction: column;
-        margin: 1rem;
     };
 
-    header {
-        /* header styling here */
-    };
+
 
     main {
         /* main styling here */
-    };
+      };
 
     footer {
         /* footer styling here */
