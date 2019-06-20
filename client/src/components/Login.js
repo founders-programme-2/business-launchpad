@@ -87,7 +87,7 @@ class Login extends Component {
       <Fragment>
         <S.Main>
           <S.H1>Login</S.H1>
-          <S.Form>
+          <form>
             <S.Label for="email"> Email: </S.Label>
             <S.Input
               StyleError={isErrorEmail}
@@ -118,7 +118,7 @@ class Login extends Component {
                 })
               }
             />
-          </S.Form>
+          </form>
           <S.Button onClick={this.login}>login </S.Button>
           <S.P>Forget Your Password?</S.P>
         </S.Main>

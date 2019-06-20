@@ -133,7 +133,7 @@ class signUp extends Component {
       <Fragment>
         <S.Main>
           <S.H1>Sign up</S.H1>
-          <S.Form>
+          <form>
             <S.Label for="name"> Name: </S.Label>
             <S.Input
               StyleError={isErrorName}
@@ -179,7 +179,7 @@ class signUp extends Component {
                 })
               }
             />
-            <S.Label for="confirmPassword"> confirmPassword </S.Label>
+            <S.Label for="confirmPassword">Confirm Password</S.Label>
             <S.Input
               StyleError={isErrorPassword}
               {...this.props}
@@ -194,7 +194,7 @@ class signUp extends Component {
                 })
               }
             />
-          </S.Form>
+          </form>
           <S.Button onClick={this.signup}>Sign up </S.Button>
         </S.Main>
       </Fragment>
