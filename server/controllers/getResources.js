@@ -30,14 +30,12 @@ const getResources = (req, res) => {
       },
       function done(err) {
         if (err) {
-          console.error(err);
           res.json({
             success: false,
             err:
               'There has been an error fetching the resources from Airtable.',
           });
         }
-        console.log('Success. Returning: ', dataToReturn);
         res.json({ success: true, data: dataToReturn });
       }
     );
