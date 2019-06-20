@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const goalSchema = require('./Goal');
 
 const UserSchema = new mongoose.Schema({
   email: {
@@ -29,6 +30,7 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  goals: [goalSchema],
 });
 
 module.exports = mongoose.model('User', UserSchema);

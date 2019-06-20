@@ -6,9 +6,9 @@ const Goal = data => {
     <S.Article>
       <S.HeaderSection>
         {data.checked ? (
-          <input type="checkbox" defaultChecked />
+          <input type="checkbox" defaultChecked aria-label="Completed" />
         ) : (
-          <input type="checkbox" />
+          <input type="checkbox" aria-label="Completed" />
         )}
         <h3>{data.title}</h3>
         <S.Delete type="submit">X</S.Delete>

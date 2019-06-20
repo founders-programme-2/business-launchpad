@@ -5,6 +5,7 @@ const {
   logout,
   getResources,
   getGoals,
+  addGoal,
 } = require('./controllers');
 
 const router = express.Router();
@@ -12,6 +13,7 @@ const router = express.Router();
 router.post('/account/register', register);
 router.post('/account/login', login);
 router.get('/account/logout', logout);
+router.post('/account/goal', addGoal);
 router.get('/resources/get', getResources);
 router.post('/account/allgoals', getGoals);
 
