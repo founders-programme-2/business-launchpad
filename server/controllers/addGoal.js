@@ -1,3 +1,7 @@
+// Leaving console logs in for development information
+/* eslint-disable no-console */
+// TODO: remove console.logs before handover
+
 const User = require('../database/models/User');
 const { validateGoal } = require('../middleware/validation/validateGoal');
 const { getGoals } = require('./getGoals');
@@ -10,7 +14,7 @@ const addGoal = (req, res) => {
 
   const { _id } = req.body;
 
-  User.findOne({ _id }).then(foundUser => {
+  return User.findOne({ _id }).then(foundUser => {
     if (!foundUser) {
       return res.status(400).send({
         success: false,
@@ -18,7 +22,7 @@ const addGoal = (req, res) => {
       });
     }
     foundUser.goals.push(req.body);
-    foundUser.save(err => {
+    return foundUser.save(err => {
       if (err) {
         console.log(`Sorry you've had an error saving a goal! Error:${err}`);
         return res.status(400).send({

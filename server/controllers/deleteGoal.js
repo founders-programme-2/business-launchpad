@@ -1,3 +1,7 @@
+// Leaving console logs in for development information
+/* eslint-disable no-console */
+// TODO: remove console.logs before handover
+
 const User = require('../database/models/User');
 const { getGoals } = require('./getGoals');
 

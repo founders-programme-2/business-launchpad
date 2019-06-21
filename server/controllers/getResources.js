@@ -19,6 +19,7 @@ const getResources = (req, res) => {
       function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
 
+        // eslint-disable-next-line func-names
         records.forEach(function(record) {
           dataToReturn.push(record.fields);
         });
