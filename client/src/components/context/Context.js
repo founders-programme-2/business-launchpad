@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-state */
-import React, { useState, useReducer, useEffect, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export const MyContext = React.createContext();

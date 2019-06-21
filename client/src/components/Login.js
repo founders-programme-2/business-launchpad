@@ -1,10 +1,11 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as S from './Login.style';
 import CHeader from './CHeader';
 import { loginUser } from '../redux/actions/authActions';
-import DASHBOARD_URL from '../constants';
+import { DASHBOARD_URL } from '../constants';
 
 class Login extends Component {
   state = {
@@ -12,6 +13,15 @@ class Login extends Component {
     password: '',
     errors: {},
   };
+
+  componentDidMount() {
+    const { auth, history } = this.props;
+    const { isAuthenticated } = auth;
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (isAuthenticated) {
+      history.push({ DASHBOARD_URL });
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
     const { history } = this.props;
@@ -33,7 +43,6 @@ class Login extends Component {
 
   onSubmit = e => {
     const { email, password } = this.state;
-    const { loginUser } = this.props;
     e.preventDefault();
     const userData = {
       email,
@@ -79,7 +88,6 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
