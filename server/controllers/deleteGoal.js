@@ -1,37 +1,36 @@
 const User = require('../database/models/User');
-const { validateGoal } = require('../middleware/validation/validateGoal');
+const { getGoals } = require('./getGoals');
 
-const addGoal = (req, res) => {
-  const { errors, isValid } = validateGoal(req.body);
-  if (!isValid) {
-    return res.status(400).send(errors);
-  }
-
+const deleteGoal = (req, res) => {
   const { _id, goalId } = req.body;
+  console.log('body is: ', req.body);
 
-  User.findOne({ _id }).then(foundUser => {
-    if (!foundUser) {
-      return res.status(400).send({
-        success: false,
-        message: 'User not found',
+  // finds the user, deletes the goal, and returns the updated list
+  return User.findById(_id)
+    .then(foundUser => {
+      // console.log('found user:', foundUser);
+      foundUser.goals.id(goalId).remove();
+      foundUser.save(err => {
+        if (err) {
+          console.log(
+            `Sorry you've had an error deleting a goal! Error:${err}`
+          );
+          return res.status(400).send({
+            success: false,
+            message: 'Error deleting goal',
+          });
+        }
+        console.log(`Goal deleted!`);
+        return getGoals(req, res);
       });
-    }
-    foundUser.goals.push(req.body);
-    foundUser.save(err => {
-      if (err) {
-        console.log(`Sorry you've had an error saving a goal! Error:${err}`);
-        return res.status(400).send({
-          success: false,
-          message: 'Error saving goal',
-        });
-      }
-      console.log(`Goal saved to user!`);
-      return res.status(200).send({
-        success: true,
-        message: 'Goal saved!',
+    })
+    .catch(err => {
+      console.log('there was an error: ', err);
+      res.send({
+        success: false,
+        error: err,
       });
     });
-  });
 };
 
-module.exports = { addGoal };
+module.exports = { deleteGoal };
