@@ -1,16 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import * as S from './CBtn.style';
+import * as S from './Landing.style';
+import { LOGIN_URL, SIGNUP_URL } from '../constants';
 
 class Landing extends Component {
+  login = () => {
+    const { history } = this.props;
+    history.push(LOGIN_URL);
+  };
+
+  signup = () => {
+    const { history } = this.props;
+    history.push(SIGNUP_URL);
+  };
+
   render() {
-    login = () => {
-      const { history } = this.props;
-      history.push('/login');
-    };
-    signup = () => {
-      const { history } = this.props;
-      history.push('/sign-up');
-    };
     return (
       <Fragment>
         <S.Main>
