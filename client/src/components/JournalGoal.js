@@ -24,7 +24,7 @@ class Goal extends Component {
       .then(goalsData => {
         this.context.updateGoals(goalsData.data.data.goals);
       })
-      .catch(err => console.log(err));
+      .catch(err => err);
   };
 
   render() {
