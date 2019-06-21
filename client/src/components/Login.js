@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import * as S from './Login.style';
 import CHeader from './CHeader';
-import { connect } from 'react-redux';
 import { loginUser } from '../redux/actions/authActions';
+import DASHBOARD_URL from '../constants';
 
 class Login extends Component {
   state = {
@@ -13,12 +14,13 @@ class Login extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    const { history } = this.props;
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard"); // push user to dashboard when they login
+      history.push({ DASHBOARD_URL }); // push user to dashboard when they login
     }
-if (nextProps.errors) {
+    if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
@@ -30,12 +32,14 @@ if (nextProps.errors) {
   };
 
   onSubmit = e => {
+    const { email, password } = this.state;
+    const { loginUser } = this.props;
     e.preventDefault();
-  const userData = {
-      email: this.state.email,
-      password: this.state.password
+    const userData = {
+      email,
+      password,
     };
-    this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+    loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
   };
 
   render() {
@@ -77,11 +81,11 @@ if (nextProps.errors) {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(
   mapStateToProps,
