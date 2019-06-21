@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const passport = require('passport');
+const expressJwt = require('express-jwt');
 const dbConnection = require('./database/dbConnection');
 const router = require('./router');
 
@@ -16,6 +17,9 @@ app.use(router);
 // initialise passport middleware & require the passport file
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
+
+// ensures that any routes starting with /api have a valid token
+app.use('/api', expressJwt({ secret: process.env.SECRET }));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));

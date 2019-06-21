@@ -12,9 +12,9 @@ const router = express.Router();
 
 router.post('/account/register', register);
 router.post('/account/login', login);
-router.get('/account/logout', logout);
-router.post('/account/goal', addGoal);
-router.get('/resources/get', getResources);
-router.post('/account/allgoals', getGoals);
+router.get('/api/logout', logout);
+router.post('/api/goal', addGoal);
+router.get('/api/get', getResources);
+router.post('/api/allgoals', getGoals);
 
 module.exports = router;

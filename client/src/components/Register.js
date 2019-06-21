@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as S from './Login.style';
 import CHeader from './CHeader';
 import { LOGIN_URL } from '../constants';
+import MyContext from './Context';
 class Register extends Component {
   state = {
     name: '',
