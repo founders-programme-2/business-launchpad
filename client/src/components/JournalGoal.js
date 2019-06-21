@@ -1,5 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+
 import * as S from './JournalGoal.style';
 import { MyContext } from './Context';
 
@@ -21,6 +24,7 @@ class Goal extends Component {
   };
 
   render() {
+    const { props } = this.props;
     const {
       title,
       category,
@@ -30,7 +34,7 @@ class Goal extends Component {
       _id,
       dateToDo,
       dateCompleted,
-    } = this.props.props;
+    } = props;
 
     return (
       <S.Article>
@@ -82,4 +86,23 @@ class Goal extends Component {
 }
 Goal.contextType = MyContext;
 
+Goal.propTypes = {
+  title: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  completed: PropTypes.string,
+  dateCreated: PropTypes.string,
+  details: PropTypes.string,
+  _id: PropTypes.string,
+  dateToDo: PropTypes.string,
+  dateCompleted: PropTypes.string,
+};
+
+Goal.defaultProps = {
+  completed: false,
+  dateCreated: '',
+  details: '',
+  _id: '',
+  dateToDo: '',
+  dateCompleted: '',
+};
 export default Goal;
