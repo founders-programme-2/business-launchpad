@@ -1,51 +1,81 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import * as S from './JournalGoal.style';
+import { MyContext } from './Context';
 
-const Goal = data => {
-  return (
-    <S.Article>
-      <S.HeaderSection>
-        {data.checked ? (
-          <input type="checkbox" defaultChecked aria-label="Completed" />
-        ) : (
-          <input type="checkbox" aria-label="Completed" />
-        )}
-        <h3>{data.title}</h3>
-        <S.Delete type="submit">X</S.Delete>
-      </S.HeaderSection>
+class Goal extends Component {
+  state = {
+    id: '',
+  };
 
-      <S.Info>
-        <S.Inline>
-          <S.H4>Category:</S.H4>
-          <p>{data.category}</p>
-        </S.Inline>
+  deleteGoal = id => {
+    const { _id } = this.context.state;
+    axios
+      .post('/account/delete', _id)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+  };
 
-        <S.Inline>
-          <S.H4>Date created:</S.H4>
-          <p>{data.dateCreated}</p>
-        </S.Inline>
+  render() {
+    const {
+      title,
+      category,
+      completed,
+      dateCreated,
+      details,
+      _id,
+      dateToDo,
+      dateCompleted,
+    } = this.props.props;
 
-        <S.Inline>
-          <S.H4>Due date:</S.H4>
-          <p>{data.date}</p>
-        </S.Inline>
+    return (
+      <S.Article>
+        <S.HeaderSection>
+          {completed ? (
+            <input type="checkbox" defaultChecked aria-label="Completed" />
+          ) : (
+            <input type="checkbox" aria-label="Completed" />
+          )}
+          <h3>{title}</h3>
+          <S.Delete type="submit" name={_id}>
+            X
+          </S.Delete>
+        </S.HeaderSection>
 
-        {data.dateCompleted !== '' ? (
-          <Fragment>
-            <S.Inline>
-              <S.H4>Date completed:</S.H4>
-              <p>{data.dateCompleted}</p>
-            </S.Inline>
-          </Fragment>
-        ) : null}
-      </S.Info>
+        <S.Info>
+          <S.Inline>
+            <S.H4>Category:</S.H4>
+            <p>{category}</p>
+          </S.Inline>
 
-      <S.Body>
-        <S.H4>Details:</S.H4>
-        <p>{data.details}</p>
-      </S.Body>
-    </S.Article>
-  );
-};
+          <S.Inline>
+            <S.H4>Date created:</S.H4>
+            <p>{dateCreated}</p>
+          </S.Inline>
+
+          <S.Inline>
+            <S.H4>Due date:</S.H4>
+            <p>{dateToDo}</p>
+          </S.Inline>
+
+          {dateCompleted !== '' ? (
+            <Fragment>
+              <S.Inline>
+                <S.H4>Date completed:</S.H4>
+                <p>{dateCompleted}</p>
+              </S.Inline>
+            </Fragment>
+          ) : null}
+        </S.Info>
+
+        <S.Body>
+          <S.H4>Details:</S.H4>
+          <p>{details}</p>
+        </S.Body>
+      </S.Article>
+    );
+  }
+}
+Goal.contextType = MyContext;
 
 export default Goal;
