@@ -10,12 +10,19 @@ export class MyProvider extends Component {
     // for development this should be a static id of a document in your database
     // until login/authentication automatically starts to save it here
     _id: '5d0912f508d0f83945e080dd',
+    goalData: [],
+  };
+
+  updateGoals = goalData => {
+    this.setState({ goalData });
   };
 
   render() {
     const { children } = this.props;
     return (
-      <MyContext.Provider value={{ state: this.state }}>
+      <MyContext.Provider
+        value={{ state: this.state, updateGoals: this.updateGoals }}
+      >
         {children}
       </MyContext.Provider>
     );

@@ -7,7 +7,7 @@ const addGoal = (req, res) => {
     return res.status(400).send(errors);
   }
 
-  const { _id } = req.body;
+  const { _id, goalId } = req.body;
 
   User.findOne({ _id }).then(foundUser => {
     if (!foundUser) {
