@@ -23,8 +23,6 @@ export default createGlobalStyle`
     body {
         background-color: var(--white);
         color: var(--black);
-        display: flex;
-        flex-direction: column;
         margin: 1 rem;
 
     };

@@ -2,17 +2,16 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   background-color: var(--highlight);
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column wrap;
+  flex-direction: column;
 `;
 
 export const H1 = styled.h1`
   font-style: var(--black);
   background-color: var(--white);
-  margin: 50px;
+  margin: 2.5rem;
 `;
 
 export const Label = styled.label`
@@ -38,11 +37,12 @@ export const Button = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   background-color: var(--black);
-  color: var(--login-color, white);
+  color: var(--white);
   font-weight: 700;
   padding: 0.1rem;
   font-size: 1.5rem;
   letter-spacing: 8%;
+  margin: 1rem;
 `;
 export const P = styled.p`
   font-family: 'Work Sans', sans-serif;

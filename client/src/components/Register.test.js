@@ -2,20 +2,20 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { BrowserRouter } from 'react-router-dom';
 
-const Signup = () => {
+const Register = () => {
   return <h1>Hello</h1>;
 };
 
-export default Signup;
+export default Register;
 
 test('Natural', () => {
-  const signup = renderer
+  const register = renderer
     .create(
       <BrowserRouter>
         {' '}
-        <Signup />{' '}
+        <Register />{' '}
       </BrowserRouter>
     )
     .toJSON();
-  expect(signup).toMatchSnapshot();
+  expect(register).toMatchSnapshot();
 });
