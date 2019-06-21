@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import * as S from './Register.style';
 import CHeader from './CHeader';
 import { LOGIN_URL } from '../constants';
+
 
 class Register extends Component {
   state = {
@@ -17,6 +19,7 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  // Register user
   onSubmit = e => {
     e.preventDefault();
   };

@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unused-state */
-import React, { Component } from 'react';
+import React, { useState, useReducer, useEffect, Component } from 'react';
 import PropTypes from 'prop-types';
-import isEmpty from 'is-empty';
 
 export const MyContext = React.createContext();
 export class MyProvider extends Component {
@@ -20,36 +19,36 @@ export class MyProvider extends Component {
     this.setState({ goalData });
   };
 
-  /* ********************************* AUTHENTICATION ************************************ */
-  /* AUTHENTICATION REDUCER */
-  authReducer = action => {
-    switch (action) {
-      case SET_CURRENT_USER:
-        this.setState({
-          isAuthenticated: !isEmpty(action.payload),
-          user: action.payload,
-        });
-        return this.state
-      case USER_LOADING:
-        this.setState({
-          loading: true,
-        });
-        return this.state;
-      default: {
-        return this.state;
-      }
-    }
-  };
+  // /* ********************************* AUTHENTICATION ************************************ */
+  // /* AUTHENTICATION REDUCER */
+  // authReducer = action => {
+  //   switch (action.type) {
+  //     case 'SET_CURRENT_USER':
+  //       this.setState({
+  //         isAuthenticated: !isEmpty(action.payload),
+  //         user: action.payload,
+  //       });
+  //       return this.state;
+  //     case 'USER_LOADING':
+  //       this.setState({
+  //         loading: true,
+  //       });
+  //       return this.state;
+  //     default: {
+  //       return this.state;
+  //     }
+  //   }
+  // };
 
-  errorReducer = action => {
-    switch (action) {
-      case GET_ERRORS:
-        return action.payload;
-      default: {
-        return this.state;
-      }
-    }
-  };
+  // errorReducer = action => {
+  //   switch (action.type) {
+  //     case 'GET_ERRORS':
+  //       return action.payload;
+  //     default: {
+  //       return this.state;
+  //     }
+  //   }
+  // };
 
   render() {
     const { children } = this.props;
