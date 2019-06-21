@@ -3,6 +3,14 @@ import * as S from './CBtn.style';
 
 class Landing extends Component {
   render() {
+    login = () => {
+      const { history } = this.props;
+      history.push('/login');
+    };
+    signup = () => {
+      const { history } = this.props;
+      history.push('/sign-up');
+    };
     return (
       <Fragment>
         <S.Main>
