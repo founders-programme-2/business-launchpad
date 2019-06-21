@@ -22,34 +22,34 @@ export class MyProvider extends Component {
 
   /* ********************************* AUTHENTICATION ************************************ */
   /* AUTHENTICATION REDUCER */
-  // authReducer = (initialState, action) => {
-  //   switch (action.type) {
-  //     case SET_CURRENT_USER:
-  //       this.setState({
-  //         isAuthenticated: !isEmpty(action.payload),
-  //         user: action.payload,
-  //       });
-  //       break;
-  //     case USER_LOADING:
-  //       this.setState({
-  //         loading: true,
-  //       });
-  //       break;
-  //     default: {
-  //       return initialState;
-  //     }
-  //   }
-  // };
+  authReducer = action => {
+    switch (action) {
+      case SET_CURRENT_USER:
+        this.setState({
+          isAuthenticated: !isEmpty(action.payload),
+          user: action.payload,
+        });
+        return this.state
+      case USER_LOADING:
+        this.setState({
+          loading: true,
+        });
+        return this.state;
+      default: {
+        return this.state;
+      }
+    }
+  };
 
-  // errorReducer = (initialState, action) => {
-  //   switch (action.type) {
-  //     case GET_ERRORS:
-  //       return action.payload;
-  //     default: {
-  //       return initialState;
-  //     }
-  //   }
-  // };
+  errorReducer = action => {
+    switch (action) {
+      case GET_ERRORS:
+        return action.payload;
+      default: {
+        return this.state;
+      }
+    }
+  };
 
   render() {
     const { children } = this.props;

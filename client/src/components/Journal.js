@@ -8,7 +8,7 @@ import CHeader from './CHeader';
 import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
-import { MyContext } from './Context';
+import { MyContext } from './context/Context';
 
 class Journal extends Component {
   state = {};

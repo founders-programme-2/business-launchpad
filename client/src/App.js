@@ -12,7 +12,7 @@ import Privacy from './components/Privacy';
 import Resources from './components/Resources';
 import Journal from './components/Journal';
 import Error404 from './components/Error404';
-import { MyProvider } from './components/Context';
+import { MyProvider } from './components/context/Context';
 import {
   LANDING_URL,
   LOGIN_URL,

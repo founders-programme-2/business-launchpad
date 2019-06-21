@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import * as S from './Journal-AddEntry.style';
-import { MyContext } from './Context';
+import { MyContext } from './context/Context';
 
 class AddEntry extends Component {
   state = {
