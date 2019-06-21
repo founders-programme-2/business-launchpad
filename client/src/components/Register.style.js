@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
 export const Main = styled.main`
-  background-color: var(--main-color);
-  height: 100vh;
+  background-color: var(--highlight);
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding-bottom: 5rem;
 `;
 
 export const H1 = styled.h1`
   font-style: var(--black);
   background-color: var(--white);
-  margin: 50px;
+  margin: 2.5rem;
 `;
 
 export const Label = styled.label`
@@ -38,17 +39,20 @@ export const Button = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   background-color: var(--black);
-  color: var(--login-color, white);
+  color: var(--white);
   font-weight: 700;
   padding: 0.1rem;
   font-size: 1.5rem;
   letter-spacing: 8%;
+  margin: 1rem;
 `;
+
 export const P = styled.p`
   font-family: 'Work Sans', sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 0.8rem;
   text-decoration-line: underline;
-  margin: 50px;
+  margin: 1rem auto;
+  text-align: center;
 `;

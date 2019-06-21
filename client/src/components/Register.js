@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import * as S from './Login.style';
+import * as S from './Register.style';
 import CHeader from './CHeader';
 import { LOGIN_URL } from '../constants';
-import MyContext from './Context';
+
 class Register extends Component {
   state = {
     name: '',
@@ -36,10 +35,6 @@ class Register extends Component {
         <CHeader />
         <S.Main>
           <S.H1>Sign up</S.H1>
-          <p>
-            Already have an account?
-            <Link to={LOGIN_URL}>Log in</Link>
-          </p>
           <form onSubmit={this.onSubmit}>
             <S.Label for="name"> Name: </S.Label>
             <S.Input
@@ -65,7 +60,7 @@ class Register extends Component {
               name="password"
               type="password"
             />
-            <S.Label for="confirmPassword">Confirm Password</S.Label>
+            <S.Label for="confirmPassword">Confirm Password:</S.Label>
             <S.Input
               onChange={this.onChange}
               value={password2}
@@ -75,6 +70,12 @@ class Register extends Component {
             />
             <S.Button type="submit">Sign up</S.Button>
           </form>
+
+          <S.P>
+            Already have an account?
+            <br />
+            <Link to={LOGIN_URL}>Log in</Link>
+          </S.P>
         </S.Main>
       </Fragment>
     );

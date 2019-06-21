@@ -21,8 +21,35 @@ export class MyProvider extends Component {
   };
 
   /* ********************************* AUTHENTICATION ************************************ */
-  /* REDUCERS */
-  
+  /* AUTHENTICATION REDUCER */
+  // authReducer = (initialState, action) => {
+  //   switch (action.type) {
+  //     case SET_CURRENT_USER:
+  //       this.setState({
+  //         isAuthenticated: !isEmpty(action.payload),
+  //         user: action.payload,
+  //       });
+  //       break;
+  //     case USER_LOADING:
+  //       this.setState({
+  //         loading: true,
+  //       });
+  //       break;
+  //     default: {
+  //       return initialState;
+  //     }
+  //   }
+  // };
+
+  // errorReducer = (initialState, action) => {
+  //   switch (action.type) {
+  //     case GET_ERRORS:
+  //       return action.payload;
+  //     default: {
+  //       return initialState;
+  //     }
+  //   }
+  // };
 
   render() {
     const { children } = this.props;
