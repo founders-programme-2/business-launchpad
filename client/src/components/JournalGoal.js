@@ -5,14 +5,18 @@ import { MyContext } from './Context';
 
 class Goal extends Component {
   state = {
-    id: '',
+    goalId: this.props.props._id,
   };
 
-  deleteGoal = id => {
+  deleteGoal = () => {
     const { _id } = this.context.state;
+    const { goalId } = this.state;
+    const dataToSend = { _id, goalId };
     axios
-      .post('/account/delete', _id)
-      .then(response => console.log(response))
+      .post('/account/delete', dataToSend)
+      .then(goalsData => {
+        this.context.updateGoals(goalsData.data.data.goals);
+      })
       .catch(err => console.log(err));
   };
 
@@ -37,7 +41,7 @@ class Goal extends Component {
             <input type="checkbox" aria-label="Completed" />
           )}
           <h3>{title}</h3>
-          <S.Delete type="submit" name={_id}>
+          <S.Delete type="submit" name={_id} onClick={this.deleteGoal}>
             X
           </S.Delete>
         </S.HeaderSection>
