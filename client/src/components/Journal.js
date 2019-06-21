@@ -32,7 +32,7 @@ class Journal extends Component {
     return data.map((goalData, ind) => {
       // eslint-disable-next-line no-underscore-dangle
       const key = goalData._id + ind;
-      return <Goal props={goalData} key={key} />;
+      return <Goal data={goalData} key={key} />;
     });
   };
 

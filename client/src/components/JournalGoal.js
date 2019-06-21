@@ -1,4 +1,7 @@
+// having issues with these rules so I'm disabling for the moment:
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-underscore-dangle */
+
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -8,7 +11,7 @@ import { MyContext } from './Context';
 
 class Goal extends Component {
   state = {
-    goalId: this.props.props._id,
+    goalId: this.props.data._id,
   };
 
   deleteGoal = () => {
@@ -24,7 +27,7 @@ class Goal extends Component {
   };
 
   render() {
-    const { props } = this.props;
+    const { data } = this.props;
     const {
       title,
       category,
@@ -34,7 +37,7 @@ class Goal extends Component {
       _id,
       dateToDo,
       dateCompleted,
-    } = props;
+    } = data;
 
     return (
       <S.Article>
@@ -87,22 +90,15 @@ class Goal extends Component {
 Goal.contextType = MyContext;
 
 Goal.propTypes = {
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  completed: PropTypes.string,
-  dateCreated: PropTypes.string,
-  details: PropTypes.string,
-  _id: PropTypes.string,
-  dateToDo: PropTypes.string,
-  dateCompleted: PropTypes.string,
-};
-
-Goal.defaultProps = {
-  completed: false,
-  dateCreated: '',
-  details: '',
-  _id: '',
-  dateToDo: '',
-  dateCompleted: '',
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    category: PropTypes.string,
+    completed: PropTypes.bool,
+    dateCreated: PropTypes.string,
+    details: PropTypes.string,
+    _id: PropTypes.string,
+    dateToDo: PropTypes.string,
+    dateCompleted: PropTypes.string,
+  }).isRequired,
 };
 export default Goal;
