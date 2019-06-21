@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
+import CHeader from './CHeader';
 
 class Contact extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Contact</h1>
+        <CHeader menu />
       </Fragment>
     );
   }

@@ -17,8 +17,8 @@ options.secretOrKey = secret;
 
 module.exports = passport => {
   passport.use(
-    // eslint-disable-next-line camelcase
     // call JWT auth strategy
+    // eslint-disable-next-line camelcase
     new JwtStrategy(options, (jwt_payload, done) => {
       User.findById(jwt_payload.id)
         .then(user => {
