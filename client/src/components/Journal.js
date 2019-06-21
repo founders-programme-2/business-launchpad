@@ -9,6 +9,7 @@ import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
 import { MyContext } from './Context';
+import { GETGOALS_SERVER } from '../constants';
 
 class Journal extends Component {
   state = {};
@@ -17,7 +18,7 @@ class Journal extends Component {
   componentDidMount() {
     const { _id } = this.context.state;
     axios
-      .post('/account/allgoals', { _id })
+      .post(GETGOALS_SERVER, { _id })
       .then(goalsData => {
         this.context.updateGoals(goalsData.data.data.goals);
       })

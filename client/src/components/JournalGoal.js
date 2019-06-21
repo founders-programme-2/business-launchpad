@@ -6,6 +6,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import { DELGOAL_SERVER } from '../constants';
 import * as S from './JournalGoal.style';
 import { MyContext } from './Context';
 
@@ -19,7 +20,7 @@ class Goal extends Component {
     const { goalId } = this.state;
     const dataToSend = { _id, goalId };
     axios
-      .post('/account/delete', dataToSend)
+      .post(DELGOAL_SERVER, dataToSend)
       .then(goalsData => {
         this.context.updateGoals(goalsData.data.data.goals);
       })
@@ -89,6 +90,7 @@ class Goal extends Component {
 }
 Goal.contextType = MyContext;
 
+// defines what the props should look like
 Goal.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
