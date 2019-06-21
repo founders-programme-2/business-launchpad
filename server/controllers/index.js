@@ -3,6 +3,7 @@ const { login } = require('./login');
 const { logout } = require('./logout');
 const { addGoal } = require('./addGoal');
 const { getResources } = require('./getResources');
+const { deleteGoal } = require('./deleteGoal')
 
 module.exports = {
   register,
@@ -10,4 +11,5 @@ module.exports = {
   logout,
   addGoal,
   getResources,
+  deleteGoal,
 };
