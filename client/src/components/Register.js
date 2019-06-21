@@ -1,10 +1,12 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import { registerUser } from '../redux/actions/authActions';
 import * as S from './Register.style';
 import CHeader from './CHeader';
 import { LOGIN_URL } from '../constants';
-
 
 class Register extends Component {
   state = {
@@ -15,24 +17,37 @@ class Register extends Component {
     errors: {},
   };
 
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
+  };
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   // Register user
   onSubmit = e => {
+    const { history } = this.props;
+    const { name, email, password, password2 } = this.state;
     e.preventDefault();
-  };
 
-  render() {
-    const { name, email, password, password2, errors } = this.state;
     const newUser = {
       name,
       email,
       password,
       password2,
     };
-    console.log(newUser);
+
+    registerUser(newUser, history);
+  };
+
+  render() {
+    const { name, email, password, password2, errors } = this.state;
+
     return (
       <Fragment>
         <CHeader />
@@ -85,7 +100,26 @@ class Register extends Component {
   }
 }
 
-export default Register;
+// mapStateToProps allows us to get our state from Redux and map it to props which we can use inside components.
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+// connect() - connects our components to our Redux store
+// withRouter(Register) allow us to redirect within an action use react router dom
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));
+
+Register.propTypes = {
+  history: PropTypes.object.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
 
 // class Register extends Component {
 //   state = {
