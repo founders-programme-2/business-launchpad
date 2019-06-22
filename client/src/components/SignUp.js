@@ -183,7 +183,7 @@ class signUp extends Component {
                 })
               }
             />
-            <S.Label for="confirmPassword">Confirm Password</S.Label>
+            <S.Label for="confirmPassword">Confirm Password:</S.Label>
             <S.Input
               StyleError={isErrorPassword}
               {...this.props}
