@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.Button`
+const Button = styled.button`
   width: 168px;
   height: 32px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
