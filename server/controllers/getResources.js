@@ -19,6 +19,7 @@ const getResources = (req, res) => {
       function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
 
+        // eslint-disable-next-line func-names
         records.forEach(function(record) {
           dataToReturn.push(record.fields);
         });
@@ -30,14 +31,12 @@ const getResources = (req, res) => {
       },
       function done(err) {
         if (err) {
-          console.error(err);
           res.json({
             success: false,
             err:
               'There has been an error fetching the resources from Airtable.',
           });
         }
-        console.log('Success. Returning: ', dataToReturn);
         res.json({ success: true, data: dataToReturn });
       }
     );

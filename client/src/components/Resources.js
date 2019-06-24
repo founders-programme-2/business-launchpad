@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import CHeader from './CHeader';
 import axios from 'axios';
+import CHeader from './CHeader';
 import * as S from './Resources.style';
 import ResourceEntry from './Resources-Entry';
 

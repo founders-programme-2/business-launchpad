@@ -30,7 +30,7 @@ const CHeader = props => {
 export default CHeader;
 
 CHeader.propTypes = {
-  menu: PropTypes.string.isRequired,
+  menu: PropTypes.bool.isRequired,
 };
 
 CHeader.defaultProp = {
