@@ -16,14 +16,14 @@ class Register extends Component {
     errors: {},
   };
 
-  // componentDidMount = () => {
-  //   const { auth, history } = this.props;
-  //   const { isAuthenticated } = auth;
-  //   // If logged in and user navigates to Register page, should redirect them to dashboard
-  //   if (isAuthenticated) {
-  //     history.push('/dashboard');
-  //   }
-  // };
+  componentDidMount = () => {
+    const { auth, history } = this.props;
+    const { isAuthenticated } = auth;
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (isAuthenticated) {
+      history.push('/dashboard');
+    }
+  };
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.errors) {

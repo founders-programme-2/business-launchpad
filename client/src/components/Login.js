@@ -13,14 +13,14 @@ class Login extends Component {
     errors: {},
   };
 
-  // componentDidMount() {
-  //   const { auth, history } = this.props;
-  //   const { isAuthenticated } = auth;
-  //   // If logged in and user navigates to Login page, should redirect them to dashboard
-  //   if (isAuthenticated) {
-  //     history.push({ DASHBOARD_URL });
-  //   }
-  // }
+  componentDidMount() {
+    const { auth, history } = this.props;
+    const { isAuthenticated } = auth;
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (isAuthenticated) {
+      history.push({ DASHBOARD_URL });
+    }
+  }
 
   componentWillReceiveProps = nextProps => {
     const { history } = this.props;
