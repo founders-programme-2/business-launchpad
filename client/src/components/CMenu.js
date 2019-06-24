@@ -1,4 +1,9 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/forbid-prop-types */
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../redux/actions/authActions';
 import {
   DASHBOARD_URL,
   CONTACT_URL,
@@ -20,6 +25,12 @@ class CMenu extends Component {
 
   hide = () => {
     this.setState({ visible: false });
+  };
+
+  onLogoutClick = e => {
+    const { logoutUser } = this.props;
+    e.preventDefault();
+    logoutUser();
   };
 
   render() {
@@ -61,7 +72,7 @@ class CMenu extends Component {
               <S.MenuElement>
                 <S.LinkText to={CONTACT_URL}>CONTACT</S.LinkText>
               </S.MenuElement>
-              <S.MenuElement>
+              <S.MenuElement onClick={this.onLogoutClick}>
                 <S.LinkText to="logout">LOG OUT</S.LinkText>
               </S.MenuElement>
               <Logo src={logo} alt="Launchpad logo" />
@@ -73,4 +84,16 @@ class CMenu extends Component {
   }
 }
 
-export default CMenu;
+CMenu.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(CMenu);
