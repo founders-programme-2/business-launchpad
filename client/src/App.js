@@ -1,15 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import './styles/reset.css';
-import { Provider } from 'react-redux';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import GlobalStyle from './styles/globalStyle';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+import { Provider } from 'react-redux';
 import { MyProvider } from './components/context/Context';
+import store from './redux/store';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './redux/actions/authActions';
+
+import GlobalStyle from './styles/globalStyle';
+import './styles/reset.css';
+
 import PrivateRoute from './components/privateRoute/PrivateRoute';
-import store from './redux/store';
 import Landing from './components/Landing';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -43,6 +46,7 @@ if (localStorage.jwtToken) {
   const decoded = jwt_decode(token);
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
+  
   // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {
