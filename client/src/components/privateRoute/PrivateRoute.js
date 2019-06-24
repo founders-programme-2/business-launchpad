@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LOGIN_URL from '../../constants';
+import { LOGIN_URL } from '../../constants';
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) => (
   <Route
