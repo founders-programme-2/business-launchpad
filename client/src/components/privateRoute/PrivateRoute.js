@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -18,6 +18,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => (
 );
 PrivateRoute.propTypes = {
   auth: PropTypes.object.isRequired,
+  component: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 const mapStateToProps = state => ({
   auth: state.auth,
