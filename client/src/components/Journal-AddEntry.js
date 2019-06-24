@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import * as S from './Journal-AddEntry.style';
 import { MyContext } from './Context';
+import { ADDGOAL_SERVER } from '../constants';
 
 class AddEntry extends Component {
   state = {
@@ -25,15 +26,20 @@ class AddEntry extends Component {
 
     const dataToSend = this.state;
     axios
-      .post('/account/goal', dataToSend)
+      .post(ADDGOAL_SERVER, dataToSend)
       // eslint-disable-next-line no-console
-      .then(response => console.log(response))
+      .then(response => {
+        // receives updated list of goals and puts into context
+        // eslint-disable-next-line react/destructuring-assignment
+        this.context.updateGoals(response.data.data.goals);
+      })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error));
   };
 
   render() {
     const { title, category, date, details } = this.state;
+
     return (
       <Fragment>
         <S.Form>

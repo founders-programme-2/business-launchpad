@@ -1,5 +1,10 @@
+// Leaving console logs in for development information
+/* eslint-disable no-console */
+// TODO: remove console.logs before handover
+
 const User = require('../database/models/User');
 const { validateGoal } = require('../middleware/validation/validateGoal');
+const { getGoals } = require('./getGoals');
 
 const addGoal = (req, res) => {
   const { errors, isValid } = validateGoal(req.body);
@@ -9,15 +14,24 @@ const addGoal = (req, res) => {
 
   const { _id } = req.body;
 
-  User.findOne({ _id }).then(foundUser => {
+  return User.findOne({ _id }).then(foundUser => {
     if (!foundUser) {
       return res.status(400).send({
         success: false,
         message: 'User not found',
       });
     }
-    foundUser.goals.push(req.body);
-    foundUser.save(err => {
+
+    // had problems with accidentally saving the user _id into every goal, so instead we are creating a new object every time
+    const goalToAdd = {
+      title: req.body.title,
+      category: req.body.category,
+      data: req.body.details,
+      details: req.body.details,
+    };
+
+    foundUser.goals.push(goalToAdd);
+    return foundUser.save(err => {
       if (err) {
         console.log(`Sorry you've had an error saving a goal! Error:${err}`);
         return res.status(400).send({
@@ -26,10 +40,7 @@ const addGoal = (req, res) => {
         });
       }
       console.log(`Goal saved to user!`);
-      return res.status(200).send({
-        success: true,
-        message: 'Goal saved!',
-      });
+      return getGoals(req, res);
     });
   });
 };
