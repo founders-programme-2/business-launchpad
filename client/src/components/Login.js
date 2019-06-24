@@ -60,15 +60,15 @@ class Login extends Component {
         <S.Main>
           <S.H1>Login</S.H1>
           <form>
-            <S.Label for="email">Email:</S.Label>
+            <S.Label htmlFor="email">Email:</S.Label>
             <S.Input
               type="text"
               name="email"
               value={email}
-              onChange={this.onchange}
+              onChange={this.onChange}
               error={errors.email}
             />
-            <S.Label for="password">Password:</S.Label>
+            <S.Label htmlFor="password">Password:</S.Label>
             <S.Input
               type="password"
               name="password"

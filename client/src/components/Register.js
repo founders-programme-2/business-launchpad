@@ -62,7 +62,7 @@ class Register extends Component {
         <S.Main>
           <S.H1>Sign up</S.H1>
           <form onSubmit={this.onSubmit}>
-            <S.Label for="name"> Name: </S.Label>
+            <S.Label htlmFor="name"> Name: </S.Label>
             <S.Input
               name="name"
               onChange={this.onChange}
@@ -70,7 +70,7 @@ class Register extends Component {
               error={errors.name}
               type="text"
             />
-            <S.Label for="email">Email:</S.Label>
+            <S.Label htmlFor="email">Email:</S.Label>
             <S.Input
               onChange={this.onChange}
               value={email}
@@ -78,7 +78,7 @@ class Register extends Component {
               name="email"
               type="email"
             />
-            <S.Label for="password">Password:</S.Label>
+            <S.Label htmlFor="password">Password:</S.Label>
             <S.Input
               onChange={this.onChange}
               value={password}
@@ -86,7 +86,7 @@ class Register extends Component {
               name="password"
               type="password"
             />
-            <S.Label for="confirmPassword">Confirm Password:</S.Label>
+            <S.Label htmlFor="confirmPassword">Confirm Password:</S.Label>
             <S.Input
               onChange={this.onChange}
               value={password2}
