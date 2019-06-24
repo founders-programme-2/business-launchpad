@@ -4,6 +4,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import CHeader from './CHeader';
 import { LOGIN_URL, SIGNUP_URL } from '../constants';
+import Button from './CBtn';
 
 class signUp extends Component {
   state = {
@@ -182,7 +183,7 @@ class signUp extends Component {
                 })
               }
             />
-            <S.Label for="confirmPassword">Confirm Password</S.Label>
+            <S.Label for="confirmPassword">Confirm Password:</S.Label>
             <S.Input
               StyleError={isErrorPassword}
               {...this.props}
@@ -198,7 +199,8 @@ class signUp extends Component {
               }
             />
           </form>
-          <S.Button onClick={this.signup}>Sign up </S.Button>
+
+          <Button text="signup" cb={this.signup} />
         </S.Main>
       </Fragment>
     );

@@ -4,6 +4,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import { LOGIN_URL, DASHBOARD_URL } from '../constants';
 import CHeader from './CHeader';
+import Button from './CBtn';
 
 class Login extends Component {
   state = {
@@ -122,7 +123,7 @@ class Login extends Component {
               }
             />
           </form>
-          <S.Button onClick={this.login}>login </S.Button>
+          <Button text="login" cb={this.login} />
           <S.P>Forget Your Password?</S.P>
         </S.Main>
       </Fragment>
