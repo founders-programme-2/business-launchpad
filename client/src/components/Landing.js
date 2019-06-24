@@ -5,7 +5,7 @@ class Landing extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader />
+        <CHeader menu />
         <h1>This is a h1</h1>
       </Fragment>
     );
