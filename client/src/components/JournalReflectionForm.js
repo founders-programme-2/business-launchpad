@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import * as S from './JournalReflectionForm.style';
 import * as C from './Journal-AddEntry.style';
 import { MyContext } from './Context';
@@ -27,14 +27,14 @@ class ReflectionForm extends Component {
       .put(UPDGOAL_SERVER, dataToSend)
       .then(result => {
       if(result.data.success){
-        //   Swal.fire({
-        //   type: 'success',
-        //   title: 'Your Goal was Updated',
-        //   showConfirmButton: false,
-        //   timer: 1500
-        // })
-        const { history } = this.props;
-        history.push('/journal');
+          Swal.fire({
+          type: 'success',
+          title: 'Your Goal was Updated',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      //   const { history } = this.props;
+      //   history.push('/journal');
       }
 
       })
@@ -72,8 +72,8 @@ class ReflectionForm extends Component {
   }
 }
 ReflectionForm.contextType = MyContext;
-ReflectionForm.propTypes = {
-  history: propTypes.string.isRequired,
-};
+// ReflectionForm.propTypes = {
+//   history: propTypes.string.isRequired,
+// };
 
 export default ReflectionForm;

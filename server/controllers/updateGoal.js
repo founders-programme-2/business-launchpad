@@ -1,5 +1,4 @@
 const User = require('../database/models/User');
-const { getGoals } = require('./getGoals');
 
 const updateGoal = (req, res) => {
   // Find all user goal,find the goal to update, update it , return the updated goal for that user
@@ -10,6 +9,7 @@ const updateGoal = (req, res) => {
     {
       $set: {
         'goals.$.completed': true,
+        'goals.$.reflection':reflection,
       },
     },
     { new: true },
