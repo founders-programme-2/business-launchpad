@@ -9,21 +9,22 @@ import { LANDING_URL, INFO_URL } from '../constants';
 
 const CHeader = props => {
   const { menu } = props;
+  console.log('props are:', props);
   return (
-    <S.Header>
+    <S.Header menu={menu}>
       <S.HeaderWrapper>
         <Link to={LANDING_URL}>
-          <S.Logo src={logo} alt="Launchpad logo" />
+          <S.Logo src={logo} alt="Business Launchpad's logo" />
         </Link>
         {menu ? (
           <CMenu />
         ) : (
           <Link to={INFO_URL}>
-            <S.Logo src={info} alt="Launchpad logo" primary />
+            <S.Logo src={info} alt="App information" primary />
           </Link>
         )}
       </S.HeaderWrapper>
-      {menu ? null : <S.Line />}
+      {menu ? <S.Line /> : null}
     </S.Header>
   );
 };
