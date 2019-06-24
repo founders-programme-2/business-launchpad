@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as S from './CHeader.style';
-import logo from '../assets/logoWhite.svg';
+import logo from '../assets/logoBlack.svg';
 import info from '../assets/info.svg';
 import CMenu from './CMenu';
 import { LANDING_URL, INFO_URL } from '../constants';
@@ -23,16 +23,16 @@ const CHeader = props => {
           </Link>
         )}
       </S.HeaderWrapper>
-      <S.Line />
+      {menu ? null : <S.Line />}
     </S.Header>
   );
 };
 export default CHeader;
 
 CHeader.propTypes = {
-  menu: PropTypes.bool.isRequired,
+  menu: PropTypes.bool,
 };
 
-CHeader.defaultProp = {
+CHeader.defaultProps = {
   menu: PropTypes.bool,
 };
