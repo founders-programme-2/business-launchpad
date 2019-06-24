@@ -133,7 +133,7 @@ class signUp extends Component {
     } = this.state;
     return (
       <Fragment>
-        <CHeader />
+        <CHeader menu={null} />
         <S.Main>
           <S.H1>Sign up</S.H1>
           <form>

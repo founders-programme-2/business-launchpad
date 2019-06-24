@@ -4,7 +4,7 @@ import CHeader from './CHeader';
 const Error404 = () => {
   return (
     <Fragment>
-      <CHeader />
+      <CHeader menu={null} />
       <h1>Error404</h1>
     </Fragment>
   );

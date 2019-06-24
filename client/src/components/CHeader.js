@@ -9,7 +9,7 @@ import { LANDING_URL, INFO_URL } from '../constants';
 
 const CHeader = props => {
   const { menu } = props;
-  console.log('props are:', props);
+
   return (
     <S.Header menu={menu}>
       <S.HeaderWrapper>
