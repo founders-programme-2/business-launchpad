@@ -200,7 +200,7 @@ class signUp extends Component {
             />
           </form>
 
-          <Button text="signup" path="SIGNUP_URL" />
+          <Button text="signup" cb={this.signup} />
         </S.Main>
       </Fragment>
     );
