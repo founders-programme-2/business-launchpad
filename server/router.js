@@ -7,6 +7,7 @@ const {
   getGoals,
   addGoal,
   deleteGoal,
+  updateGoal,
 } = require('./controllers');
 
 const router = express.Router();
@@ -18,5 +19,6 @@ router.post('/account/goal', addGoal);
 router.get('/resources/get', getResources);
 router.post('/account/delete', deleteGoal);
 router.post('/account/allgoals', getGoals);
+router.put('/account/update', updateGoal);
 
 module.exports = router;

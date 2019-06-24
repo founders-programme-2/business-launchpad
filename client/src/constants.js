@@ -17,3 +17,4 @@ export const ADDGOAL_SERVER = '/account/goal';
 export const GETRESOURCES_SERVER = '/resources/get';
 export const DELGOAL_SERVER = '/account/delete';
 export const GETGOALS_SERVER = '/account/allgoals';
+export const UPDGOAL_SERVER = '/account/update';

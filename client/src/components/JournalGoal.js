@@ -50,14 +50,18 @@ class Goal extends Component {
     return (
       <Fragment>
         {this.state.isChecked ? (
-          <ReflectionForm />
+          <ReflectionForm handelCancel={this.handleChecked} goalId={this.state.goalId} />
         ) : (
           <S.Article>
             <S.HeaderSection>
               {completed ? (
                 <input type="checkbox" defaultChecked aria-label="Completed" />
               ) : (
-                <input type="checkbox" aria-label="Completed" />
+                <input
+                  type="checkbox"
+                  aria-label="onGoing"
+                  onChange={this.handleChecked }
+                />
               )}
               <h3>{title}</h3>
               <S.Delete type="submit" name={_id} onClick={this.deleteGoal}>
