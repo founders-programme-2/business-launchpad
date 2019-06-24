@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -112,7 +111,9 @@ class Register extends Component {
 Register.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   registerUser: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   auth: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   errors: PropTypes.object.isRequired,
 };
 
@@ -131,4 +132,3 @@ export default connect(
   mapStateToProps,
   { registerUser }
 )(withRouter(Register));
-

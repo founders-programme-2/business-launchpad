@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -90,7 +89,9 @@ class Login extends Component {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   auth: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   errors: PropTypes.object.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
