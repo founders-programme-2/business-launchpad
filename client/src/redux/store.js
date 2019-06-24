@@ -5,6 +5,8 @@ import rootReducer from './reducers';
 
 const initialState = {};
 const middleware = [thunk];
+// create store takes 3 parameters - your root reducer, initial state, and then any enhancers / middleware
+// compose is a function that allows you to use redux devtools
 const store = createStore(
   rootReducer,
   initialState,
