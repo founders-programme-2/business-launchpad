@@ -10,18 +10,15 @@ export const Main = styled.main`
 `;
 
 export const H1 = styled.h1`
-  position: absolute;
   width: 146px;
   height: 60px;
-  left: 500px;
   top: 180px;
   font-family: Permanent Marker;
   font-weight: bold;
   font-size: 5rem;
   transform: rotate(-7deg);
-  right: 10px;
 `;
-export const H2 = styled.h1`
+export const H2 = styled.h2`
   font-style: var(--black);
   background-color: var(--white);
   margin: 50px;
@@ -32,7 +29,7 @@ export const Button = styled.button`
   position: absolute;
   width: 243px;
   height: 46px;
-  left: 480px;
+  left: 500px;
   top: 500px;
   backgound: var(--white);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -51,7 +48,7 @@ export const Button1 = styled.button`
   position: absolute;
   width: 243px;
   height: 46px;
-  left: 400px;
+  left: 420px;
   top: 500px;
   background: var(--white);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
