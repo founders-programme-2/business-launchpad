@@ -3,36 +3,19 @@ import Button from './CBtn.style';
 
 class CBtn extends Component {
   state = {
-    email: '',
-    password: '',
     text: '',
     path: '',
-    confirmPassword: '',
   };
 
-  login = () => {
-    const { email, password } = this.state;
-    const { history } = this.props;
-    const inputs = {
-      email,
-      password,
-    };
-  };
 
-  signup = () => {
-    const { email, password, confirmPassword } = this.state;
-    const { history } = this.props;
-    const inputs = {
-      email,
-      password,
-      confirmPassword,
-    };
+  onClick(text,path)=>{
+
   };
 
   render() {
-    const { text, path } = this.state;
+
     return (
-      <Button onClick={path} type="button">
+      <Button onClick={this.onClick} type="button">
         {text}
       </Button>
     );
