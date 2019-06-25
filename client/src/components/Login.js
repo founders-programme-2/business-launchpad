@@ -88,7 +88,7 @@ class Login extends Component {
     } = this.state;
     return (
       <Fragment>
-        <CHeader />
+        <CHeader menu={null} />
         <S.Main>
           <S.H1>Login</S.H1>
           <form>

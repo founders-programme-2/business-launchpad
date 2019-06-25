@@ -17,7 +17,7 @@ class Landing extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader />
+        <CHeader menu={null} />
         <S.Main>
           <S.H1>MY</S.H1>
           <S.H2>

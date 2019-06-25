@@ -5,7 +5,7 @@ class Info extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader />
+        <CHeader menu={null} />
         <h1>Info</h1>
       </Fragment>
     );
