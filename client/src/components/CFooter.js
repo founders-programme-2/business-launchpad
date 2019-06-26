@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import * as S from './CFooter.style';
 import { CONTACT_URL, PRIVACY_URL } from '../constants';
 
-class CFooter extends Component {
-  render() {
-    return (
-      <S.Footer>
-        <S.Line />
-        <S.FooterWrapper>
-          <Link to={PRIVACY_URL}>
-            <S.H1>Privacy Policy</S.H1>
-          </Link>
-          <Link to={CONTACT_URL}>
-            <S.H2>Contact Us </S.H2>
-          </Link>
-        </S.FooterWrapper>
-      </S.Footer>
-    );
-  }
-}
+const CFooter = () => {
+  return (
+    <S.Footer>
+      <S.Line />
+      <S.FooterWrapper>
+        <Link to={PRIVACY_URL}>
+          <S.H3>Privacy Policy</S.H3>
+        </Link>
+        <Link to={CONTACT_URL}>
+          <S.H3>Contact Us </S.H3>
+        </Link>
+      </S.FooterWrapper>
+    </S.Footer>
+  );
+};
 
 CFooter.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,

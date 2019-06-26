@@ -5,10 +5,12 @@ export const Footer = styled.footer`
   display: flex;
   flex-direction: column;
   height: 6rem;
+  margin: 1rem;
 `;
 export const FooterWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;
 export const Line = styled.div`
   display: block;
@@ -18,17 +20,10 @@ export const Line = styled.div`
   border-radius: 1rem;
   margin-top: 0.9rem;
 `;
-export const H1 = styled.h1`
+export const H3 = styled.h3`
   font-weight: bold;
   font-size: 1rem;
   color: black
-  text-decoration-line:none;
-  margin-left:5px;
-`;
-export const H2 = styled.h2`
-  font-weight: bold;
-  font-size: 1rem;
-  color: black;
-  margin-left: 1015px;
-  text-decoration: none;
+  float: right;
+
 `;
