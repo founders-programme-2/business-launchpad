@@ -22,13 +22,13 @@ export const H1 = styled.h1`
   font-weight: bold;
   font-size: 1rem;
   color: black
-  text-decoration:none;
+  text-decoration-line:none;
   margin-left:5px;
 `;
 export const H2 = styled.h2`
   font-weight: bold;
   font-size: 1rem;
   color: black;
-  margin-left: 1020px;
+  margin-left: 1015px;
   text-decoration: none;
 `;

@@ -11,10 +11,10 @@ class CFooter extends Component {
         <S.Line />
         <S.FooterWrapper>
           <Link to={PRIVACY_URL}>
-            <S.H1>PrivacyPolicy</S.H1>
+            <S.H1>Privacy Policy</S.H1>
           </Link>
           <Link to={CONTACT_URL}>
-            <S.H2>ContactUs </S.H2>
+            <S.H2>Contact Us </S.H2>
           </Link>
         </S.FooterWrapper>
       </S.Footer>
