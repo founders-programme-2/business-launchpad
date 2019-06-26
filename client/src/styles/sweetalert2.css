@@ -1,0 +1,9 @@
+.swal2-title {}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+  border: .25em solid var(--highlight);
+}
+
+.swal2-icon.swal2-success [class^=swal2-success-line] {
+  background-color: var(--highlight);
+}

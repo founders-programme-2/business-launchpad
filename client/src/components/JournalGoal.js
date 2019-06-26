@@ -50,7 +50,10 @@ class Goal extends Component {
     return (
       <Fragment>
         {this.state.isChecked ? (
-          <ReflectionForm handelCancel={this.handleChecked} goalId={this.state.goalId} />
+          <ReflectionForm
+            handelCancel={this.handleChecked}
+            goalId={this.state.goalId}
+          />
         ) : (
           <S.Article>
             <S.HeaderSection>
@@ -60,7 +63,7 @@ class Goal extends Component {
                 <input
                   type="checkbox"
                   aria-label="onGoing"
-                  onChange={this.handleChecked }
+                  onChange={this.handleChecked}
                 />
               )}
               <h3>{title}</h3>
