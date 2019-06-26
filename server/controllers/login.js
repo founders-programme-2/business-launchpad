@@ -38,6 +38,7 @@ const login = (req, res) => {
           res.send({
             success: true,
             token: `Bearer${token}`,
+            userID: payload.id,
           });
         });
       }

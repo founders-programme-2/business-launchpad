@@ -1,27 +1,39 @@
+// I was having a lot of trouble with this part of eslint so I decided to disable it on this file for now.
+// TODO: Refactor variables to have destructuring assignment
+/* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+
+import CHeader from './CHeader';
 import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
-
-// fake data used in place of a call to the database
-import fakeData from '../fakeData';
+import { MyContext } from './Context';
+import { GETGOALS_SERVER } from '../constants';
 
 class Journal extends Component {
   state = {};
 
-  // componentDidMount() {
-  //   axios.get('/account/goals').then(response => {
-  //    put the response in state and then use it in the variables below the render call
-  //   });
-  // }
+  // queries database to retrieve all goals for current user on page load
+  componentDidMount() {
+    const { _id } = this.context.state;
+    axios
+      .post(GETGOALS_SERVER, { _id })
+      .then(goalsData => {
+        this.context.updateGoals(goalsData.data.data.goals);
+      })
+      .catch(err => err);
+  }
 
   // function to render the goals in each section
   renderGoals = data => {
     if (data.length === 0) {
       return <S.P>No goals found. Make some now!</S.P>;
     }
-    return data.map(goalData => {
-      return <Goal {...goalData} key={goalData.id} />;
+    return data.map((goalData, ind) => {
+      // eslint-disable-next-line no-underscore-dangle
+      const key = goalData._id + ind;
+      return <Goal data={goalData} key={key} />;
     });
   };
 
@@ -29,15 +41,20 @@ class Journal extends Component {
     // separates all goal data into 'toDos' and 'completed' for easy rendering
     const toDo = [];
     const completed = [];
-    fakeData.forEach(goal => {
-      if (goal.checked) {
-        completed.push(goal);
-      } else {
-        toDo.push(goal);
-      }
-    });
+    const allGoals = this.context.state.goalData;
+    if (allGoals) {
+      allGoals.forEach(goal => {
+        if (goal.completed) {
+          completed.push(goal);
+        } else {
+          toDo.push(goal);
+        }
+      });
+    }
+
     return (
       <Fragment>
+        <CHeader menu />
         <S.H1>
           Business <br /> Journal
         </S.H1>
@@ -74,5 +91,7 @@ class Journal extends Component {
     );
   }
 }
+// allows us to access context within the component
+Journal.contextType = MyContext;
 
 export default Journal;

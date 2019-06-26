@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import * as S from './Journal-AddEntry.style';
+import { MyContext } from './Context';
+import { ADDGOAL_SERVER } from '../constants';
 
 class AddEntry extends Component {
   state = {
@@ -15,19 +17,29 @@ class AddEntry extends Component {
   };
 
   handleSubmit = event => {
+    // makes a variable from the information in the state and then adds _id from context
+    const newEntryData = this.state;
+    // eslint-disable-next-line
+    newEntryData._id = this.context.state._id;
+
     event.preventDefault();
+
     const dataToSend = this.state;
-    // no actual backend yet, this is just a placeholder with console.logs for later testing
     axios
-      .post('/goal/save', dataToSend)
+      .post(ADDGOAL_SERVER, dataToSend)
       // eslint-disable-next-line no-console
-      .then(response => console.log(response))
+      .then(response => {
+        // receives updated list of goals and puts into context
+        // eslint-disable-next-line react/destructuring-assignment
+        this.context.updateGoals(response.data.data.goals);
+      })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error));
   };
 
   render() {
     const { title, category, date, details } = this.state;
+
     return (
       <Fragment>
         <S.Form>
@@ -77,5 +89,7 @@ class AddEntry extends Component {
     );
   }
 }
+
+AddEntry.contextType = MyContext;
 
 export default AddEntry;
