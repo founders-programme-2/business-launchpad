@@ -62,7 +62,7 @@ class Register extends Component {
         <S.Main>
           <S.H1>Sign up</S.H1>
           <form onSubmit={this.onSubmit}>
-            <S.Label htlmFor="name"> Name: </S.Label>
+            <S.Label htmlFor="name">Name:</S.Label>
             <S.Input
               name="name"
               onChange={this.onChange}
