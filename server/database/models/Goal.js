@@ -27,6 +27,10 @@ const GoalSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  reflection:{
+    type: String,
+    default: '',
+  },
 });
 
 module.exports = GoalSchema;

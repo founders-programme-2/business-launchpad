@@ -14,8 +14,8 @@ export default createGlobalStyle`
     html {
         font-size: 16px;
         color: var(--black);
-        display: flex;	     
-        flex-direction: column;	   
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
 
     };

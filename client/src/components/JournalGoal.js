@@ -8,11 +8,13 @@ import PropTypes from 'prop-types';
 
 import { DELGOAL_SERVER } from '../constants';
 import * as S from './JournalGoal.style';
+import ReflectionForm from './JournalReflectionForm';
 import { MyContext } from './Context';
 
 class Goal extends Component {
   state = {
     goalId: this.props.data._id,
+    isChecked: false,
   };
 
   deleteGoal = () => {
@@ -25,6 +27,11 @@ class Goal extends Component {
         this.context.updateGoals(goalsData.data.data.goals);
       })
       .catch(err => err);
+  };
+
+  handleChecked = () => {
+    this.setState({ isChecked: !this.state.isChecked });
+    console.log(this.state.isChecked);
   };
 
   render() {
@@ -41,50 +48,62 @@ class Goal extends Component {
     } = data;
 
     return (
-      <S.Article>
-        <S.HeaderSection>
-          {completed ? (
-            <input type="checkbox" defaultChecked aria-label="Completed" />
-          ) : (
-            <input type="checkbox" aria-label="Completed" />
-          )}
-          <h3>{title}</h3>
-          <S.Delete type="submit" name={_id} onClick={this.deleteGoal}>
-            X
-          </S.Delete>
-        </S.HeaderSection>
-
-        <S.Info>
-          <S.Inline>
-            <S.H4>Category:</S.H4>
-            <p>{category}</p>
-          </S.Inline>
-
-          <S.Inline>
-            <S.H4>Date created:</S.H4>
-            <p>{dateCreated}</p>
-          </S.Inline>
-
-          <S.Inline>
-            <S.H4>Due date:</S.H4>
-            <p>{dateToDo}</p>
-          </S.Inline>
-
-          {dateCompleted !== '' ? (
-            <Fragment>
+      <Fragment>
+        {this.state.isChecked ? (
+          <ReflectionForm
+            handelCancel={this.handleChecked}
+            goalId={this.state.goalId}
+          />
+        ) : (
+          <S.Article>
+            <S.HeaderSection>
+              {completed ? (
+                <input type="checkbox" defaultChecked aria-label="Completed" />
+              ) : (
+                <input
+                  type="checkbox"
+                  aria-label="onGoing"
+                  onChange={this.handleChecked}
+                />
+              )}
+              <h3>{title}</h3>
+              <S.Delete type="submit" name={_id} onClick={this.deleteGoal}>
+                X
+              </S.Delete>
+            </S.HeaderSection>
+            <S.Info>
               <S.Inline>
-                <S.H4>Date completed:</S.H4>
-                <p>{dateCompleted}</p>
+                <S.H4>Category:</S.H4>
+                <p>{category}</p>
               </S.Inline>
-            </Fragment>
-          ) : null}
-        </S.Info>
 
-        <S.Body>
-          <S.H4>Details:</S.H4>
-          <p>{details}</p>
-        </S.Body>
-      </S.Article>
+              <S.Inline>
+                <S.H4>Date created:</S.H4>
+                <p>{dateCreated}</p>
+              </S.Inline>
+
+              <S.Inline>
+                <S.H4>Due date:</S.H4>
+                <p>{dateToDo}</p>
+              </S.Inline>
+
+              {dateCompleted !== '' ? (
+                <Fragment>
+                  <S.Inline>
+                    <S.H4>Date completed:</S.H4>
+                    <p>{dateCompleted}</p>
+                  </S.Inline>
+                </Fragment>
+              ) : null}
+            </S.Info>
+
+            <S.Body>
+              <S.H4>Details:</S.H4>
+              <p>{details}</p>
+            </S.Body>
+          </S.Article>
+        )}
+      </Fragment>
     );
   }
 }

@@ -5,6 +5,7 @@ const { addGoal } = require('./addGoal');
 const { getResources } = require('./getResources');
 const { deleteGoal } = require('./deleteGoal');
 const { getGoals } = require('./getGoals');
+const { updateGoal } = require('./updateGoal');
 
 module.exports = {
   register,
@@ -14,4 +15,5 @@ module.exports = {
   getResources,
   deleteGoal,
   getGoals,
+  updateGoal,
 };
