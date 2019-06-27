@@ -35,6 +35,7 @@ export const ButtonClose = styled.button`
   flex-direction: column;
   border: none;
   background-color: var(--highlight);
+  outline:none;
 `;
 
 export const CloseX = styled.div`
@@ -81,7 +82,9 @@ export const MenuWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  position: fixed;
   height: 100vh;
+  width: 100%;
   background-color: var(--highlight);
 `;
 export const MenuElement = styled.button`
