@@ -5,6 +5,12 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   height: 6rem;
+
+  ${props =>
+    props.menu &&
+    css`
+      background: none;
+    `};
 `;
 export const HeaderWrapper = styled.div`
   display: flex;

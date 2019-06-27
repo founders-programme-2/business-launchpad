@@ -13,7 +13,7 @@ class Info extends Component {
   render() {
     return (
       <Fragment>
-        <CHeader />
+        <CHeader menu={null} />
         <S.Main>
           <S.H1>
             WHAT’S <br />
