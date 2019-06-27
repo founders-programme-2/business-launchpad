@@ -27,5 +27,4 @@ export const P = styled.p`
   letter-spacing: 0.1em;
   width: 30%;
   margin-bottom: 15%;
-  background: RED;
 `;
