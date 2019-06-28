@@ -3,13 +3,13 @@ const isEmpty = require('is-empty');
 
 const validateRegister = data => {
   const errors = {};
-  let { name, email, password, password2 } = data;
+  let { name, email, password, confirmPassword } = data;
 
   // this converts empty fields coming through into empty strings so that they can be validated
   name = !isEmpty(name) ? name : '';
   email = !isEmpty(email) ? email : '';
   password = !isEmpty(password) ? password : '';
-  password2 = !isEmpty(password2) ? password2 : '';
+  confirmPassword = !isEmpty(confirmPassword) ? confirmPassword : '';
 
   // Checks for name
   if (Validator.isEmpty(name)) {
@@ -27,7 +27,7 @@ const validateRegister = data => {
     errors.password = 'Password field is required';
   }
 
-  if (Validator.isEmpty(password2)) {
+  if (Validator.isEmpty(confirmPassword)) {
     errors.password = 'Confirm password field is required';
   }
 
@@ -35,8 +35,8 @@ const validateRegister = data => {
     errors.password = 'Password must be between 6 & 30 characters';
   }
 
-  if (!Validator.equals(password, password2)) {
-    errors.password2 = 'Passwords must match.';
+  if (!Validator.equals(password, confirmPassword)) {
+    errors.confirmPassword = 'Passwords must match.';
   }
 
   return {
