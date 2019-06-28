@@ -48,16 +48,10 @@ class signUp extends Component {
             pathname: LOGIN_URL,
           });
         } else {
-          let errors = '';
-          errors += data.name ? data.name : '';
-          errors += data.email ? data.email : '';
-          errors += data.password ? data.password : '';
-          errors += data.confirmPassword ? data.confirmPassword : '';
-
           Swal.fire({
             type: 'error',
             title: 'Oops...',
-            text: errors,
+            text: data.message,
           });
         }
       })

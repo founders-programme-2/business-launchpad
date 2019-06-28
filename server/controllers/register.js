@@ -9,7 +9,16 @@ const register = (req, res) => {
   const { errors, isValid } = validateRegister(req.body);
   const { name, email, password } = req.body;
   if (!isValid) {
-    return res.send(errors);
+    let errorsToSend = '';
+    errorsToSend += errors.name ? errors.name : '';
+    errorsToSend += errors.email ? errors.email : '';
+    errorsToSend += errors.password ? errors.password : '';
+    errorsToSend += errors.confirmPassword ? errors.confirmPassword : '';
+
+    return res.send({
+      success: false,
+      message: errorsToSend,
+    });
   }
 
   // if the information sent in request is valid, search User table to see if user already exists
@@ -17,7 +26,7 @@ const register = (req, res) => {
     if (user) {
       return res.send({
         success: false,
-        email: 'Sorry, that email already exists. ',
+        message: 'Sorry, that email already exists. ',
       });
     }
     // if not an existing user, create a new user with name, email and password fields
