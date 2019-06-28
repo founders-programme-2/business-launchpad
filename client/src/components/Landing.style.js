@@ -39,7 +39,7 @@ export const H2 = styled.h2`
   display: inline-table;
 `;
 
-export const Button = styled.button`
+export const ButtonSignUp = styled.button`
   margin: 0.5rem;
   width: 243px;
   height: 46px;
@@ -56,7 +56,7 @@ export const Button = styled.button`
   }
 `;
 
-export const Button1 = styled(Button)`
+export const ButtonLogin = styled(ButtonSignUp)`
   background: var(--black);
   color: var(--white);
   &:hover {

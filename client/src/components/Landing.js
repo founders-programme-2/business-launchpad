@@ -26,8 +26,8 @@ class Landing extends Component {
             <S.H2>launchpad</S.H2>
           </S.SectionTitle>
           <S.SectionButtons>
-            <S.Button onClick={this.signup}>sign up</S.Button>
-            <S.Button1 onClick={this.login}>login </S.Button1>
+            <S.ButtonSignUp onClick={this.signup}>sign up</S.ButtonSignUp>
+            <S.ButtonLogin onClick={this.login}>login </S.ButtonLogin>
           </S.SectionButtons>
         </S.Main>
       </Fragment>
