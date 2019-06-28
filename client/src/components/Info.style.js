@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
+  flex-direction: column;
   background-color: var(--white);
-  height: 80vh;
   align-items: center;
-  flex-flow: column wrap;
-  justify-content: center;
+  flex-flow: column;
 `;
 
 export const H1 = styled.h1`
@@ -18,12 +17,13 @@ export const H1 = styled.h1`
   letter-spacing: 0.1em;
   font-family: 'Work Sans';
   font-weight: 900;
+  text-transform: uppercase;
 `;
 
 export const P = styled.p`
   width: 100%;
   font-family: 'Roboto';
-  margin-left: 5%;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 900;
+  margin: 2rem;
 `;
