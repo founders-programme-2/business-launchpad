@@ -17,6 +17,7 @@ export const H1 = styled.h1`
   font-style: normal;
   font-family: 'Work Sans';
   justify-content: left;
+  margin: 3%;
 `;
 export const P = styled.p`
   font-family: 'Roboto';
@@ -25,6 +26,5 @@ export const P = styled.p`
   font-size: 1rem;
   line-height: 18px;
   letter-spacing: 0.1em;
-  width: 100%;
   margin: 2rem;
 `;
