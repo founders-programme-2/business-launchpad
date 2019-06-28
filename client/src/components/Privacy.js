@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Privacy.style';
 import CHeader from './CHeader';
 import CFooter from './CFooter';
@@ -10,7 +9,7 @@ const Privacy = () => {
       <CHeader menu />
       <S.Main>
         <S.H1>
-          our <br />
+          your <br />
           privacy
         </S.H1>
         <S.P>
@@ -30,7 +29,4 @@ const Privacy = () => {
   );
 };
 
-Privacy.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
-};
 export default Privacy;
