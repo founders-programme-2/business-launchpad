@@ -93,50 +93,61 @@ class signUp extends Component {
         <S.Main>
           <S.H1>Sign up</S.H1>
           <form>
-            <S.Label for="name"> Name: </S.Label>
-            <S.Input
-              StyleError={isErrorName}
-              {...this.props}
-              type="text"
-              name="name"
-              label="name"
-              errorText={nameError}
-              value={name}
-              onChange={this.handleChange}
-            />
-            <S.Label for="email"> Email: </S.Label>
-            <S.Input
-              StyleError={isErrorEmail}
-              {...this.props}
-              type="text"
-              name="email"
-              label="email"
-              errorText={emailError}
-              value={email}
-              onChange={this.handleChange}
-            />
-            <S.Label for="password"> Password: </S.Label>
-            <S.Input
-              StyleError={isErrorPassword}
-              {...this.props}
-              type="password"
-              name="password"
-              label="password"
-              errorText={passwordError}
-              value={password}
-              onChange={this.handleChange}
-            />
-            <S.Label for="confirmPassword">Confirm Password:</S.Label>
-            <S.Input
-              StyleError={isErrorPassword}
-              {...this.props}
-              type="password"
-              name="confirmPassword"
-              label="password"
-              errorText={passwordError}
-              value={confirmPassword}
-              onChange={this.handleChange}
-            />
+            <S.Label>
+              {' '}
+              Name:
+              <S.Input
+                StyleError={isErrorName}
+                {...this.props}
+                type="text"
+                name="name"
+                label="name"
+                errorText={nameError}
+                value={name}
+                onChange={this.handleChange}
+              />
+            </S.Label>
+            <S.Label>
+              {' '}
+              Email:
+              <S.Input
+                StyleError={isErrorEmail}
+                {...this.props}
+                type="text"
+                name="email"
+                label="email"
+                errorText={emailError}
+                value={email}
+                onChange={this.handleChange}
+              />
+            </S.Label>
+            <S.Label>
+              {' '}
+              Password:
+              <S.Input
+                StyleError={isErrorPassword}
+                {...this.props}
+                type="password"
+                name="password"
+                label="password"
+                errorText={passwordError}
+                value={password}
+                onChange={this.handleChange}
+              />
+            </S.Label>
+            <S.Label>
+              Confirm Password:
+              <S.Input
+                StyleError={isErrorPassword}
+                {...this.props}
+                type="password"
+                name="confirmPassword"
+                label="password"
+                errorText={passwordError}
+                value={confirmPassword}
+                onChange={this.handleChange}
+              />
+            </S.Label>
           </form>
 
           <Button text="signup" cb={this.signup} />

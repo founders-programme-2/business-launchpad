@@ -92,36 +92,40 @@ class Login extends Component {
         <S.Main>
           <S.H1>Login</S.H1>
           <form>
-            <S.Label for="email">Email:</S.Label>
-            <S.Input
-              StyleError={isErrorEmail}
-              {...this.props}
-              type="text"
-              name="email"
-              label="email"
-              errorText={emailError}
-              value={email}
-              onChange={e =>
-                this.setState({
-                  email: e.target.value,
-                })
-              }
-            />
-            <S.Label for="password">Password:</S.Label>
-            <S.Input
-              StyleError={isErrorPassword}
-              {...this.props}
-              type="password"
-              name="password"
-              label="password"
-              errorText={passwordError}
-              value={password}
-              onChange={e =>
-                this.setState({
-                  password: e.target.value,
-                })
-              }
-            />
+            <S.Label>
+              Email:
+              <S.Input
+                StyleError={isErrorEmail}
+                {...this.props}
+                type="text"
+                name="email"
+                label="email"
+                errorText={emailError}
+                value={email}
+                onChange={e =>
+                  this.setState({
+                    email: e.target.value,
+                  })
+                }
+              />
+            </S.Label>
+            <S.Label>
+              Password:
+              <S.Input
+                StyleError={isErrorPassword}
+                {...this.props}
+                type="password"
+                name="password"
+                label="password"
+                errorText={passwordError}
+                value={password}
+                onChange={e =>
+                  this.setState({
+                    password: e.target.value,
+                  })
+                }
+              />
+            </S.Label>
           </form>
           <Button text="login" cb={this.login} />
           <S.P>Forget Your Password?</S.P>
