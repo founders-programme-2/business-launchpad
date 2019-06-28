@@ -3,7 +3,7 @@ import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Login.style';
 import CHeader from './CHeader';
-import { LOGIN_URL, SIGNUP_URL } from '../constants';
+import { LOGIN_URL, REGISTER_SERVER } from '../constants';
 import Button from './CBtn';
 
 class signUp extends Component {
@@ -12,111 +12,40 @@ class signUp extends Component {
     email: '',
     password: '',
     confirmPassword: '',
-    nameError: '',
-    emailError: '',
-    passwordError: '',
-    isErrorName: false,
-    isErrorEmail: '',
-    isErrorPassword: false,
   };
 
   componentDidMount() {
-    axios.get('/checkCookie').then(({ data: { cookie } }) => {
-      if (cookie) {
-        const { history } = this.props;
-        history.push(LOGIN_URL);
-      }
-    });
+    // axios.get('/checkCookie').then(({ data: { cookie } }) => {
+    //   if (cookie) {
+    //     const { history } = this.props;
+    //     history.push(LOGIN_URL);
+    //   }
+    // });
   }
 
-  validate = () => {
-    let isError = false;
-    this.setState({
-      isErrorName: false,
-      isErrorEmail: false,
-      isErrorPassword: false,
-    });
-    const name = this.state;
-    const characters = [
-      '+',
-      '/',
-      '*',
-      '$',
-      '#',
-      '@',
-      '!',
-      '^',
-      '&',
-      '(',
-      ')',
-      '?',
-      '>',
-      '<',
-      '.',
-    ];
-    const errors = {
-      nameError: '',
-      emailError: '',
-      passwordError: '',
-      isErrorName: false,
-      isErrorEmail: false,
-      isErrorPassword: false,
-    };
-    for (let i = 0; i < characters.length; i + 1) {
-      if (name.includes(characters[i])) {
-        isError = true;
-        errors.isErrorName = true;
-        errors.nameError =
-          'Name should only contain letters, numbers, underscores and dashes.';
-      } else if (name < 1) {
-        isError = true;
-        errors.isErrorName = true;
-        errors.nameError = 'Name is required.';
-      }
-      const { password, confirmPassword } = this.state;
-      if (password !== confirmPassword) {
-        isError = true;
-        errors.isErrorPassword = true;
-        errors.passwordError = 'Passwords do not match.';
-      } else if (password.length < 6) {
-        isError = true;
-        errors.isErrorPassword = true;
-        errors.passwordError = 'Password needs to be at least 6 characters.';
-      }
-    }
-
-    this.setState({
-      ...this.state,
-      ...errors,
-    });
-    return isError;
-  };
-
   signup = () => {
-    const err = this.validate();
-    if (!err) {
-      const { history } = this.props;
-      const { name, email, password, confirmPassword } = this.state;
-      const inputs = {
-        name,
-        email,
-        password,
-        confirmPassword,
-      };
+    const { history } = this.props;
+    const { name, email, password, confirmPassword } = this.state;
+    const dataToSend = {
+      name,
+      email,
+      password,
+      confirmPassword,
+    };
 
-      axios.post(SIGNUP_URL, inputs).then(({ data }) => {
+    axios
+      .post(REGISTER_SERVER, dataToSend)
+      .then(({ data }) => {
         if (data.success) {
+          console.log('success data: ', data);
           history.push({
-            pathname: 'LOGIN_URL',
+            pathname: LOGIN_URL,
           });
         } else {
-          this.setState({
-            nameError: 'This name already exists.',
-            isErrorName: true,
-          });
+          console.log('Error data: ', data);
         }
-      });
-    }
+      })
+      .catch(err => console.log('Sorry, an error occurred: ', err));
   };
 
   handleChange = event => {
