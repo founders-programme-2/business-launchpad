@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import Swal from 'sweetalert2';
+
 import * as S from './Login.style';
 import CHeader from './CHeader';
 import { LOGIN_URL, REGISTER_SERVER } from '../constants';
@@ -38,11 +40,27 @@ class signUp extends Component {
       .then(({ data }) => {
         if (data.success) {
           console.log('success data: ', data);
+          Swal.fire({
+            type: 'success',
+            title: 'Success!',
+            text: 'Profile created - please log in',
+          });
           history.push({
             pathname: LOGIN_URL,
           });
         } else {
           console.log('Error data: ', data);
+          let errors = '';
+          errors += data.name ? data.name : '';
+          errors += data.email ? data.email : '';
+          errors += data.password ? data.password : '';
+          errors += data.confirmPassword ? data.confirmPassword : '';
+
+          Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: errors,
+          });
         }
       })
       .catch(err => console.log('Sorry, an error occurred: ', err));

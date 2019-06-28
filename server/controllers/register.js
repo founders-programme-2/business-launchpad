@@ -17,7 +17,7 @@ const register = (req, res) => {
     if (user) {
       return res.send({
         success: false,
-        message: 'Sorry, that email already exists',
+        email: 'Sorry, that email already exists. ',
       });
     }
     // if not an existing user, create a new user with name, email and password fields
