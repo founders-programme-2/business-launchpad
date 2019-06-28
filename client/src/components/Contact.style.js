@@ -33,14 +33,15 @@ export const H2 = styled.h2`
   text-align: center;
   letter-spacing: 0.1em;
   text-decoration-line: underline;
+  text-transform: uppercase;
 `;
-export const Address = styled.div`
+export const Address = styled.address`
   background: var(--white);
   border: 3px solid var(--black);
   box-sizing: border-box;
   width: 287px;
-  height: 220px;
   justify-content: center;
+  min-height: 55vh;
 `;
 
 export const P = styled.p`
