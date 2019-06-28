@@ -35,7 +35,7 @@ export const ButtonClose = styled.button`
   flex-direction: column;
   border: none;
   background-color: var(--highlight);
-  outline:none;
+  outline: none;
 `;
 
 export const CloseX = styled.div`

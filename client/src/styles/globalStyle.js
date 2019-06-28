@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
-    @import url('https://fonts.googleapis.com/css?family=Roboto:300i,400,500|Work+Sans:700,800,900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:300i,400,500,800|Work+Sans:700,800,900&display=swap');
 
     :root {
         --highlight: #F9D52F;
