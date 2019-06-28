@@ -119,6 +119,14 @@ class signUp extends Component {
     }
   };
 
+  handleChange = event => {
+    const { name } = event.target;
+    const { value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     const {
       isErrorEmail,
@@ -147,11 +155,7 @@ class signUp extends Component {
               label="name"
               errorText={nameError}
               value={name}
-              onChange={e =>
-                this.setState({
-                  name: e.target.value,
-                })
-              }
+              onChange={this.handleChange}
             />
             <S.Label for="email"> Email: </S.Label>
             <S.Input
@@ -162,11 +166,7 @@ class signUp extends Component {
               label="email"
               errorText={emailError}
               value={email}
-              onChange={e =>
-                this.setState({
-                  email: e.target.value,
-                })
-              }
+              onChange={this.handleChange}
             />
             <S.Label for="password"> Password: </S.Label>
             <S.Input
@@ -177,11 +177,7 @@ class signUp extends Component {
               label="password"
               errorText={passwordError}
               value={password}
-              onChange={e =>
-                this.setState({
-                  password: e.target.value,
-                })
-              }
+              onChange={this.handleChange}
             />
             <S.Label for="confirmPassword">Confirm Password:</S.Label>
             <S.Input
@@ -192,11 +188,7 @@ class signUp extends Component {
               label="password"
               errorText={passwordError}
               value={confirmPassword}
-              onChange={e =>
-                this.setState({
-                  name: e.target.value,
-                })
-              }
+              onChange={this.handleChange}
             />
           </form>
 
