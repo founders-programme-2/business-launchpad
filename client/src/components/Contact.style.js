@@ -5,15 +5,13 @@ export const Main = styled.main`
   flex-direction: column;
   background-color: var(--white);
   align-items: center;
-  flex-flow: column wrap;
   justify-content: center;
 `;
 
 export const H1 = styled.h1`
-  font-weight: bold;
+  font-weight: 900;
   font-size: 3rem;
   background-color: var(--highlight);
-  margin-bottom: 3%;
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 900;
@@ -26,7 +24,7 @@ export const H2 = styled.h2`
   background: var(--highlight);
   width: 113px;
   margin-bottom: 6%;
-  font-family: 'Work Sans', sans serif;
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 900;
   line-height: 20px;
