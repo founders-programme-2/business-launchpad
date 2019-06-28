@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import * as S from './Login.style';
+import * as S from './SignUp.style';
 import CHeader from './CHeader';
 import { LOGIN_URL, SIGNUP_URL } from '../constants';
-import Button from './CBtn';
 
 class signUp extends Component {
   state = {
@@ -200,7 +199,7 @@ class signUp extends Component {
             />
           </form>
 
-          <Button text="signup" cb={this.signup} />
+          <S.ButtonSignUp text="sign up" cb={this.signup} />
         </S.Main>
       </Fragment>
     );

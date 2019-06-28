@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   background-color: var(--highlight);
-  height: 100vh;
+  min-height: 90vh;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-flow: column wrap;
 `;

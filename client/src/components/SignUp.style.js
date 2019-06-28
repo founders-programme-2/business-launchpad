@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import Button from './CBtn';
 
 export const Main = styled.main`
-  background-color: var(--main-color);
-  height: 100vh;
+  background-color: var(--highlight);
+  min-height: 90vh;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-flow: column wrap;
+  padding-bottom: 2rem;
 `;
 
 export const H1 = styled.h1`
@@ -39,4 +40,8 @@ export const P = styled.p`
   font-size: 0.8rem;
   text-decoration-line: underline;
   margin: 50px;
+`;
+
+export const ButtonSignUp = styled(Button)`
+  margin: 2rem;
 `;

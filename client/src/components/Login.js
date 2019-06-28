@@ -124,7 +124,6 @@ class Login extends Component {
             />
           </form>
           <Button text="login" cb={this.login} />
-          <S.P>Forget Your Password?</S.P>
         </S.Main>
       </Fragment>
     );
