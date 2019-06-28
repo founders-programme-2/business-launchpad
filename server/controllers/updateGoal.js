@@ -8,14 +8,17 @@ const updateGoal = (req, res) => {
     {
       $set: {
         'goals.$.completed': true,
-        'goals.$.reflection':reflection,
+        'goals.$.reflection': reflection,
       },
     },
     { new: true },
     (err, doc) => {
       if (err) {
-        // I will return To handel it as server error
-        console.log(err);
+        // not currently handled on front end
+        res.send({
+          success: false,
+          err,
+        });
       }
       res.send({
         success: true,
