@@ -7,11 +7,12 @@ import * as S from './Login.style';
 import { LOGIN_SERVER, JOURNAL_URL } from '../constants';
 import CHeader from './CHeader';
 import Button from './CBtn';
+import { MyContext } from './Context';
 
 class Login extends Component {
   state = {
-    email: 'ollasdasd@gmail.com',
-    password: 'pass1s23',
+    email: 'oll@gmail.com',
+    password: 'pass123',
   };
 
   componentDidMount() {
@@ -33,7 +34,11 @@ class Login extends Component {
 
     axios.post(LOGIN_SERVER, dataToSend).then(({ data }) => {
       if (data.success) {
-        console.log('success data: ', data);
+        // eslint-disable-next-line react/destructuring-assignment
+        this.context.updateToken(data.token);
+        // eslint-disable-next-line react/destructuring-assignment
+        this.context.updateId(data.userID);
+        console.log('context: ', this.context.state);
         history.push(JOURNAL_URL);
       } else {
         console.log('error: ', data);
@@ -103,6 +108,8 @@ class Login extends Component {
     );
   }
 }
+
+Login.contextType = MyContext;
 
 Login.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
