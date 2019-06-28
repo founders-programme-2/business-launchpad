@@ -46,6 +46,7 @@ const login = (req, res) => {
             success: true,
             token: `Bearer${token}`,
             userID: payload.id,
+            username: user.name,
           });
         });
       }

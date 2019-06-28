@@ -38,6 +38,8 @@ class Login extends Component {
         this.context.updateToken(data.token);
         // eslint-disable-next-line react/destructuring-assignment
         this.context.updateId(data.userID);
+        // eslint-disable-next-line react/destructuring-assignment
+        this.context.updateName(data.username);
         console.log('context: ', this.context.state);
         history.push(JOURNAL_URL);
       } else {
