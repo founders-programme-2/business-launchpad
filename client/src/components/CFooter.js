@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import * as S from './CFooter.style';
 import { CONTACT_URL, PRIVACY_URL } from '../constants';
