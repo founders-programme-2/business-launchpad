@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import * as S from './Landing.style';
 import { LOGIN_URL, SIGNUP_URL } from '../constants';
 import CHeader from './CHeader';
@@ -33,5 +34,9 @@ class Landing extends Component {
     );
   }
 }
+
+Landing.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default Landing;

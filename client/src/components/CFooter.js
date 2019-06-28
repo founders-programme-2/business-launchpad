@@ -20,8 +20,5 @@ const CFooter = () => {
   );
 };
 
-CFooter.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
-};
 
 export default CFooter;
