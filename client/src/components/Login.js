@@ -11,18 +11,9 @@ import { MyContext } from './Context';
 
 class Login extends Component {
   state = {
-    email: 'oll@gmail.com',
-    password: 'pass123',
+    email: '',
+    password: '',
   };
-
-  componentDidMount() {
-    // axios.get('/checkCookie').then(({ data: { cookie } }) => {
-    //   if (cookie) {
-    //     const { history } = this.props;
-    //     history.push(DASHBOARD_URL);
-    //   }
-    // });
-  }
 
   login = () => {
     const { email, password } = this.state;
@@ -34,16 +25,13 @@ class Login extends Component {
 
     axios.post(LOGIN_SERVER, dataToSend).then(({ data }) => {
       if (data.success) {
-        // eslint-disable-next-line react/destructuring-assignment
-        this.context.updateToken(data.token);
-        // eslint-disable-next-line react/destructuring-assignment
-        this.context.updateId(data.userID);
-        // eslint-disable-next-line react/destructuring-assignment
-        this.context.updateName(data.username);
-        console.log('context: ', this.context.state);
+        const { updateToken, updateId, updateName } = this.context;
+        updateToken(data.token);
+        updateId(data.userID);
+        updateName(data.username);
+
         history.push(JOURNAL_URL);
       } else {
-        console.log('error: ', data);
         Swal.fire({
           type: 'error',
           title: 'Oops...',

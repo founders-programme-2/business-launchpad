@@ -16,15 +16,6 @@ class signUp extends Component {
     confirmPassword: '',
   };
 
-  componentDidMount() {
-    // axios.get('/checkCookie').then(({ data: { cookie } }) => {
-    //   if (cookie) {
-    //     const { history } = this.props;
-    //     history.push(LOGIN_URL);
-    //   }
-    // });
-  }
-
   signup = () => {
     const { history } = this.props;
     const { name, email, password, confirmPassword } = this.state;
@@ -55,6 +46,7 @@ class signUp extends Component {
           });
         }
       })
+      // eslint-disable-next-line no-console
       .catch(err => console.log('Sorry, an error occurred: ', err));
   };
 
