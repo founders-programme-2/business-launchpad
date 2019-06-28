@@ -10,15 +10,20 @@ export const Main = styled.main`
 `;
 
 export const H1 = styled.h1`
-  font-weight: bold;
   font-size: 3rem;
   background-color: var(--highlight);
+  font-family: 'Work Sans';
+  font-style: normal;
+  line-height: 35px;
+  letter-spacing: 0.1em;
+  font-family: 'Work Sans';
+  font-weight: 900;
 `;
 
 export const P = styled.p`
-  font-style: var(--black);
   width: 100%;
-  font-family: Roboto;
-  padding: 2%;
-  margin-left: 10%;
+  font-family: 'Roboto';
+  margin-left: 5%;
+  font-style: normal;
+  font-weight: normal;
 `;
