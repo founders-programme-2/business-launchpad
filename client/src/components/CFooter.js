@@ -19,5 +19,4 @@ const CFooter = () => {
   );
 };
 
-
 export default CFooter;
