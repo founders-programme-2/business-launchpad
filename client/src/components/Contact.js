@@ -9,7 +9,7 @@ const Contact = () => {
     <Fragment>
       <CHeader menu />
       <S.Main>
-        <S.H1>contact</S.H1>
+        <S.H1>Contact</S.H1>
         <S.ContactWrapper>
           <S.H3>
             <u>

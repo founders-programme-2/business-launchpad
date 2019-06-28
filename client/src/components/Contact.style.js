@@ -14,7 +14,7 @@ export const H1 = styled.h1`
   font-weight: bold;
   font-size: 3rem;
   background-color: var(--highlight);
-  margin-bottom: 2%;
+  margin-bottom: 3%;
 `;
 export const H3 = styled.h3`
   font-weight: bold;
@@ -23,14 +23,16 @@ export const H3 = styled.h3`
   margin-left: 29%;
   margin-top: 3%;
   background: var(--highlight);
-  width: 105px;
+  width: 113px;
+  margin-bottom: 6%;
 `;
 export const ContactWrapper = styled.div`
   background: #ffffff;
   border: 3px solid #000000;
   box-sizing: border-box;
   width: 287px;
-  height: 200px;
+  height: 220px;
+  justify-content: center;
 `;
 
 export const P = styled.p`
