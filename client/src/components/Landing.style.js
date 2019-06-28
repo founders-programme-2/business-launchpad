@@ -4,51 +4,63 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   background-color: var(--highlight);
-  height: 100vh;
-  justify-content: center;
+  min-height: 90vh;
+`;
+
+export const SectionTitle = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 2rem auto;
+`;
+
+export const SectionButtons = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  padding-top: 10%;
   align-items: center;
-  flex-flow: column wrap;
 `;
 
 export const H1 = styled.h1`
-  width: 146px;
-  height: 60px;
-  font-family: Permanent Marker;
-  font-weight: bold;
-  font-size: 5rem;
+  font-family: 'Permanent Marker';
+  font-size: 4rem;
   transform: rotate(-7deg);
+  margin-bottom: 0.2rem;
 `;
+
 export const H2 = styled.h2`
   font-style: var(--black);
+  font-size: 2.6rem;
   background-color: var(--white);
-  margin: 30px;
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 2.4rem;
+  display: inline-table;
 `;
+
 export const Button = styled.button`
-  width: 243px;
-  height: 46px;
-  backgound: var(--white);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  letter-spacing: 0.08em;
-  &:hover {
-    background-color: var(--black);
-    color: var(--white);
-  }
-  margin: 20px;
-`;
-export const Button1 = styled.button`
+  margin: 0.5rem;
   width: 243px;
   height: 46px;
   background: var(--white);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  font-weight: bold;
+  font-weight: 800;
   font-size: 1.5rem;
   letter-spacing: 0.08em;
+  align-self: flex-end;
   &:hover {
     background-color: var(--black);
     color: var(--white);
+  }
+`;
+
+export const Button1 = styled(Button)`
+  background: var(--black);
+  color: var(--white);
+  &:hover {
+    background-color: var(--white);
+    color: var(--black);
   }
 `;
