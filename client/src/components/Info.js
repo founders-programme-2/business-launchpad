@@ -16,8 +16,8 @@ class Info extends Component {
         <CHeader menu />
         <S.Main>
           <S.H1>
-            WHAT’S <br />
-            THIS APP?
+            what is <br />
+            this app?
           </S.H1>
           <S.P>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
