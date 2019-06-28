@@ -39,7 +39,6 @@ class signUp extends Component {
       .post(REGISTER_SERVER, dataToSend)
       .then(({ data }) => {
         if (data.success) {
-          console.log('success data: ', data);
           Swal.fire({
             type: 'success',
             title: 'Success!',
@@ -49,7 +48,6 @@ class signUp extends Component {
             pathname: LOGIN_URL,
           });
         } else {
-          console.log('Error data: ', data);
           let errors = '';
           errors += data.name ? data.name : '';
           errors += data.email ? data.email : '';

@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import Swal from 'sweetalert2';
+
 import * as S from './Login.style';
 import { LOGIN_URL, DASHBOARD_URL } from '../constants';
 import CHeader from './CHeader';
@@ -10,71 +12,41 @@ class Login extends Component {
   state = {
     email: '',
     password: '',
-    emailError: '',
-    passwordError: '',
-    isErrorEmail: false,
-    isErrorPassword: false,
   };
 
   componentDidMount() {
-    axios.get('/checkCookie').then(({ data: { cookie } }) => {
-      if (cookie) {
-        const { history } = this.props;
-        history.push(DASHBOARD_URL);
-      }
-    });
+    // axios.get('/checkCookie').then(({ data: { cookie } }) => {
+    //   if (cookie) {
+    //     const { history } = this.props;
+    //     history.push(DASHBOARD_URL);
+    //   }
+    // });
   }
 
-  validate = () => {
-    let isError = false;
+  login = () => {
     const { email, password } = this.state;
-
-    const errors = {
-      emailError: '',
-      passwordError: '',
-      isErrorEmail: false,
-      isErrorPassword: false,
+    const { history } = this.props;
+    const dataToSend = {
+      email,
+      password,
     };
-    if (email < 1) {
-      isError = true;
-      errors.isErrorEmail = true;
-      errors.emailError = 'Please enter your email.';
-    }
-    if (password < 1) {
-      isError = true;
-      errors.isErrorPassword = true;
-      errors.passwordError = 'Please enter your password.';
-    }
-    this.setState({
-      // eslint-disable-next-line react/no-access-state-in-setstate
-      ...this.state,
-      ...errors,
+
+    axios.post(LOGIN_URL, dataToSend).then(({ data }) => {
+      if (data.success) {
+        console.log('success data: ', data);
+        history.push(DASHBOARD_URL);
+      } else {
+        console.log('error: ', data);
+      }
     });
-    return isError;
   };
 
-  login = () => {
-    const err = this.validate();
-    const { email, password } = this.state;
-    if (!err) {
-      const { history } = this.props;
-      const inputs = {
-        email,
-        password,
-      };
-
-      axios.post(LOGIN_URL, inputs).then(({ data }) => {
-        if (data.success) {
-          history.push(DASHBOARD_URL);
-        } else {
-          this.setState({
-            passwordError: 'email or password is incorrect.',
-            isErrorEmail: true,
-            isErrorPassword: true,
-          });
-        }
-      });
-    }
+  handleChange = event => {
+    const { name } = event.target;
+    const { value } = event.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
@@ -102,11 +74,7 @@ class Login extends Component {
                 label="email"
                 errorText={emailError}
                 value={email}
-                onChange={e =>
-                  this.setState({
-                    email: e.target.value,
-                  })
-                }
+                onChange={this.handleChange}
               />
             </S.Label>
             <S.Label>
@@ -119,11 +87,7 @@ class Login extends Component {
                 label="password"
                 errorText={passwordError}
                 value={password}
-                onChange={e =>
-                  this.setState({
-                    password: e.target.value,
-                  })
-                }
+                onChange={this.handleChange}
               />
             </S.Label>
           </form>
