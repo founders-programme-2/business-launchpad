@@ -16,7 +16,7 @@ export const MenuLine = styled.div`
   background-color: var(--black);
   border-radius: 0.5rem;
   width: 2rem;
-  height: 5px;
+  height: 0.2rem;
 `;
 export const P = styled.p`
   font-weight: 900;
@@ -57,7 +57,6 @@ export const CloseX = styled.div`
     transform: rotate(45deg);
     border-radius: 3rem;
   }
-
   :before {
     position: absolute;
     left: 6rem;
@@ -92,11 +91,10 @@ export const MenuElement = styled.button`
   border: none;
   padding: 0.5rem;
   text-align: center;
-  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2rem 2rem 5remx 0rem rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2rem 2rem 5rem 0rem rgba(0, 0, 0, 0.75);
+  box-shadow: 2rem 2rem 5rem 0rem rgba(0, 0, 0, 0.75);
   cursor: pointer;
-
   :hover {
     background-color: var(--black);
   }
@@ -112,13 +110,12 @@ export const LinkText = styled(Link)`
     color: var(--white);
   }
 `;
-// //////////////////////////
-// the overlay for the menu
+
 export const Overlay = styled.main`
   position: absolute;
   width: 100%;
   height: 100vh;
-  top: -14px;
+  top: -14rem;
   left: 0;
   z-index: 1000;
   margin: 0 auto;

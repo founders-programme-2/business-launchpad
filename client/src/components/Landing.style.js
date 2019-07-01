@@ -41,11 +41,11 @@ export const H2 = styled.h2`
 
 export const ButtonSignUp = styled.button`
   margin: 0.5rem;
-  width: 243px;
-  height: 46px;
+  width: 15rem;
+  height: 3rem;
   background: var(--white);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+  box-shadow: 0rem 4rem 4rem rgba(0, 0, 0, 0.25);
+  border-radius: 3rem;
   font-weight: 800;
   font-size: 1.5rem;
   letter-spacing: 0.08em;

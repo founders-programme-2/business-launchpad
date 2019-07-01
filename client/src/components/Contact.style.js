@@ -22,12 +22,12 @@ export const H2 = styled.h2`
   margin-left: 29%;
   margin-top: 3%;
   background: var(--highlight);
-  width: 113px;
+  width: 8rem;
   margin-bottom: 6%;
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 900;
-  line-height: 20px;
+  line-height: 1remx;
   text-align: center;
   letter-spacing: 0.1em;
   text-decoration-line: underline;
@@ -35,9 +35,9 @@ export const H2 = styled.h2`
 `;
 export const Address = styled.address`
   background: var(--white);
-  border: 3px solid var(--black);
+  border: 0.2rem solid var(--black);
   box-sizing: border-box;
-  width: 287px;
+  width: 18rem;
   justify-content: center;
   min-height: 55vh;
 `;
@@ -48,7 +48,7 @@ export const P = styled.p`
   font-style: normal;
   font-weight: 500;
   font-size: 1rem;
-  line-height: 18px;
+  line-height: 1rem;
   letter-spacing: 0.1em;
   margin-left: 10%;
 `;
