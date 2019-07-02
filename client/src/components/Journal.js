@@ -12,7 +12,11 @@ import { MyContext } from './Context';
 import { GETGOALS_SERVER } from '../constants';
 
 class Journal extends Component {
-  state = {};
+  state = {
+    showEntry:true,
+    showPlane:true,
+    showHistory:true,
+  };
 
   // queries database to retrieve all goals for current user on page load
   componentDidMount() {
@@ -36,8 +40,18 @@ class Journal extends Component {
       return <Goal data={goalData} key={key} />;
     });
   };
+  handleEntery = () => {
+    this.setState({ showEntry: !this.state.showEntry});
+  };
+  handleActionPlane = () => {
+    this.setState({ showPlane: !this.state.showPlane});
+  };
+  handleHistory = () => {
+    this.setState({ showHistory: !this.state.showHistory});
+  };
 
   render() {
+    const { showEntry, showPlane, showHistory } = this.state;
     // separates all goal data into 'toDos' and 'completed' for easy rendering
     const toDo = [];
     const completed = [];
@@ -70,22 +84,24 @@ class Journal extends Component {
         </S.P>
 
         <S.Section>
-          <S.H2>Add an entry: <S.ArrowDown/></S.H2>
-          <AddEntry />
+          <S.H2>Add an entry: <S.ArrowDown onClick={this.handleEntery}/></S.H2>
+
+          {showEntry && <AddEntry />}
+
         </S.Section>
 
         <S.Section>
-          <S.H2>Action Plan:<S.ArrowDown/></S.H2>
+          <S.H2>Action Plan:<S.ArrowDown onClick={this.handleActionPlane} /></S.H2>
           <S.P>
             As you complete your goals, check them off and watch your business
             grow!
           </S.P>
-          {this.renderGoals(toDo)}
+          {showPlane && this.renderGoals(toDo)}
         </S.Section>
 
         <S.Section>
-          <S.H2>My Business History: <S.ArrowDown/></S.H2>
-          {this.renderGoals(completed)}
+          <S.H2>My Business History: <S.ArrowDown onClick={this.handleHistory}/></S.H2>
+          {showHistory && this.renderGoals(completed)}
         </S.Section>
       </Fragment>
     );
