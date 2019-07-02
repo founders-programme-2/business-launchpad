@@ -3,11 +3,9 @@ import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import Swal from 'sweetalert2';
 
-import * as S from './Login.style';
+import * as S from './SignUp.style';
 import CHeader from './CHeader';
 import { LOGIN_URL, REGISTER_SERVER } from '../constants';
-import Button from './CBtn';
-
 class signUp extends Component {
   state = {
     name: '',
@@ -134,7 +132,7 @@ class signUp extends Component {
             </S.Label>
           </form>
 
-          <Button text="signup" cb={this.signup} />
+          <S.ButtonSignUp text="sign up" cb={this.signup} />
         </S.Main>
       </Fragment>
     );

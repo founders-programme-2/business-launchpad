@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import * as S from './CFooter.style';
 import { CONTACT_URL, PRIVACY_URL } from '../constants';
@@ -18,10 +17,6 @@ const CFooter = () => {
       </S.FooterWrapper>
     </S.Footer>
   );
-};
-
-CFooter.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default CFooter;
