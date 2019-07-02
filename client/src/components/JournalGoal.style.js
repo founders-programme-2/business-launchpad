@@ -14,8 +14,17 @@ export const HeaderSection = styled.section`
 `;
 
 export const Delete = styled.button`
-  font-size: 1.5rem;
-  font-weight: 200;
+  // font-size: 1.5rem;
+  // font-weight: 200;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  outline:none;
+  background-color:transparent;
+  border:none;
+  :hover{
+    cursor: pointer;
+  }
 `;
 
 export const Info = styled.section`

@@ -45,6 +45,7 @@ class Goal extends Component {
       _id,
       dateToDo,
       dateCompleted,
+      reflection,
     } = data;
 
     return (
@@ -68,7 +69,8 @@ class Goal extends Component {
               )}
               <h3>{title}</h3>
               <S.Delete type="submit" name={_id} onClick={this.deleteGoal}>
-                X
+                <h3>X</h3>
+                <h4> delete</h4>
               </S.Delete>
             </S.HeaderSection>
             <S.Info>
@@ -101,6 +103,13 @@ class Goal extends Component {
               <S.H4>Details:</S.H4>
               <p>{details}</p>
             </S.Body>
+
+            {completed && (
+              <S.Body>
+                <S.H4>Reflection:</S.H4>
+                <p>{reflection}</p>
+              </S.Body>
+            )}
           </S.Article>
         )}
       </Fragment>
@@ -113,6 +122,7 @@ Goal.contextType = MyContext;
 Goal.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
+    reflection:PropTypes.string,
     category: PropTypes.string,
     completed: PropTypes.bool,
     dateCreated: PropTypes.string,
