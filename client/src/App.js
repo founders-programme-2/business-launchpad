@@ -41,7 +41,8 @@ const App = () => {
           <Route exact path={PRIVACY_URL} component={Privacy} />
           <Route exact path={RESOURCES_URL} component={Resources} />
           <Route exact path={JOURNAL_URL} component={Journal} />
-          <Redirect to={ERROR404_URL} component={Error404} />
+          <Route exact path={ERROR404_URL} component={Error404} />
+          <Redirect to={ERROR404_URL} />
         </Switch>
       </MyProvider>
     </BrowserRouter>
