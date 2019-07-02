@@ -29,25 +29,45 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  border: 2px solid var(--gray);
-  height: 1.2rem;
+  border: 1px solid var(--black);
+  height: 1.6rem;
+  margin-bottom: 1rem;
+  outline: none;
+  :focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 `;
 
 export const Select = styled.select`
-  border: 2px solid var(--gray);
-  height: 1.5rem;
+  border: 1px solid var(--black);
+  height: 1.8rem;
   border-radius: 0;
+  background-color: var(--white);
+  margin-bottom: 1rem;
+  outline: none;
+  :focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 `;
 
 export const Textarea = styled.textarea`
-  border: 2px solid var(--gray);
+  border: 1px solid var(--black);
+  outline: none;
+  :focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 `;
 
 export const Submit = styled.input`
   background-color: var(--black);
-  width: 8rem;
+  // width: 8rem;
+  padding: 0.3rem 3.5rem;
   color: var(--white);
   font-size: 1.2rem;
   border-radius: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  outline: none;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
