@@ -15,31 +15,29 @@ export const Info = styled.div`
   text-align: right;
   top: 58px;
   right: 10px;
-  width:15rem;
-
+  width: 15rem;
 `;
 export const Info2 = styled.div`
   position: absolute;
   text-align: right;
   top: 204px;
   right: 10px;
-  width:15rem;
+  width: 15rem;
 `;
 export const Info3 = styled.div`
   position: absolute;
   text-align: right;
-    top: 353px;
+  top: 353px;
   right: 10px;
-  width:15rem;
+  width: 15rem;
 `;
 export const Info4 = styled.div`
   position: absolute;
   text-align: right;
-    top: 502px;
+  top: 502px;
   right: 10px;
-  width:15rem;
+  width: 15rem;
 `;
-
 
 export const GoalLine = styled.div`
   background: var(--highlight);
@@ -76,19 +74,19 @@ export const GoalLine3 = styled.div`
   left: 48px;
 `;
 export const GoalTopCircle = styled.div`
-  background: #000;
+  background: var(--black);
   min-width: 29px;
   min-height: 29px;
   position: absolute;
   border-radius: 50%;
   top: 0;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
 `;
 export const GoalBottomCircle = styled.div`
-  background: #000;
+  background: var(--black);
   min-width: 29px;
   min-height: 29px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   position: absolute;
   border-radius: 50%;
   bottom: 0;

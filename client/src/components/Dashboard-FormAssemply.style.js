@@ -4,7 +4,7 @@ export const FormWrapper = styled.section`
   border-top: 3px solid var(--black);
   border-bottom: 3px solid var(--black);
   box-sizing: border-box;
-  margin-top:1.5rem;
+  margin-top: 1.5rem;
 `;
 export const Form = styled.div`
   display: flex;
@@ -23,5 +23,4 @@ export const Button = styled.a`
   background-color: var(--highlight);
   cursor: pointer;
   font-weight: 600;
-  // border-radius:0.2rem;
 `;
