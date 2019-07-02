@@ -13,6 +13,10 @@ export const H2 = styled.h2`
   text-transform: uppercase;
   background-color: var(--highlight);
   padding: 1rem;
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
 `;
 
 export const Section = styled.section`
@@ -23,4 +27,12 @@ export const Section = styled.section`
 export const P = styled.p`
   font-style: normal;
   margin: 1.5rem;
+`;
+export const ArrowDown =styled.div`
+width: 0;
+ height: 0;
+ border-left: 20px solid transparent;
+ border-right: 20px solid transparent;
+
+ border-top: 20px solid #f00;
 `;

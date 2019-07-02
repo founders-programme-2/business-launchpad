@@ -70,12 +70,12 @@ class Journal extends Component {
         </S.P>
 
         <S.Section>
-          <S.H2>Add an entry:</S.H2>
+          <S.H2>Add an entry: <S.ArrowDown/></S.H2>
           <AddEntry />
         </S.Section>
 
         <S.Section>
-          <S.H2>Action Plan:</S.H2>
+          <S.H2>Action Plan:<S.ArrowDown/></S.H2>
           <S.P>
             As you complete your goals, check them off and watch your business
             grow!
@@ -84,7 +84,7 @@ class Journal extends Component {
         </S.Section>
 
         <S.Section>
-          <S.H2>My Business History:</S.H2>
+          <S.H2>My Business History: <S.ArrowDown/></S.H2>
           {this.renderGoals(completed)}
         </S.Section>
       </Fragment>
