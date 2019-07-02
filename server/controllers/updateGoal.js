@@ -1,6 +1,6 @@
 const User = require('../database/models/User');
 
-const updateGoal = (req, res) => {
+const updateGoal = (req, res, next) => {
   // Find all user goal,find the goal to update, update it , return the updated goal for that user
   const { _id, goalId, reflection } = req.body;
   User.findOneAndUpdate(
@@ -15,7 +15,7 @@ const updateGoal = (req, res) => {
     (err, doc) => {
       if (err) {
         // I will return To handel it as server error
-        console.log(err);
+        next();
       }
       res.send({
         success: true,
