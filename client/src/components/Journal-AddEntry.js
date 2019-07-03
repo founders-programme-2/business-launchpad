@@ -31,6 +31,7 @@ class AddEntry extends Component {
         // receives updated list of goals and puts into context
         // eslint-disable-next-line react/destructuring-assignment
         this.context.updateGoals(response.data.data.goals);
+        this.setState({ title: '', category: 'Goal', date: '', details: '' });
       })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error));
