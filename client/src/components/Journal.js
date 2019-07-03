@@ -69,10 +69,6 @@ class Journal extends Component {
         }
       });
     }
-    console.log(
-      this.context.state.goalData.length === 0,
-      'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhi'
-    );
     return (
       <Fragment>
         <CHeader menu />

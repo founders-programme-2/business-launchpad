@@ -34,6 +34,14 @@ class Goal extends Component {
     console.log(this.state.isChecked);
   };
 
+  convertToReadableDate = dateToConvert => {
+    // return to this function to handle it MORE!!!
+    const longDate = new Date(dateToConvert);
+    // console.log(longDate.toString());
+    // console.log(longDate.getYear(),"daaaaaate");
+    return longDate.toString();
+  };
+
   render() {
     const { data } = this.props;
     const {
@@ -48,6 +56,7 @@ class Goal extends Component {
       reflection,
     } = data;
 
+    console.log(data);
     return (
       <Fragment>
         {this.state.isChecked ? (
@@ -81,22 +90,20 @@ class Goal extends Component {
 
               <S.Inline>
                 <S.H4>Date created:</S.H4>
-                <p>{dateCreated}</p>
+                <p>{this.convertToReadableDate(dateCreated)}</p>
               </S.Inline>
 
               <S.Inline>
                 <S.H4>Due date:</S.H4>
-                <p>{dateTodo}</p>
+                <p>{this.convertToReadableDate(dateTodo)}</p>
               </S.Inline>
 
-              {dateCompleted !== '' ? (
-                <Fragment>
-                  <S.Inline>
-                    <S.H4>Date completed:</S.H4>
-                    <p>{dateCompleted}</p>
-                  </S.Inline>
-                </Fragment>
-              ) : null}
+              {completed && (
+                <S.Inline>
+                  <S.H4>Date completed:</S.H4>
+                  <p>{this.convertToReadableDate(dateCompleted)}</p>
+                </S.Inline>
+              )}
             </S.Info>
 
             <S.Body>
@@ -122,7 +129,7 @@ Goal.contextType = MyContext;
 Goal.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
-    reflection:PropTypes.string,
+    reflection: PropTypes.string,
     category: PropTypes.string,
     completed: PropTypes.bool,
     dateCreated: PropTypes.string,
