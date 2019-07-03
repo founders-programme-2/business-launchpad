@@ -49,5 +49,5 @@ export const Submit = styled.input`
   color: var(--white);
   font-size: 1.2rem;
   border-radius: 1rem;
-  box-shadow: 0.2rem 4rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

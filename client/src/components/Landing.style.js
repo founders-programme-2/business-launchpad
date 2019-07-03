@@ -44,7 +44,7 @@ export const ButtonSignUp = styled.button`
   width: 15rem;
   height: 3rem;
   background: var(--white);
-  box-shadow: 0rem 4rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 3rem;
   font-weight: 800;
   font-size: 1.5rem;

@@ -91,9 +91,9 @@ export const MenuElement = styled.button`
   border: none;
   padding: 0.5rem;
   text-align: center;
-  -webkit-box-shadow: 2rem 2rem 5remx 0rem rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 2rem 2rem 5rem 0rem rgba(0, 0, 0, 0.75);
-  box-shadow: 2rem 2rem 5rem 0rem rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
   :hover {
     background-color: var(--black);
@@ -115,7 +115,7 @@ export const Overlay = styled.main`
   position: absolute;
   width: 100%;
   height: 100vh;
-  top: -14rem;
+  top: -14px;
   left: 0;
   z-index: 1000;
   margin: 0 auto;
