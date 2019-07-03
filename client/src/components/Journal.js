@@ -10,12 +10,13 @@ import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
 import { MyContext } from './Context';
 import { GETGOALS_SERVER } from '../constants';
+import Bubble from './CLoading';
 
 class Journal extends Component {
   state = {
-    showEntry:true,
-    showPlane:true,
-    showHistory:true,
+    showEntry: true,
+    showPlane: true,
+    showHistory: true,
   };
 
   // queries database to retrieve all goals for current user on page load
@@ -40,14 +41,17 @@ class Journal extends Component {
       return <Goal data={goalData} key={key} />;
     });
   };
+
   handleEntery = () => {
-    this.setState({ showEntry: !this.state.showEntry});
+    this.setState({ showEntry: !this.state.showEntry });
   };
+
   handleActionPlane = () => {
-    this.setState({ showPlane: !this.state.showPlane});
+    this.setState({ showPlane: !this.state.showPlane });
   };
+
   handleHistory = () => {
-    this.setState({ showHistory: !this.state.showHistory});
+    this.setState({ showHistory: !this.state.showHistory });
   };
 
   render() {
@@ -65,7 +69,10 @@ class Journal extends Component {
         }
       });
     }
-
+    console.log(
+      this.context.state.goalData.length === 0,
+      'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhi'
+    );
     return (
       <Fragment>
         <CHeader menu />
@@ -82,27 +89,37 @@ class Journal extends Component {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.{' '}
         </S.P>
-
         <S.Section>
-          <S.H2>Add an entry: <S.ArrowDown onClick={this.handleEntery}/></S.H2>
-
+          <S.H2>
+            Add an entry: <S.ArrowDown onClick={this.handleEntery} />
+          </S.H2>
           {showEntry && <AddEntry />}
-
         </S.Section>
+        {this.context.state.goalData.length === 0 ? (
+          <Bubble />
+        ) : (
+          <>
+            <S.Section>
+              <S.H2>
+                Action Plan:
+                <S.ArrowDown onClick={this.handleActionPlane} />
+              </S.H2>
+              <S.P>
+                As you complete your goals, check them off and watch your
+                business grow!
+              </S.P>
+              {showPlane && this.renderGoals(toDo)}
+            </S.Section>
 
-        <S.Section>
-          <S.H2>Action Plan:<S.ArrowDown onClick={this.handleActionPlane} /></S.H2>
-          <S.P>
-            As you complete your goals, check them off and watch your business
-            grow!
-          </S.P>
-          {showPlane && this.renderGoals(toDo)}
-        </S.Section>
-
-        <S.Section>
-          <S.H2>My Business History: <S.ArrowDown onClick={this.handleHistory}/></S.H2>
-          {showHistory && this.renderGoals(completed)}
-        </S.Section>
+            <S.Section>
+              <S.H2>
+                My Business History:{' '}
+                <S.ArrowDown onClick={this.handleHistory} />
+              </S.H2>
+              {showHistory && this.renderGoals(completed)}
+            </S.Section>
+          </>
+        )}
       </Fragment>
     );
   }
