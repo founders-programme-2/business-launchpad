@@ -23,7 +23,10 @@ class ReflectionForm extends Component {
     event.preventDefault();
     const { _id } = this.context.state;
     const { goalId, reflection } = this.state;
-    const dataToSend = { _id, goalId, reflection };
+    // transform the date to ISODate object to be stored in db
+    const today = new Date();
+    const dateCompleted = today.toISOString();
+    const dataToSend = { _id, goalId, reflection, dateCompleted };
     console.log(dataToSend);
     axios
       .put(UPDGOAL_SERVER, dataToSend)
