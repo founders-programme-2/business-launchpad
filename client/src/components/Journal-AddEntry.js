@@ -23,7 +23,8 @@ class AddEntry extends Component {
     newEntryData._id = this.context.state._id;
 
     event.preventDefault();
-
+    // transform the date to more readable form
+    console.log(new Date('1999-05-02T00:00:00.000Z'));
     const dataToSend = this.state;
     axios
       .post(ADDGOAL_SERVER, dataToSend)
