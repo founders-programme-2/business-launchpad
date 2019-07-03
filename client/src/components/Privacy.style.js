@@ -24,7 +24,7 @@ export const P = styled.p`
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
-  line-height: 18px;
+  line-height: 1rem;
   letter-spacing: 0.1em;
   margin: 2rem;
 `;
