@@ -87,13 +87,23 @@ class Goal extends Component {
           <S.Article>
             <S.HeaderSection>
               {completed ? (
-                <input type="checkbox" defaultChecked aria-label="Completed" />
+                <S.Label>
+                  <S.Checkbox
+                    type="checkbox"
+                    defaultChecked
+                    aria-label="Completed"
+                  />
+                  <S.Box />
+                </S.Label>
               ) : (
-                <input
-                  type="checkbox"
-                  aria-label="onGoing"
-                  onChange={this.handleChecked}
-                />
+                <S.Label>
+                  <S.Checkbox
+                    type="checkbox"
+                    aria-label="onGoing"
+                    onChange={this.handleChecked}
+                  />
+                  <S.Box />
+                </S.Label>
               )}
               <h3>{title}</h3>
               <S.Delete type="submit" name={_id} onClick={this.confirmDelete}>
