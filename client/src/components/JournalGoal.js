@@ -6,9 +6,11 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import Swal from 'sweetalert2';
 import { DELGOAL_SERVER } from '../constants';
 import * as S from './JournalGoal.style';
 import ReflectionForm from './JournalReflectionForm';
+
 import { MyContext } from './Context';
 
 class Goal extends Component {
@@ -25,6 +27,7 @@ class Goal extends Component {
       .post(DELGOAL_SERVER, dataToSend)
       .then(goalsData => {
         this.context.updateGoals(goalsData.data.data.goals);
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       })
       .catch(err => err);
   };
@@ -32,6 +35,22 @@ class Goal extends Component {
   handleChecked = () => {
     this.setState({ isChecked: !this.state.isChecked });
     console.log(this.state.isChecked);
+  };
+
+  confirmDelete = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.value) {
+        this.deleteGoal();
+      }
+    });
   };
 
   convertToReadableDate = dateToConvert => {
@@ -77,7 +96,7 @@ class Goal extends Component {
                 />
               )}
               <h3>{title}</h3>
-              <S.Delete type="submit" name={_id} onClick={this.deleteGoal}>
+              <S.Delete type="submit" name={_id} onClick={this.confirmDelete}>
                 <h3>X</h3>
                 <h4> delete</h4>
               </S.Delete>
