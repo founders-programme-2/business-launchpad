@@ -21,7 +21,7 @@
     "url": "git+https://github.com/founders-programme-2/business-launchpad.git"
   },
   "engines": {
-    "node": "8.9.1"
+    "node": "10.15.3"
   },
   "author": "",
   "license": "ISC",
