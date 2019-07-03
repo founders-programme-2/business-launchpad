@@ -43,7 +43,7 @@ class Goal extends Component {
       dateCreated,
       details,
       _id,
-      dateToDo,
+      dateTodo,
       dateCompleted,
       reflection,
     } = data;
@@ -86,7 +86,7 @@ class Goal extends Component {
 
               <S.Inline>
                 <S.H4>Due date:</S.H4>
-                <p>{dateToDo}</p>
+                <p>{dateTodo}</p>
               </S.Inline>
 
               {dateCompleted !== '' ? (
@@ -128,7 +128,7 @@ Goal.propTypes = {
     dateCreated: PropTypes.string,
     details: PropTypes.string,
     _id: PropTypes.string,
-    dateToDo: PropTypes.string,
+    dateTodo: PropTypes.string,
     dateCompleted: PropTypes.string,
   }).isRequired,
 };
