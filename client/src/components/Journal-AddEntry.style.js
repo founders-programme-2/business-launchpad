@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  border: 3px solid var(--black);
+  border: 0.2rem solid var(--black);
   margin: 0.3rem 0 0.3rem 0;
 `;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Article = styled.article`
-  border-top: 3px dashed var(--black);
+  border-top: 0.2rem dashed var(--black);
   margin: 2rem 1rem 2rem 1rem;
 `;
 

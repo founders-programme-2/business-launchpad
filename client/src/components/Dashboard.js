@@ -7,6 +7,7 @@ import info from '../assets/info.svg';
 import { Logo } from './CHeader.style';
 import CHeader from './CHeader';
 import FormAssemply from './Dashboard-FormAssemply';
+import CFooter from './CFooter';
 
 class Dashboard extends Component {
   render() {
@@ -30,6 +31,7 @@ class Dashboard extends Component {
         </C.P>
 
         <GoalProgress />
+        <CFooter />
       </Fragment>
     );
   }

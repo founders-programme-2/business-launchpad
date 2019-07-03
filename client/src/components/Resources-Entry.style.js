@@ -5,7 +5,7 @@ export const Article = styled.article`
   padding: 1rem 0.5rem;
   /* Ignores first child element */
   &:nth-child(n + 3) {
-    border-top: 3px dashed var(--black);
+    border-top: 0.1rem dashed var(--black);
   }
 `;
 
