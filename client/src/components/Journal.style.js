@@ -31,14 +31,20 @@ export const P = styled.p`
 export const ArrowDown = styled.button`
   width: 0;
   height: 0;
-  outline:none;
-  background-color:transparent;
-  padding:0;
+  outline: none;
+  background-color: transparent;
+  padding: 0;
   border-left: 0.7rem solid transparent;
   border-right: 0.7rem solid transparent;
   border-top: 1rem solid var(--black);
   border-bottom: none;
-  :hover{
+  :hover {
     cursor: pointer;
   }
+`;
+export const EmptyContainer = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:4rem;
 `;

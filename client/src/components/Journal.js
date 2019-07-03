@@ -96,7 +96,7 @@ class Journal extends Component {
           {showEntry && <AddEntry />}
         </S.Section>
         {this.context.state.goalData.length === 0 ? (
-          <Bubble />
+          <S.EmptyContainer><Bubble /></S.EmptyContainer>
         ) : (
           <>
             <S.Section>
