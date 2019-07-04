@@ -51,7 +51,6 @@ class ReflectionForm extends Component {
   };
 
   render() {
-    const { history } = this.props;
     const { reflection } = this.state;
     return (
       <S.Overlay>
