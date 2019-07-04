@@ -3,7 +3,4 @@ exports.serverError = (err, req, res, next) => {
   return res
     .status(500)
     .send({ success: false, message: 'Internal Server Error' });
-  // return res
-  //   .status(err.status || 500)
-  //   .send({ Error: err.message || 'Internal Server Error' });
 };
