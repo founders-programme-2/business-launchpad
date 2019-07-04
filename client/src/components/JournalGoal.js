@@ -54,11 +54,10 @@ class Goal extends Component {
   };
 
   convertToReadableDate = dateToConvert => {
-    // return to this function to handle it MORE!!!
     const longDate = new Date(dateToConvert);
-    // console.log(longDate.toString());
-    // console.log(longDate.getYear(),"daaaaaate");
-    return longDate.toString();
+    // console.log(longDate.getDay(),longDate.getFullYear(),longDate.getMonth(),longDate.getDate());
+    const strDate=longDate.toString();
+    return strDate.slice(0,16)
   };
 
   render() {
