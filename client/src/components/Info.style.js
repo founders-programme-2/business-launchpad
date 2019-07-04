@@ -12,7 +12,7 @@ export const H1 = styled.h1`
   background-color: var(--highlight);
   font-family: 'Work Sans';
   font-style: normal;
-  line-height: 35px;
+  line-height: 3rem;
   letter-spacing: 0.1em;
   font-weight: 900;
   text-transform: uppercase;

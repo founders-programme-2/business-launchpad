@@ -16,7 +16,7 @@ export const H2 = styled.h2`
 `;
 
 export const Section = styled.section`
-  border: 3px solid var(--black);
+  border: 0.2rem solid var(--black);
   margin: 0.5rem 0 0.5rem 0;
 `;
 

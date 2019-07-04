@@ -27,7 +27,7 @@ const GoalSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  reflection:{
+  reflection: {
     type: String,
     default: '',
   },

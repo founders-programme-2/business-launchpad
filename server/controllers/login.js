@@ -3,60 +3,60 @@ const jwt = require('jsonwebtoken');
 const User = require('../database/models/User');
 const { validateLogin } = require('../middleware/validation/validateLogin');
 
-const login = (req, res, next) => {
-  Promise.resolve()
-    .then(() => {
-      // validates incoming login data
-      const { errors, isValid } = validateLogin(req.body);
-      const secret = process.env.secretOrKey;
+const login = (req, res) => {
+  // validates incoming login data
+  const { errors, isValid } = validateLogin(req.body);
+  const secret = process.env.secretOrKey;
 
-      // sends an error if incoming data is invalid
-      if (!isValid) {
-        return res.status(400).send(errors);
-      }
+  // sends an error if incoming data is invalid
+  if (!isValid) {
+    let errorsToSend = '';
+    errorsToSend += errors.email ? errors.email : '';
+    errorsToSend += errors.password ? errors.password : '';
 
-      const { email, password } = req.body;
+    return res.send({
+      success: false,
+      message: errorsToSend,
+    });
+  }
 
-      return User.findOne({ email }).then(user => {
-        if (!user) {
-          return res.status(400).send({
-            success: false,
-            message: 'User not found. Please sign up.',
-          });
-        }
+  const { email, password } = req.body;
 
-        // if user exists, use bcryptjs to compare submitted password with hashed password in our db
-        return bcrypt.compare(password, user.password).then(isMatch => {
-          if (isMatch) {
-            // if passwords match, create JTW payload
-            const payload = {
-              id: user.id,
-              name: user.name,
-            };
+  return User.findOne({ email }).then(user => {
+    if (!user) {
+      return res.send({
+        success: false,
+        message: 'User not found. Please sign up.',
+      });
+    }
 
-            // sign token, expires in 1 day in seconds
-            return jwt.sign(
-              payload,
-              secret,
-              { expiresIn: 86400 },
-              (err, token) => {
-                // append the token to a 'Bearer' string (in passport.js we set opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken())
-                res.send({
-                  success: true,
-                  token: `Bearer${token}`,
-                  userID: payload.id,
-                });
-              }
-            );
-          }
-          return res.status(400).send({
-            success: false,
-            message: 'Sorry, password is incorrect.',
+    // if user exists, use bcryptjs to compare submitted password with hashed password in our db
+    return bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        // if passwords match, create JTW payload
+        const payload = {
+          id: user.id,
+          name: user.name,
+        };
+
+        // sign token, expires in 1 day in seconds
+        return jwt.sign(payload, secret, { expiresIn: 86400 }, (err, token) => {
+          // append the token to a 'Bearer' string (in passport.js we set opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken())
+          res.send({
+            success: true,
+            token: `Bearer${token}`,
+            userID: payload.id,
+            username: user.name,
           });
         });
+      }
+      return res.send({
+        success: false,
+        message: 'Sorry, password is incorrect.',
       });
-    })
-    .catch(next);
+    });
+  });
 };
+
 
 module.exports = { login };
