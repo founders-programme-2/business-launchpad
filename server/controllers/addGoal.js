@@ -11,14 +11,21 @@ const addGoal = (req, res, next) => {
     .then(() => {
       const { errors, isValid } = validateGoal(req.body);
       if (!isValid) {
-        return res.status(400).send(errors);
+        let errorsToSend = '';
+        errorsToSend += errors.title ? errors.title : '';
+        errorsToSend += errors.category ? errors.category : '';
+
+        return res.send({
+          success: false,
+          message: errorsToSend,
+        });
       }
 
       const { _id } = req.body;
 
       return User.findOne({ _id }).then(foundUser => {
         if (!foundUser) {
-          return res.status(400).send({
+          return res.send({
             success: false,
             message: 'User not found',
           });
@@ -31,14 +38,13 @@ const addGoal = (req, res, next) => {
           dateTodo: req.body.date,
           details: req.body.details,
         };
-
         foundUser.goals.push(goalToAdd);
         return foundUser.save(err => {
           if (err) {
             console.log(
               `Sorry you've had an error saving a goal! Error:${err}`
             );
-            return res.status(400).send({
+            return res.send({
               success: false,
               message: 'Error saving goal',
             });

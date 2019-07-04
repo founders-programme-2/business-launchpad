@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import * as S from './Journal-AddEntry.style';
 import { MyContext } from './Context';
 import { ADDGOAL_SERVER } from '../constants';
@@ -27,11 +28,23 @@ class AddEntry extends Component {
     axios
       .post(ADDGOAL_SERVER, dataToSend)
       // eslint-disable-next-line no-console
-      .then(response => {
-        // receives updated list of goals and puts into context
-        // eslint-disable-next-line react/destructuring-assignment
-        this.context.updateGoals(response.data.data.goals);
-        this.setState({ title: '', category: 'Goal', date: '', details: '' });
+      .then(({ data }) => {
+        if (data.success) {
+          Swal.fire({
+            type: 'success',
+            title: 'Success!',
+            text: 'Goal added',
+          });
+          // receives updated list of goals and puts into context
+          this.context.updateGoals(data.data.goals);
+          this.setState({ title: '', category: 'Goal', date: '', details: '' });
+        } else {
+          Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: data.message,
+          });
+        }
       })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error));

@@ -5,7 +5,7 @@ const getGoals = (req, res, next) => {
 
   return User.findById(_id, 'goals')
     .then(goals => {
-      res.status(200).send({
+      res.send({
         success: true,
         data: goals,
       });
