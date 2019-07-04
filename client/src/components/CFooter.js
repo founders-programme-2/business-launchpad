@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as S from './CFooter.style';
 import { CONTACT_URL, PRIVACY_URL, LOGIN_URL } from '../constants';
 
-const CFooter = pathname => {
+const CFooter = ({ pathname }) => {
   if (pathname !== LOGIN_URL) {
     return (
       <S.Footer>

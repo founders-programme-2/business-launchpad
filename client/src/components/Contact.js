@@ -24,7 +24,7 @@ const Contact = () => {
           <S.P>fakemail@fakeemail.com</S.P>
         </S.Address>
       </S.Main>
-      <CFooter pathname="CONTACT_URL" />
+      <CFooter pathname="/contact" />
     </Fragment>
   );
 };

@@ -25,7 +25,7 @@ const Privacy = () => {
           laborum
         </S.P>
       </S.Main>
-      <CFooter />
+      <CFooter pathname="/privacy" />
     </Fragment>
   );
 };
