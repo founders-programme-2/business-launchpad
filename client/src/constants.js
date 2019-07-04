@@ -8,6 +8,7 @@ export const PRIVACY_URL = '/privacy';
 export const RESOURCES_URL = '/resources';
 export const JOURNAL_URL = '/journal';
 export const ERROR404_URL = '/error404';
+export const ERROR500_URL = '/error500';
 
 // only useful for client side, needs to be manually changed on server
 export const REGISTER_SERVER = '/account/register';
