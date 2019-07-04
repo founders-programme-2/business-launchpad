@@ -12,6 +12,7 @@ import Privacy from './components/Privacy';
 import Resources from './components/Resources';
 import Journal from './components/Journal';
 import Error404 from './components/Error404';
+import Error500 from './components/Error500';
 import { MyProvider } from './components/Context';
 import {
   LANDING_URL,
@@ -24,6 +25,7 @@ import {
   RESOURCES_URL,
   JOURNAL_URL,
   ERROR404_URL,
+  ERROR500_URL,
 } from './constants';
 
 const App = () => {
@@ -41,7 +43,9 @@ const App = () => {
           <Route exact path={PRIVACY_URL} component={Privacy} />
           <Route exact path={RESOURCES_URL} component={Resources} />
           <Route exact path={JOURNAL_URL} component={Journal} />
-          <Redirect to={ERROR404_URL} component={Error404} />
+          <Route exact path={ERROR500_URL} component={Error500} />
+          <Route exact path={ERROR404_URL} component={Error404} />
+          <Redirect to={ERROR404_URL} />
         </Switch>
       </MyProvider>
     </BrowserRouter>

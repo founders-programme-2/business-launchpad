@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-// import propTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import { withRouter } from 'react-router-dom';
 import * as S from './JournalReflectionForm.style';
 import * as C from './Journal-AddEntry.style';
 import { MyContext } from './Context';
-import { UPDGOAL_SERVER } from '../constants';
+import { UPDGOAL_SERVER, ERROR500_URL } from '../constants';
 
 import '../styles/sweetalert2.css';
 
@@ -21,6 +22,7 @@ class ReflectionForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { history } = this.props;
     const { _id } = this.context.state;
     const { goalId, reflection } = this.state;
     const dataToSend = { _id, goalId, reflection };
@@ -40,8 +42,12 @@ class ReflectionForm extends Component {
           });
         }
       })
-      // return in refecator to custmize it as well.
-      .catch(err => Swal.fire('Error at the request'));
+      .catch(err => {
+        console.log('err catch', err);
+        history.push({
+          pathname: ERROR500_URL,
+        });
+      });
   };
 
   render() {
@@ -79,8 +85,9 @@ class ReflectionForm extends Component {
   }
 }
 ReflectionForm.contextType = MyContext;
-// ReflectionForm.propTypes = {
-//   history: propTypes.string.isRequired,
-// };
 
-export default ReflectionForm;
+ReflectionForm.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
+
+export default withRouter(ReflectionForm);

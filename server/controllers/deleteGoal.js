@@ -5,7 +5,7 @@
 const User = require('../database/models/User');
 const { getGoals } = require('./getGoals');
 
-const deleteGoal = (req, res) => {
+const deleteGoal = (req, res, next) => {
   const { _id, goalId } = req.body;
   console.log('body is: ', req.body);
 
@@ -28,13 +28,7 @@ const deleteGoal = (req, res) => {
         return getGoals(req, res);
       });
     })
-    .catch(err => {
-      console.log('there was an error: ', err);
-      res.send({
-        success: false,
-        error: err,
-      });
-    });
+    .catch(next);
 };
 
 module.exports = { deleteGoal };

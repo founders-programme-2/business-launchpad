@@ -4,7 +4,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import Swal from 'sweetalert2';
 
 import * as S from './Login.style';
-import { LOGIN_SERVER, JOURNAL_URL } from '../constants';
+import { LOGIN_SERVER, JOURNAL_URL, ERROR500_URL } from '../constants';
 import CHeader from './CHeader';
 import Button from './CBtn';
 import { MyContext } from './Context';
@@ -23,22 +23,30 @@ class Login extends Component {
       password,
     };
 
-    axios.post(LOGIN_SERVER, dataToSend).then(({ data }) => {
-      if (data.success) {
-        const { updateToken, updateId, updateName } = this.context;
-        updateToken(data.token);
-        updateId(data.userID);
-        updateName(data.username);
+    axios
+      .post(LOGIN_SERVER, dataToSend)
+      .then(({ data }) => {
+        if (data.success) {
+          const { updateToken, updateId, updateName } = this.context;
+          updateToken(data.token);
+          updateId(data.userID);
+          updateName(data.username);
 
-        history.push(JOURNAL_URL);
-      } else {
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: data.message,
+          history.push(JOURNAL_URL);
+        } else {
+          Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: data.message,
+          });
+        }
+      })
+      .catch(err => {
+        console.log('err catch', err);
+        history.push({
+          pathname: ERROR500_URL,
         });
-      }
-    });
+      });
   };
 
   handleChange = event => {

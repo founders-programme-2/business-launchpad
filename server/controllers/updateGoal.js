@@ -1,6 +1,6 @@
 const User = require('../database/models/User');
 
-const updateGoal = (req, res) => {
+const updateGoal = (req, res, next) => {
   // Find all user goal,find the goal to update, update it , return the updated goal for that user
   const { _id, goalId, reflection } = req.body;
   User.findOneAndUpdate(
@@ -14,11 +14,7 @@ const updateGoal = (req, res) => {
     { new: true },
     (err, doc) => {
       if (err) {
-        // not currently handled on front end
-        res.send({
-          success: false,
-          err,
-        });
+        next();
       }
       res.send({
         success: true,

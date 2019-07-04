@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import * as S from './Journal-AddEntry.style';
 import { MyContext } from './Context';
-import { ADDGOAL_SERVER } from '../constants';
+import { ADDGOAL_SERVER,ERROR500_URL } from '../constants';
 
 class AddEntry extends Component {
   state = {
@@ -21,7 +23,7 @@ class AddEntry extends Component {
     const newEntryData = this.state;
     // eslint-disable-next-line
     newEntryData._id = this.context.state._id;
-
+  const { history } = this.props;
     event.preventDefault();
 
     const dataToSend = this.state;
@@ -34,7 +36,12 @@ class AddEntry extends Component {
         this.context.updateGoals(response.data.data.goals);
       })
       // eslint-disable-next-line no-console
-      .catch(error => console.log(error));
+      .catch(err => {
+        console.log('err catch', err);
+        history.push({
+          pathname: ERROR500_URL,
+        });
+      });
   };
 
   render() {
@@ -91,5 +98,8 @@ class AddEntry extends Component {
 }
 
 AddEntry.contextType = MyContext;
+AddEntry.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
-export default AddEntry;
+export default withRouter(AddEntry);
