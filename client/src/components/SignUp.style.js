@@ -13,7 +13,7 @@ export const Main = styled.main`
 export const H1 = styled.h1`
   font-style: var(--black);
   background-color: var(--white);
-  margin: 50px;
+  margin: 4rem;
 `;
 
 export const Label = styled.label`
@@ -27,10 +27,10 @@ export const Label = styled.label`
 export const Input = styled.input`
   display: block;
   background: var(--white);
-  border-radius: 10px;
-  margin-bottom: 30px;
-  width: 200px;
-  padding: 10px 0px;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  width: 13rem;
+  padding: 1rem 0rem;
 `;
 
 export const P = styled.p`
@@ -39,7 +39,7 @@ export const P = styled.p`
   font-weight: 900;
   font-size: 0.8rem;
   text-decoration-line: underline;
-  margin: 50px;
+  margin: 5rem;
 `;
 
 export const ButtonSignUp = styled(Button)`

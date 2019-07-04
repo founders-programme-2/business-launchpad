@@ -1,80 +1,52 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import Swal from 'sweetalert2';
+
 import * as S from './Login.style';
-import { LOGIN_URL, DASHBOARD_URL } from '../constants';
+import { LOGIN_SERVER, JOURNAL_URL } from '../constants';
 import CHeader from './CHeader';
 import Button from './CBtn';
+import { MyContext } from './Context';
 
 class Login extends Component {
   state = {
     email: '',
     password: '',
-    emailError: '',
-    passwordError: '',
-    isErrorEmail: false,
-    isErrorPassword: false,
-  };
-
-  componentDidMount() {
-    axios.get('/checkCookie').then(({ data: { cookie } }) => {
-      if (cookie) {
-        const { history } = this.props;
-        history.push(DASHBOARD_URL);
-      }
-    });
-  }
-
-  validate = () => {
-    let isError = false;
-    const { email, password } = this.state;
-
-    const errors = {
-      emailError: '',
-      passwordError: '',
-      isErrorEmail: false,
-      isErrorPassword: false,
-    };
-    if (email < 1) {
-      isError = true;
-      errors.isErrorEmail = true;
-      errors.emailError = 'Please enter your email.';
-    }
-    if (password < 1) {
-      isError = true;
-      errors.isErrorPassword = true;
-      errors.passwordError = 'Please enter your password.';
-    }
-    this.setState({
-      // eslint-disable-next-line react/no-access-state-in-setstate
-      ...this.state,
-      ...errors,
-    });
-    return isError;
   };
 
   login = () => {
-    const err = this.validate();
     const { email, password } = this.state;
-    if (!err) {
-      const { history } = this.props;
-      const inputs = {
-        email,
-        password,
-      };
+    const { history } = this.props;
+    const dataToSend = {
+      email,
+      password,
+    };
 
-      axios.post(LOGIN_URL, inputs).then(({ data }) => {
-        if (data.success) {
-          history.push(DASHBOARD_URL);
-        } else {
-          this.setState({
-            passwordError: 'email or password is incorrect.',
-            isErrorEmail: true,
-            isErrorPassword: true,
-          });
-        }
-      });
-    }
+    axios.post(LOGIN_SERVER, dataToSend).then(({ data }) => {
+      if (data.success) {
+        const { updateToken, updateId, updateName } = this.context;
+        updateToken(data.token);
+        updateId(data.userID);
+        updateName(data.username);
+
+        history.push(JOURNAL_URL);
+      } else {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: data.message,
+        });
+      }
+    });
+  };
+
+  handleChange = event => {
+    const { name } = event.target;
+    const { value } = event.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
@@ -92,36 +64,32 @@ class Login extends Component {
         <S.Main>
           <S.H1>Login</S.H1>
           <form>
-            <S.Label for="email">Email:</S.Label>
-            <S.Input
-              StyleError={isErrorEmail}
-              {...this.props}
-              type="text"
-              name="email"
-              label="email"
-              errorText={emailError}
-              value={email}
-              onChange={e =>
-                this.setState({
-                  email: e.target.value,
-                })
-              }
-            />
-            <S.Label for="password">Password:</S.Label>
-            <S.Input
-              StyleError={isErrorPassword}
-              {...this.props}
-              type="password"
-              name="password"
-              label="password"
-              errorText={passwordError}
-              value={password}
-              onChange={e =>
-                this.setState({
-                  password: e.target.value,
-                })
-              }
-            />
+            <S.Label>
+              Email:
+              <S.Input
+                StyleError={isErrorEmail}
+                {...this.props}
+                type="text"
+                name="email"
+                label="email"
+                errorText={emailError}
+                value={email}
+                onChange={this.handleChange}
+              />
+            </S.Label>
+            <S.Label>
+              Password:
+              <S.Input
+                StyleError={isErrorPassword}
+                {...this.props}
+                type="password"
+                name="password"
+                label="password"
+                errorText={passwordError}
+                value={password}
+                onChange={this.handleChange}
+              />
+            </S.Label>
           </form>
           <Button text="login" cb={this.login} />
         </S.Main>
@@ -129,6 +97,8 @@ class Login extends Component {
     );
   }
 }
+
+Login.contextType = MyContext;
 
 Login.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,

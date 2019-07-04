@@ -10,13 +10,13 @@ const validateLogin = data => {
   password = !isEmpty(password) ? password : '';
 
   if (Validator.isEmpty(email)) {
-    errors.email = 'Email field is required';
+    errors.email = 'Email field is required. ';
   } else if (!Validator.isEmail(email)) {
-    errors.email = 'Email is invalid';
+    errors.email = 'Email is invalid. ';
   }
 
   if (Validator.isEmpty(password)) {
-    errors.password = 'Password field is required.';
+    errors.password = 'Password field is required. ';
   }
 
   return {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  border: 3px solid var(--black);
+  border: 0.2rem solid var(--black);
   margin: 0.3rem 0 0.3rem 0;
 `;
 
@@ -29,18 +29,18 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  border: 2px solid var(--gray);
+  border: 0.2rem solid var(--gray);
   height: 1.2rem;
 `;
 
 export const Select = styled.select`
-  border: 2px solid var(--gray);
+  border: 0.2rem solid var(--gray);
   height: 1.5rem;
   border-radius: 0;
 `;
 
 export const Textarea = styled.textarea`
-  border: 2px solid var(--gray);
+  border: 0.2rem solid var(--gray);
 `;
 
 export const Submit = styled.input`

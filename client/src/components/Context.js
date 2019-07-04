@@ -7,21 +7,39 @@ export class MyProvider extends Component {
   state = {
     isLoggedIn: false,
     token: '',
-    // for development this should be a static id of a document in your database
-    // until login/authentication automatically starts to save it here
-    _id: '5d10aa44726912311745ae0e',
+    _id: '',
     goalData: [],
   };
 
+  // TODO: Refactor below functions into a single function if possible
+
   updateGoals = goalData => {
     this.setState({ goalData });
+  };
+
+  updateToken = tokenData => {
+    this.setState({ token: tokenData });
+  };
+
+  updateId = idData => {
+    this.setState({ _id: idData });
+  };
+
+  updateName = username => {
+    this.setState({ username });
   };
 
   render() {
     const { children } = this.props;
     return (
       <MyContext.Provider
-        value={{ state: this.state, updateGoals: this.updateGoals }}
+        value={{
+          state: this.state,
+          updateGoals: this.updateGoals,
+          updateToken: this.updateToken,
+          updateId: this.updateId,
+          updateName: this.updateName,
+        }}
       >
         {children}
       </MyContext.Provider>

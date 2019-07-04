@@ -10,14 +10,21 @@ const login = (req, res) => {
 
   // sends an error if incoming data is invalid
   if (!isValid) {
-    return res.status(400).send(errors);
+    let errorsToSend = '';
+    errorsToSend += errors.email ? errors.email : '';
+    errorsToSend += errors.password ? errors.password : '';
+
+    return res.send({
+      success: false,
+      message: errorsToSend,
+    });
   }
 
   const { email, password } = req.body;
 
   return User.findOne({ email }).then(user => {
     if (!user) {
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: 'User not found. Please sign up.',
       });
@@ -39,10 +46,11 @@ const login = (req, res) => {
             success: true,
             token: `Bearer${token}`,
             userID: payload.id,
+            username: user.name,
           });
         });
       }
-      return res.status(400).send({
+      return res.send({
         success: false,
         message: 'Sorry, password is incorrect.',
       });
