@@ -13,8 +13,7 @@
     "react-router-prop-types": "^1.0.4",
     "react-scripts": "3.0.1",
     "styled-components": "^4.3.1",
-    "sweetalert2": "^8.13.0",
-    "eslint-plugin-react": "^7.13.0"
+    "sweetalert2": "^8.13.0"
   },
   "devDependencies": {
     "enzyme": "^3.10.0",
@@ -27,7 +26,8 @@
     "eslint-plugin-prettier": "^3.1.0",
     "prettier": "^1.18.2",
     "prettier-eslint": "^8.8.2",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "eslint-plugin-react": "^7.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
