@@ -7,46 +7,48 @@ const { validateGoal } = require('../middleware/validation/validateGoal');
 const { getGoals } = require('./getGoals');
 
 const addGoal = (req, res, next) => {
-Promise.resolve().then(()=>{
-    const { errors, isValid } = validateGoal(req.body);
-    if (!isValid) {
-      return res.status(400).send(errors);
-    }
-
-    const { _id } = req.body;
-
-    return User.findOne({ _id }).then(foundUser => {
-      if (!foundUser) {
-        return res.status(400).send({
-          success: false,
-          message: 'User not found',
-        });
+  Promise.resolve()
+    .then(() => {
+      const { errors, isValid } = validateGoal(req.body);
+      if (!isValid) {
+        return res.status(400).send(errors);
       }
 
-      // had problems with accidentally saving the user _id into every goal, so instead we are creating a new object every time
-      const goalToAdd = {
-        title: req.body.title,
-        category: req.body.category,
-        data: req.body.details,
-        details: req.body.details,
-      };
+      const { _id } = req.body;
 
-      foundUser.goals.push(goalToAdd);
-      return foundUser.save(err => {
-        if (err) {
-          console.log(`Sorry you've had an error saving a goal! Error:${err}`);
+      return User.findOne({ _id }).then(foundUser => {
+        if (!foundUser) {
           return res.status(400).send({
             success: false,
-            message: 'Error saving goal',
+            message: 'User not found',
           });
         }
-        console.log(`Goal saved to user!`);
-        return getGoals(req, res);
+
+        // had problems with accidentally saving the user _id into every goal, so instead we are creating a new object every time
+        const goalToAdd = {
+          title: req.body.title,
+          category: req.body.category,
+          data: req.body.details,
+          details: req.body.details,
+        };
+
+        foundUser.goals.push(goalToAdd);
+        return foundUser.save(err => {
+          if (err) {
+            console.log(
+              `Sorry you've had an error saving a goal! Error:${err}`
+            );
+            return res.status(400).send({
+              success: false,
+              message: 'Error saving goal',
+            });
+          }
+          console.log(`Goal saved to user!`);
+          return getGoals(req, res);
+        });
       });
-    });
-  }).catch (next)
-
-
+    })
+    .catch(next);
 };
 
 module.exports = { addGoal };
