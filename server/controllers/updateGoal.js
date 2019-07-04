@@ -8,13 +8,12 @@ const updateGoal = (req, res, next) => {
     {
       $set: {
         'goals.$.completed': true,
-        'goals.$.reflection':reflection,
+        'goals.$.reflection': reflection,
       },
     },
     { new: true },
     (err, doc) => {
       if (err) {
-        // I will return To handel it as server error
         next();
       }
       res.send({

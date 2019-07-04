@@ -10,7 +10,7 @@ import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
 import { MyContext } from './Context';
-import { GETGOALS_SERVER , ERROR500_URL} from '../constants';
+import { GETGOALS_SERVER, ERROR500_URL } from '../constants';
 
 class Journal extends Component {
   state = {};
@@ -22,15 +22,14 @@ class Journal extends Component {
     axios
       .post(GETGOALS_SERVER, { _id })
       .then(goalsData => {
-        console.log("that what is the reponse",goalsData);
         this.context.updateGoals(goalsData.data.data.goals);
       })
       .catch(err => {
         console.log('err', err);
         history.push({
-           pathname: ERROR500_URL,
-         });
-       });
+          pathname: ERROR500_URL,
+        });
+      });
   }
 
   // function to render the goals in each section
