@@ -7,6 +7,10 @@ import ResourceEntry from './Resources-Entry';
 class Resources extends Component {
   state = {
     data: [],
+    showFunding: true,
+    showEvents: true,
+    showBusiness: true,
+    showBooks: true,
   };
 
   componentDidMount() {
@@ -52,19 +56,27 @@ class Resources extends Component {
         <CHeader menu />
         <S.H1>Resources</S.H1>
         <S.Section>
-          <S.H2>Funding</S.H2>
+          <S.H2>
+            Funding <S.ArrowDown />
+          </S.H2>
           {this.renderResources(resourceData, 'funding')}
         </S.Section>
         <S.Section>
-          <S.H2>Events</S.H2>
+          <S.H2>
+            Events <S.ArrowDown />
+          </S.H2>
           {this.renderResources(resourceData, 'events')}
         </S.Section>
         <S.Section>
-          <S.H2>Business Development</S.H2>
+          <S.H2>
+            Business Development <S.ArrowDown />
+          </S.H2>
           {this.renderResources(resourceData, 'businessdev')}
         </S.Section>
         <S.Section>
-          <S.H2>Books Worth Reading</S.H2>
+          <S.H2>
+            Books Worth Reading <S.ArrowDown />
+          </S.H2>
           {this.renderResources(resourceData, 'books')}
         </S.Section>
       </Fragment>
