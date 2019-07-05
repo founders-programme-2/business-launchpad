@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import CHeader from './CHeader';
 import * as S from './Resources.style';
 import ResourceEntry from './Resources-Entry';
 import CFooter from './CFooter';
+import { ERROR500_URL } from '../constants';
 
 class Resources extends Component {
   state = {
@@ -19,6 +21,7 @@ class Resources extends Component {
   }
 
   getResources = () => {
+    const { history } = this.props;
     axios
       .get('/resources/get')
       .then(response => {
@@ -26,7 +29,12 @@ class Resources extends Component {
         this.setState({ data });
       })
       // eslint-disable-next-line no-console
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log('err catch', err);
+        history.push({
+          pathname: ERROR500_URL,
+        });
+      });
   };
 
   handleFunding = () => {
@@ -96,10 +104,13 @@ class Resources extends Component {
           </S.H2>
           {showBooks && this.renderResources(resourceData, 'books')}
         </S.Section>
-        <CFooter/>
+        <CFooter />
       </Fragment>
     );
   }
 }
+Resources.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default Resources;

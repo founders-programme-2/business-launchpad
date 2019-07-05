@@ -26,7 +26,6 @@ class ReflectionForm extends Component {
     const { _id } = this.context.state;
     const { goalId, reflection } = this.state;
     const dataToSend = { _id, goalId, reflection };
-    console.log(dataToSend);
     axios
       .put(UPDGOAL_SERVER, dataToSend)
       .then(result => {

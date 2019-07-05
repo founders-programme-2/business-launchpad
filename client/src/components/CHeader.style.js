@@ -5,7 +5,6 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   height: 6rem;
-  margin-bottom:2rem;
 
   ${props =>
     props.menu &&
