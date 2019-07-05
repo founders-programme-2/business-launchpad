@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // load environment variables from and .env into a process.env
 require('dotenv').config();
 
-let mongoUri = process.env.MONGO_URI;
+let mongoUri = process.env.MONGODB_URI;
 
 if (process.env.NODE_ENV === 'test') {
   // change uri to testing database uri
