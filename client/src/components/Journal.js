@@ -10,9 +10,14 @@ import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
 import { MyContext } from './Context';
 import { GETGOALS_SERVER } from '../constants';
+import Bubble from './CLoading';
 
 class Journal extends Component {
-  state = {};
+  state = {
+    showEntry: true,
+    showPlane: true,
+    showHistory: true,
+  };
 
   // queries database to retrieve all goals for current user on page load
   componentDidMount() {
@@ -37,7 +42,20 @@ class Journal extends Component {
     });
   };
 
+  handleEntery = () => {
+    this.setState({ showEntry: !this.state.showEntry });
+  };
+
+  handleActionPlane = () => {
+    this.setState({ showPlane: !this.state.showPlane });
+  };
+
+  handleHistory = () => {
+    this.setState({ showHistory: !this.state.showHistory });
+  };
+
   render() {
+    const { showEntry, showPlane, showHistory } = this.state;
     // separates all goal data into 'toDos' and 'completed' for easy rendering
     const toDo = [];
     const completed = [];
@@ -51,7 +69,6 @@ class Journal extends Component {
         }
       });
     }
-
     return (
       <Fragment>
         <CHeader menu />
@@ -68,25 +85,37 @@ class Journal extends Component {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.{' '}
         </S.P>
-
         <S.Section>
-          <S.H2>Add an entry:</S.H2>
-          <AddEntry />
+          <S.H2>
+            Add an entry: <S.ArrowDown onClick={this.handleEntery} />
+          </S.H2>
+          {showEntry && <AddEntry />}
         </S.Section>
+        {this.context.state.goalData.length === 0 ? (
+          <S.EmptyContainer><Bubble /></S.EmptyContainer>
+        ) : (
+          <>
+            <S.Section>
+              <S.H2>
+                Action Plan:
+                <S.ArrowDown onClick={this.handleActionPlane} />
+              </S.H2>
+              <S.P>
+                As you complete your goals, check them off and watch your
+                business grow!
+              </S.P>
+              {showPlane && this.renderGoals(toDo)}
+            </S.Section>
 
-        <S.Section>
-          <S.H2>Action Plan:</S.H2>
-          <S.P>
-            As you complete your goals, check them off and watch your business
-            grow!
-          </S.P>
-          {this.renderGoals(toDo)}
-        </S.Section>
-
-        <S.Section>
-          <S.H2>My Business History:</S.H2>
-          {this.renderGoals(completed)}
-        </S.Section>
+            <S.Section>
+              <S.H2>
+                My Business History:{' '}
+                <S.ArrowDown onClick={this.handleHistory} />
+              </S.H2>
+              {showHistory && this.renderGoals(completed)}
+            </S.Section>
+          </>
+        )}
       </Fragment>
     );
   }

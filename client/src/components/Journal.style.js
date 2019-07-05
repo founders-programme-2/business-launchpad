@@ -13,6 +13,10 @@ export const H2 = styled.h2`
   text-transform: uppercase;
   background-color: var(--highlight);
   padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Section = styled.section`
@@ -23,4 +27,24 @@ export const Section = styled.section`
 export const P = styled.p`
   font-style: normal;
   margin: 1.5rem;
+`;
+export const ArrowDown = styled.button`
+  width: 0;
+  height: 0;
+  outline: none;
+  background-color: transparent;
+  padding: 0;
+  border-left: 0.7rem solid transparent;
+  border-right: 0.7rem solid transparent;
+  border-top: 1rem solid var(--black);
+  border-bottom: none;
+  :hover {
+    cursor: pointer;
+  }
+`;
+export const EmptyContainer = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:4rem;
 `;

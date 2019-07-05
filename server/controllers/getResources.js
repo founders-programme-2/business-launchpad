@@ -2,7 +2,8 @@ const Airtable = require('airtable');
 
 require('dotenv').config();
 
-const getResources = (req, res) => {
+const getResources = (req, res, next) => {
+  Promise.resolve().then(()=>{
   const dataToReturn = [];
 
   const airtableApiKey = process.env.AIRTABLE_API_KEY;
@@ -40,6 +41,7 @@ const getResources = (req, res) => {
         res.json({ success: true, data: dataToReturn });
       }
     );
+  }).catch(next);
 };
 
 module.exports = { getResources };

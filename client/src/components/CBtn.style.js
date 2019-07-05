@@ -12,6 +12,12 @@ const Button = styled.button`
   padding: 0.1rem;
   font-size: 1rem;
   letter-spacing: 8%;
+  outline: none;
+  border: none;
+  :hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
 `;
 
 export default Button;

@@ -7,13 +7,19 @@ export class MyProvider extends Component {
   state = {
     isLoggedIn: false,
     token: '',
-    _id: '',
+    _id: '5d10aa44726912311745ae0e',
     goalData: [],
   };
 
   // TODO: Refactor below functions into a single function if possible
 
+  // sort the goals by most recent when update the state
   updateGoals = goalData => {
+    goalData.sort(function(a, b) {
+      a = new Date(a.dateCreated);
+      b = new Date(b.dateCreated);
+      return a > b ? -1 : a < b ? 1 : 0;
+    });
     this.setState({ goalData });
   };
 
