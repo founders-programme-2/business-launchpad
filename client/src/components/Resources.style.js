@@ -14,9 +14,9 @@ export const H2 = styled.h2`
   background-color: var(--highlight);
   padding: 1rem;
   display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 export const ArrowDown = styled.button`
   width: 0;
@@ -35,4 +35,7 @@ export const ArrowDown = styled.button`
 
 export const Section = styled.section`
   margin: 1rem 0 0.5rem 0;
+  &:first-of-type {
+    margin-top: 2rem;
+  }
 `;
