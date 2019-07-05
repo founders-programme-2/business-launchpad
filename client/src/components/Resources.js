@@ -3,6 +3,7 @@ import axios from 'axios';
 import CHeader from './CHeader';
 import * as S from './Resources.style';
 import ResourceEntry from './Resources-Entry';
+import CFooter from './CFooter';
 
 class Resources extends Component {
   state = {
@@ -95,6 +96,7 @@ class Resources extends Component {
           </S.H2>
           {showBooks && this.renderResources(resourceData, 'books')}
         </S.Section>
+        <CFooter/>
       </Fragment>
     );
   }
