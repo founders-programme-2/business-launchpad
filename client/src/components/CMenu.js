@@ -4,6 +4,7 @@ import {
   CONTACT_URL,
   RESOURCES_URL,
   JOURNAL_URL,
+  LANDING_URL,
 } from '../constants';
 import * as S from './CMenu.style';
 import { Logo, Line } from './CHeader.style';
@@ -62,7 +63,7 @@ class CMenu extends Component {
                 <S.LinkText to={CONTACT_URL}>CONTACT</S.LinkText>
               </S.MenuElement>
               <S.MenuElement>
-                <S.LinkText to="logout">LOG OUT</S.LinkText>
+                <S.LinkText to={LANDING_URL}>LOG OUT</S.LinkText>
               </S.MenuElement>
               <Logo src={logo} alt="Launchpad logo" />
             </S.MenuWrapper>
