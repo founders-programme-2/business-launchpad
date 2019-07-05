@@ -28,6 +28,22 @@ class Resources extends Component {
       .catch(err => console.log(err));
   };
 
+  handleFunding = () => {
+    this.setState({ showFunding: !this.state.showFunding });
+  };
+
+  handleEvents = () => {
+    this.setState({ showEvents: !this.state.showEvents });
+  };
+
+  handleBusiness = () => {
+    this.setState({ showBusiness: !this.state.showBusiness });
+  };
+
+  handleBooks = () => {
+    this.setState({ showBooks: !this.state.showBooks });
+  };
+
   // renders all resources to the appropriate sections.
   // 'data' is the data returned from airtable
   // 'section' defines which category of resources should be rendered
@@ -50,34 +66,34 @@ class Resources extends Component {
 
   render() {
     const { data: resourceData } = this.state;
-
+    const { showFunding, showEvents, showBusiness, showBooks } = this.state;
     return (
       <Fragment>
         <CHeader menu />
         <S.H1>Resources</S.H1>
         <S.Section>
           <S.H2>
-            Funding <S.ArrowDown />
+            Funding <S.ArrowDown onClick={this.handleFunding} />
           </S.H2>
-          {this.renderResources(resourceData, 'funding')}
+          {showFunding && this.renderResources(resourceData, 'funding')}
         </S.Section>
         <S.Section>
           <S.H2>
-            Events <S.ArrowDown />
+            Events <S.ArrowDown onClick={this.handleEvents} />
           </S.H2>
-          {this.renderResources(resourceData, 'events')}
+          {showEvents && this.renderResources(resourceData, 'events')}
         </S.Section>
         <S.Section>
           <S.H2>
-            Business Development <S.ArrowDown />
+            Business Development <S.ArrowDown onClick={this.handleBusiness} />
           </S.H2>
-          {this.renderResources(resourceData, 'businessdev')}
+          {showBusiness && this.renderResources(resourceData, 'businessdev')}
         </S.Section>
         <S.Section>
           <S.H2>
-            Books Worth Reading <S.ArrowDown />
+            Books Worth Reading <S.ArrowDown onClick={this.handleBooks} />
           </S.H2>
-          {this.renderResources(resourceData, 'books')}
+          {showBooks && this.renderResources(resourceData, 'books')}
         </S.Section>
       </Fragment>
     );
