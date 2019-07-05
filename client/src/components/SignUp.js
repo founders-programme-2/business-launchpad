@@ -5,7 +5,8 @@ import Swal from 'sweetalert2';
 
 import * as S from './SignUp.style';
 import CHeader from './CHeader';
-import { LOGIN_URL, REGISTER_SERVER } from '../constants';
+import { LOGIN_URL, REGISTER_SERVER, ERROR500_URL } from '../constants';
+
 class signUp extends Component {
   state = {
     name: '',
@@ -45,7 +46,12 @@ class signUp extends Component {
         }
       })
       // eslint-disable-next-line no-console
-      .catch(err => console.log('Sorry, an error occurred: ', err));
+      .catch(err => {
+        console.log('err catch', err);
+        history.push({
+          pathname: ERROR500_URL,
+        });
+      });
   };
 
   handleChange = event => {

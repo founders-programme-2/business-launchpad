@@ -1,12 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import CHeader from './CHeader';
 import * as S from './Resources.style';
 import ResourceEntry from './Resources-Entry';
+import CFooter from './CFooter';
+import { ERROR500_URL } from '../constants';
 
 class Resources extends Component {
   state = {
     data: [],
+    showFunding: true,
+    showEvents: true,
+    showBusiness: true,
+    showBooks: true,
   };
 
   componentDidMount() {
@@ -14,6 +21,7 @@ class Resources extends Component {
   }
 
   getResources = () => {
+    const { history } = this.props;
     axios
       .get('/resources/get')
       .then(response => {
@@ -21,7 +29,28 @@ class Resources extends Component {
         this.setState({ data });
       })
       // eslint-disable-next-line no-console
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log('err catch', err);
+        history.push({
+          pathname: ERROR500_URL,
+        });
+      });
+  };
+
+  handleFunding = () => {
+    this.setState({ showFunding: !this.state.showFunding });
+  };
+
+  handleEvents = () => {
+    this.setState({ showEvents: !this.state.showEvents });
+  };
+
+  handleBusiness = () => {
+    this.setState({ showBusiness: !this.state.showBusiness });
+  };
+
+  handleBooks = () => {
+    this.setState({ showBooks: !this.state.showBooks });
   };
 
   // renders all resources to the appropriate sections.
@@ -46,30 +75,42 @@ class Resources extends Component {
 
   render() {
     const { data: resourceData } = this.state;
-
+    const { showFunding, showEvents, showBusiness, showBooks } = this.state;
     return (
       <Fragment>
         <CHeader menu />
         <S.H1>Resources</S.H1>
         <S.Section>
-          <S.H2>Funding</S.H2>
-          {this.renderResources(resourceData, 'funding')}
+          <S.H2>
+            Funding <S.ArrowDown onClick={this.handleFunding} />
+          </S.H2>
+          {showFunding && this.renderResources(resourceData, 'funding')}
         </S.Section>
         <S.Section>
-          <S.H2>Events</S.H2>
-          {this.renderResources(resourceData, 'events')}
+          <S.H2>
+            Events <S.ArrowDown onClick={this.handleEvents} />
+          </S.H2>
+          {showEvents && this.renderResources(resourceData, 'events')}
         </S.Section>
         <S.Section>
-          <S.H2>Business Development</S.H2>
-          {this.renderResources(resourceData, 'businessdev')}
+          <S.H2>
+            Business Development <S.ArrowDown onClick={this.handleBusiness} />
+          </S.H2>
+          {showBusiness && this.renderResources(resourceData, 'businessdev')}
         </S.Section>
         <S.Section>
-          <S.H2>Books Worth Reading</S.H2>
-          {this.renderResources(resourceData, 'books')}
+          <S.H2>
+            Books Worth Reading <S.ArrowDown onClick={this.handleBooks} />
+          </S.H2>
+          {showBooks && this.renderResources(resourceData, 'books')}
         </S.Section>
+        <CFooter />
       </Fragment>
     );
   }
 }
+Resources.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default Resources;

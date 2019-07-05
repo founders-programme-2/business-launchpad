@@ -5,8 +5,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
-import { DELGOAL_SERVER } from '../constants';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import { withRouter } from 'react-router-dom';
+import { DELGOAL_SERVER, ERROR500_URL } from '../constants';
 import * as S from './JournalGoal.style';
 import ReflectionForm from './JournalReflectionForm';
 import { MyContext } from './Context';
@@ -20,13 +21,19 @@ class Goal extends Component {
   deleteGoal = () => {
     const { _id } = this.context.state;
     const { goalId } = this.state;
+    const { history } = this.props;
     const dataToSend = { _id, goalId };
     axios
       .post(DELGOAL_SERVER, dataToSend)
       .then(goalsData => {
         this.context.updateGoals(goalsData.data.data.goals);
       })
-      .catch(err => err);
+      .catch(err => {
+        console.log('err catch', err);
+        history.push({
+          pathname: ERROR500_URL,
+        });
+      });
   };
 
   handleChecked = () => {
@@ -122,4 +129,7 @@ Goal.propTypes = {
     dateCompleted: PropTypes.string,
   }).isRequired,
 };
-export default Goal;
+Goal.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
+export default withRouter(Goal);

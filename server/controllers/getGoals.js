@@ -1,6 +1,6 @@
 const User = require('../database/models/User');
 
-const getGoals = (req, res) => {
+const getGoals = (req, res, next) => {
   const { _id } = req.body;
 
   return User.findById(_id, 'goals')
@@ -10,12 +10,7 @@ const getGoals = (req, res) => {
         data: goals,
       });
     })
-    .catch(err => {
-      res.send({
-        success: false,
-        error: err,
-      });
-    });
+    .catch(next);
 };
 
 module.exports = { getGoals };

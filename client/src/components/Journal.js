@@ -4,25 +4,32 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
+import ReactRouterPropTypes from 'react-router-prop-types';
 import CHeader from './CHeader';
 import * as S from './Journal.style';
 import AddEntry from './Journal-AddEntry';
 import Goal from './JournalGoal';
 import { MyContext } from './Context';
-import { GETGOALS_SERVER } from '../constants';
+import { GETGOALS_SERVER, ERROR500_URL } from '../constants';
 
 class Journal extends Component {
   state = {};
 
   // queries database to retrieve all goals for current user on page load
   componentDidMount() {
+    const { history } = this.props;
     const { _id } = this.context.state;
     axios
       .post(GETGOALS_SERVER, { _id })
       .then(goalsData => {
         this.context.updateGoals(goalsData.data.data.goals);
       })
-      .catch(err => err);
+      .catch(err => {
+        console.log('err', err);
+        history.push({
+          pathname: ERROR500_URL,
+        });
+      });
   }
 
   // function to render the goals in each section
@@ -93,5 +100,8 @@ class Journal extends Component {
 }
 // allows us to access context within the component
 Journal.contextType = MyContext;
+Journal.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default Journal;

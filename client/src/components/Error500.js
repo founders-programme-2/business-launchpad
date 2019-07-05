@@ -4,7 +4,7 @@ import CHeader from './CHeader';
 import * as S from './Error404.style';
 import Button from './CBtn';
 
-const Error404 = props => {
+const Error500 = props => {
   const back = () => {
     const { history } = props;
     history.go(-1);
@@ -15,9 +15,9 @@ const Error404 = props => {
       <S.Main>
         <S.Div>
           <S.H1>
-            404!
+            500 :(
             <br />
-            Sorry, the page you are looking for is unavailable.
+            Sorry, we have had an issue on our end.
           </S.H1>
         </S.Div>
         <Button text="back" cb={back} />
@@ -25,7 +25,7 @@ const Error404 = props => {
     </Fragment>
   );
 };
-Error404.propTypes = {
+Error500.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
 };
-export default Error404;
+export default Error500;
