@@ -10,6 +10,13 @@ Business Launchpad came to us asking for an app that would help to facilitate th
 ## The App
 In this first iteration, it functions as a tool to save, view, and check off goals related to their business journeys, particularly when used in conjunction with BL mentors. It also offers the capacity to record reflections upon completing goals, and a resources page hosted on Airtable that is editable by BL employees.
 
+## Screenshots
+![](https://i.imgur.com/BKT2NAN.png)
+![](https://i.imgur.com/3ThAyz4.png)
+![](https://i.imgur.com/5hbWwfN.png)
+![](https://i.imgur.com/qX5gsBk.png)
+
+
 ## Installation
 
 ### To view on Heroku visit: 
