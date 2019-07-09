@@ -1,4 +1,5 @@
 # Business Launchpad
+[![Build Status](https://travis-ci.org/founders-programme-2/business-launchpad.svg?branch=staging)](https://travis-ci.org/founders-programme-2/business-launchpad)
 
 Repository for the Founders Program project "Business Launchpad". June 2019
 
