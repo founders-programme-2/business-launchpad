@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/founders-programme-2/business-launchpad#readme",
   "dependencies": {
-    "airtable": "^0.6.0",
+    "airtable": "^0.7.2",
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^4.1.0",
